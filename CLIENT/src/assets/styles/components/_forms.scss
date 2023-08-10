@@ -1,0 +1,44 @@
+// 表单初始化样式
+form {
+  padding: $form-padding;
+  background-color: $color-bg;
+  border-radius: $form-border-radius;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea,
+select {
+  height: $form-input-height;
+  border: $form-input-border-width solid $color-border-1;
+  border-radius: $form-border-radius;
+  padding: 8px;
+  background-color: white;
+  color: $color-text-main;
+  font-size: 14px;
+
+  &::placeholder {
+    color: $color-text-placeholder;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+  }
+}
+
+button {
+  //height: $form-input-height;
+  border: none;
+  border-radius: $form-border-radius;
+  padding: 5px 15px;
+  background-color: $color-primary;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: darken($color-primary, 10%);
+  }
+}

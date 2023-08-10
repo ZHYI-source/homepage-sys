@@ -1,0 +1,21 @@
+// 定义 code 标签的样式
+
+
+
+
+.zy-code {
+  code {
+    width: 100%;
+    font-size: .9rem;
+    background-color: #f8f8f8; // 设置背景颜色
+    border: 1px solid #ddd; // 设置边框
+    border-radius: 4px; // 设置圆角
+    color: #333; // 设置文本颜色
+    display: inline-block; // 设置为块级元素
+    font-family: "Courier New", monospace; // 设置字体
+    padding: .5rem 1rem; // 设置内边距
+    box-sizing: border-box;
+    margin: .5rem 0;
+    word-break: break-all;
+  }
+}

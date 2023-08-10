@@ -1,0 +1,175 @@
+// Reset SCSS
+
+// 重置所有的margin和padding
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+// 重置列表样式
+ul, ol {
+  list-style: none;
+}
+
+// 重置图片样式
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// 重置表格样式
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// 重置按钮样式
+button, input, select, textarea {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: middle;
+  background: none;
+  line-height: 1;
+  outline: none;
+  appearance: none;
+}
+
+// 可选：设置box-sizing为border-box
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+html {
+  font-size: 93.8%; /*15px页面标准字体大小*/
+}
+
+body {
+  background-color: $color-bg; // 使用主题背景色
+  font-family: system-ui,-apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Hiragino Sans GB,Microsoft YaHei UI,Microsoft YaHei,Arial,sans-serif;
+  font-weight: 400;
+  line-height: 1.75;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+
+h1, h2, h3, h4, h5 {
+  font-family: "Open Sans";
+  color: $color-text-main; // 使用主题文字颜色
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 1.802rem;
+}
+
+h2 {
+  font-size: 1.602rem;
+}
+
+h3 {
+  font-size: 1.424rem;
+}
+
+h4 {
+  font-size: 1.266rem;
+}
+
+h5 {
+  font-size: 1.125rem;
+}
+
+small, .text_small {
+  font-size: 0.889rem;
+}
+
+
+
+
+hr {
+  height: 1px;
+  border: none;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), $color-primary, rgba(0, 0, 0, 0));
+  margin: .8rem 0;
+}
+
+
+// 链接样式
+a {
+  color: $color-primary;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  &:hover {
+    color: darken($color-primary, 10%);
+  }
+}
+
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #c6c6c6;
+}
+::-webkit-scrollbar-track {
+  background-color: #ffffff;
+}
+
+
+// 定义一些常用的媒体查询断点
+$breakpoint-sm: 576px;   // 小屏幕，如手机
+$breakpoint-md: 768px;   // 中等屏幕，如平板电脑
+$breakpoint-lg: 992px;   // 大屏幕，如小型笔记本电脑
+$breakpoint-xl: 1200px;  // 超大屏幕，如桌面电脑
+
+// 定义媒体查询的mixin
+@mixin media-query($breakpoint) {
+  @media only screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+// 示例：在小屏幕上设置不同的字体大小
+html {
+  font-size: 14px;
+
+  @include media-query($breakpoint-sm) {
+    font-size: 14px;
+  }
+
+  @include media-query($breakpoint-md) {
+    font-size: 15px;
+  }
+
+  @include media-query($breakpoint-lg) {
+    font-size: 16px;
+  }
+}
+
+.lazy-image {
+  transition: all .3s linear;
+}
