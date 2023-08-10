@@ -1,0 +1,67 @@
+/**
+*@author ZY
+*@date <%= new Date().toLocaleString() %>
+*@Description:<%= comment %>相关的接口
+*/
+
+const express = require('express');
+const router = express.Router();
+<% if (auth) { %>
+const <%= modelName %>Controller = require('@controllers/v1/<%= auth %>/<%= modelName %>Controller')
+<% } else { %>
+const <%= modelName %>Controller = require('@controllers/v1/admin/<%= modelName %>Controller')
+<% } %>
+
+/****************************************************************************/
+
+/**
+* 获取<%= comment %>列表
+<% if (auth) { %>
+* @route POST /v1/<%= auth %>/<%= tableName %>/list
+<% } else { %>
+* @route POST /v1/admin/<%= tableName %>/list
+<% } %>
+* @group <%= comment %>管理 - <%= comment %>相关
+*/
+
+router.post('/list', <%= modelName %>Controller.<%= tableName %>list);
+
+/**
+* 创建<%= comment %>
+<% if (auth) { %>
+* @route POST /v1/<%= auth %>/<%= tableName %>/create
+<% } else { %>
+* @route POST /v1/admin/<%= tableName %>/create
+<% } %>
+* @group <%= comment %>管理 - <%= comment %>相关
+* @returns {object} 200 - 成功响应
+*/
+
+router.post('/create', <%= modelName %>Controller.<%= tableName %>Create);
+
+
+/**
+* 删除<%= comment %>
+<% if (auth) { %>
+* @route POST /v1/<%= auth %>/<%= tableName %>/delete
+<% } else { %>
+* @route POST /v1/admin/<%= tableName %>/delete
+<% } %>
+* @group <%= comment %>管理 - <%= comment %>相关
+* @param {string} _id.required - <%= comment %>_ID且唯一
+* @returns {object} 200 - 成功响应
+*/
+router.post('/delete', <%= modelName %>Controller.<%= tableName %>Delete);
+
+/**
+* 更新<%= comment %>信息
+<% if (auth) { %>
+* @route POST /v1/<%= auth %>/<%= tableName %>/update
+<% } else { %>
+* @route POST /v1/admin/<%= tableName %>/update
+<% } %>
+* @group <%= comment %>管理 - <%= comment %>相关
+*/
+router.post('/update', <%= modelName %>Controller.<%= tableName %>Update);
+
+module.exports = router;

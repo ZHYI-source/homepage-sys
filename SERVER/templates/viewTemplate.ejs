@@ -1,0 +1,30 @@
+<template>
+    <section class="zy-view">
+        <% fields.forEach((item) => { %>
+            <% if (!(['_id'].includes(item.name))) { %>
+                <ZyViewRow>
+                    <ZyViewItem label="<%= item.comment || item.name %>">{{viewData.<%= item.name %>}}</ZyViewItem>
+                </ZyViewRow>
+            <% } %>
+            <% }); %>
+    </section>
+</template>
+
+<script setup>
+    import ZyViewRow from "comps/common/ZyViewRow.vue";
+    import ZyViewItem from "comps/common/ZyViewItem.vue";
+
+    const props = defineProps({
+        viewData: {
+            type: Object,
+            default: () => {
+            }
+        }
+    })
+    const emit = defineEmits(['close'])
+
+</script>
+
+<style lang="scss" scoped>
+
+</style>

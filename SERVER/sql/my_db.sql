@@ -1,0 +1,11560 @@
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : ZY.Admin
+ Source Server Type    : MongoDB
+ Source Server Version : 60005
+ Source Host           : localhost:27017
+ Source Schema         : my_db
+
+ Target Server Type    : MongoDB
+ Target Server Version : 60005
+ File Encoding         : 65001
+
+ Date: 08/08/2023 17:41:42
+*/
+
+
+// ----------------------------
+// Collection structure for blog_articles
+// ----------------------------
+db.getCollection("blog_articles").drop();
+db.createCollection("blog_articles");
+
+// ----------------------------
+// Documents of blog_articles
+// ----------------------------
+db.getCollection("blog_articles").insert([ {
+    _id: ObjectId("64ce1399f8cb66aa2134dc58"),
+    title: "滚动行为",
+    cover: "https://images.pexels.com/photos/12825195/pexels-photo-12825195.png?auto=compress&cs=tinysrgb&w=600&lazy=load",
+    content: "- [x] 测试的啊\n- [x] 测试的啊\n\n:grin:  :cold_sweat:\n\n------------------------------------\n\n|column1|column2|column3|\n|-|-|-|\n|content1|content2|content3|\n\n::: tip\n  在此输入内容\n:::\n::: warning\n  在此输入内容\n:::\n::: details\n  ``` html\n<div class=\"blog-cover\" v-if=\"post.cover\">\n                        <img class=\"lazy-image\"\n                             v-bind:data-src=\"post.cover || 'https://images.pexels.com/photos/17527836/pexels-photo-17527836.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'\">\n                    </div>\n```\n:::\n\n- sadsa\n- 发多少积分\n\n1. 有序列表\n2. 浪费多少\n\n[链接](http://)\n\n<video src=\"http://www.zhouyi.run:3001/api/v1/files/preview?p=video.mp4&&mimetype=video/mp4\" width=\"100%\" height=\"auto\" controls></video>\n\n<a href=\"http://localhost:5000/v1/common/files/preview/img/1691227300758.jpg\" target=\"_blank\">\n<img src=\"http://localhost:5000/v1/common/files/preview/img/1691227300758.jpg\" alt=\"1691227300758.jpg\" width=\"100%\">\n</a>\n\n",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    viewNum: NumberInt("2"),
+    isReship: true,
+    recommended: true,
+    status: true,
+    createdAt: ISODate("2023-08-05T09:17:13.756Z"),
+    updatedAt: ISODate("2023-08-06T08:42:10.38Z"),
+    abstract: "使用前端路由，当切换到新路由时，想要页面滚到顶部，或者是保持原先的滚动位置，就像重新加载页面那样。 vue-router 能做到，而且更好，它让你可以自定义路由切换时页面如何滚动。",
+    category: "JavaScript",
+    isReshipName: "测试的啊",
+    isReshipUrl: "https://router.vuejs.org/zh/guide/advanced/scroll-behavior.html",
+    likeNum: NumberInt("32"),
+    likeToken: [ ]
+} ]);
+db.getCollection("blog_articles").insert([ {
+    _id: ObjectId("64ce521cea542e7d002d924b"),
+    title: "不会这 10 个 Web API，你还好意思说你是前端开发者？",
+    cover: "http://localhost:5000/v1/common/files/preview/img/1691243134311.jpg",
+    abstract: "`JavaScript`中有些API可能使用率比较低，下面我们逐一介绍它们的用法和使用场景。Blob API 用于处理二进制数据，可以方便地将数据转换为Blob对象或从Blob对象读取数据。",
+    content: "`JavaScript`中有些API可能使用率比较低，下面我们逐一介绍它们的用法和使用场景。\n\n### Blob API\nBlob API 用于处理二进制数据，可以方便地将数据转换为Blob对象或从Blob对象读取数据。\n\n``` js\n  // 创建一个Blob对象\nconst myBlob = new Blob([\"Hello, world!\"], { type: \"text/plain\" });\n\n// 读取Blob对象的数据\nconst reader = new FileReader();\nreader.addEventListener(\"loadend\", () => {\n  console.log(reader.result);\n});\nreader.readAsText(myBlob);\n```\n使用场景：在Web应用中，可能需要上传或下载二进制文件，使用Blob API可以方便地处理这些数据。\n\n### WeakSet\nWeakSet 类似于Set，但可以存储弱引用的对象。这意味着，如果没有其他引用指向一个对象，那么这个对象可以被垃圾回收器回收，而不需要手动从WeakSet中删除。\n\n``` js\nconst myWeakSet = new WeakSet();\nconst obj1 = {};\nconst obj2 = {};\n\nmyWeakSet.add(obj1);\nmyWeakSet.add(obj2);\n\nconsole.log(myWeakSet.has(obj1)); // true\n\nobj1 = null;\n\nconsole.log(myWeakSet.has(obj1)); // false\n```\n使用场景：在某些情况下，可能需要存储一些临时的对象，但又不希望这些对象占用太多的内存。使用WeakSet可以方便地管理这些对象。\n\n### TextEncoder 和 TextDecoder\nTextEncoder 和 TextDecoder 用于处理字符串和字节序列之间的转换。它们可以方便地将字符串编码为字节序列或将字节序列解码为字符串。\n\n``` js\nconst encoder = new TextEncoder();\nconst decoder = new TextDecoder();\n\nconst myString = \"Hello, world!\";\nconst myBuffer = encoder.encode(myString);\n\nconsole.log(myBuffer); // Uint8Array(13) [72, 101, 108, 108, 111, 44, 32, 119, 111, 114, 108, 100, 33]\n\nconst decodedString = decoder.decode(myBuffer);\n\nconsole.log(decodedString); // \"Hello, world!\"\n```\n使用场景：在Web应用中，可能需要将字符串转换为二进制数据，或将二进制数据转换为字符串。使用TextEncoder和TextDecoder可以方便地进行这些转换。\n\n### Proxy API\nProxy API 可以用于创建代理对象，可以拦截对象属性的读取、赋值等操作。这个功能可以用于实现元编程、数据劫持等功能。\n\n``` js\nconst myObject = {\n  name: \"John\",\n  age: 30,\n};\n\nconst myProxy = new Proxy(myObject, {\n  get(target, property) {\n    console.log(`Getting property ${property}`);\n    return target[property];\n  },\n  set(target, property, value) {\n    console.log(`Setting property ${property} to ${value}`);\n    target[property] = value;\n  },\n});\n\nconsole.log(myProxy.name); // \"John\"\n\nmyProxy.age = 31; // Setting property age to 31\n```\n使用场景：在某些情况下，可能需要拦截对象属性的读取、赋值等操作，以实现更高级的功能。使用Proxy API可以方便地实现这些功能。\n\n### Object.entries() 和 Object.values()\nObject.entries() 用于获取对象的可枚举属性和值的数组，Object.values() 用于获取对象的可枚举属性值的数组。\n\n``` js\nconst myObject = {\n  name: \"John\",\n  age: 30,\n};\n\nconsole.log(Object.entries(myObject)); // [[\"name\", \"John\"], [\"age\", 30]]\nconsole.log(Object.values(myObject)); // [\"John\", 30]\n```\n使用场景：在某些情况下，可能需要获取对象的可枚举属性或属性值。使用Object.entries()和Object.values()可以方便地实现这些功能。\n\n### IntersectionObserver\nIntersectionObserver 可以用于检测元素是否进入视口，可以用于实现无限滚动、懒加载等功能。\n\n``` js\n  const myObserver = new IntersectionObserver((entries, observer) => {\n  entries.forEach((entry) => {\n    if (entry.isIntersecting) {\n      console.log(`${entry.target.id} is now visible`);\n      observer.unobserve(entry.target);\n    }\n  });\n});\nconst myElement = document.getElementById(\"myElement\");\nmyObserver.observe(myElement);\n```\n\n使用场景：在Web应用中，可能需要实现无限滚动、懒加载等功能，使用IntersectionObserver可以方便地实现这些功能。\n\n### Symbol\nSymbol 可以用于创建唯一标识符，可以用于定义对象的私有属性或方法。\n\n``` js\nconst mySymbol = Symbol(\"mySymbol\");\n\nconst myObject = {\n  [mySymbol]: \"This is a private property\",\n  publicProperty: \"This is a public property\",\n};\n\nconsole.log(myObject[mySymbol]); // \"This is a private property\"\nconsole.log(myObject.publicProperty); // \"This is a public property\"\n```\n使用场景：在某些情况下，可能需要定义对象的私有属性或方法，使用Symbol可以方便地实现这些功能。\n\n### Reflect API\nReflect API 可以用于实现元编程，例如动态调用对象的方法或构造函数。\n\n``` js\nclass MyClass {\n  constructor(value) {\n    this.value = value;\n  }\n\n  getValue() {\n    return this.value;\n  }\n}\n\nconst myObject = Reflect.construct(MyClass, [\"Hello, world!\"]);\nconst myMethod = Reflect.get(myObject, \"getValue\");\nconst myValue = myMethod.call(myObject);\n\nconsole.log(myValue); // \"Hello, world!\"\n```\n使用场景：在某些情况下，可能需要动态调用对象的方法或构造函数，使用Reflect API可以方便地实现这些功能。\n\n### Generator API\nGenerator API 可以用于生成迭代器，可以用于实现异步操作或惰性计算。\n\n``` js\nfunction* myGenerator() {\n  yield \"Hello\";\n  yield \"world\";\n  yield \"!\";\n}\n\nconst myIterator = myGenerator();\n\nconsole.log(myIterator.next().value); // \"Hello\"\nconsole.log(myIterator.next().value); // \"world\"\nconsole.log(myIterator.next().value); // \"!\"\n```\n使用场景：在某些情况下，可能需要实现异步操作或惰性计算，使用Generator API可以方便地实现这些功能。\n\n### Web Workers\nWeb Workers 可以用于在后台线程中执行JavaScript代码，可以用于提高性能或实现复杂的计算。\n\n``` js\n  // main.js\nconst myWorker = new Worker(\"worker.js\");\n\nmyWorker.postMessage(\"Hello, worker!\");\n\nmyWorker.onmessage = (event) => {\n  console.log(`Message received from worker: ${event.data}`);\n};\n\n// worker.js\nonmessage = (event) => {\n  console.log(`Message received in worker: ${event.data}`);\n  postMessage(\"Hello, main!\");\n};\n```\n使用场景：在Web应用中，可能需要处理大量计算密集型任务或执行长时间运行的操作，使用Web Workers可以提高性能或避免阻塞用户界面。\n\n### AudioContext\nAudioContext 可以用于处理音频，可以用于实现音频播放、音效处理等功能。\n\n``` js\nconst audioContext = new AudioContext();\n\nfetch(\"https://example.com/audio.mp3\")\n  .then((response) => response.arrayBuffer())\n  .then((arrayBuffer) => audioContext.decodeAudioData(arrayBuffer))\n  .then((audioBuffer) => {\n    const source = audioContext.createBufferSource();\n    source.buffer = audioBuffer;\n    source.connect(audioContext.destination);\n    source.start();\n  });\n```\n使用场景：在Web应用中，可能需要实现音频播放、音效处理等功能，使用AudioContext可以方便地实现这些功能。\n\n### 总结\n以上Web API和它们的使用场景，这些API可以帮助我们更方便地实现Web应用的各种功能。当然，除了这些API之外，还有很多其他有用的API和工具，建议大家多多探索，以便更好地应对Web开发的各种挑战。",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    category: "JavaScript",
+    viewNum: NumberInt("131"),
+    likeNum: NumberInt("108"),
+    isReship: false,
+    recommended: true,
+    status: true,
+    createdAt: ISODate("2023-08-05T13:43:56.181Z"),
+    updatedAt: ISODate("2023-08-08T08:14:07.889Z"),
+    likeToken: [
+        "0.0.0.0"
+    ]
+} ]);
+db.getCollection("blog_articles").insert([ {
+    _id: ObjectId("64ce5724288bbd4d5cc2d2eb"),
+    title: "5 个罕见的 JavaScript 原生 API",
+    cover: "http://localhost:5000/v1/common/files/preview/img/1691244083420.png",
+    abstract: "本文带来5个难得一见的JavaScriot原生API，为我们的前端开发带来意想不到的便利。Element.getBoundingClientRect() 方法返回一个 DOMRect 对象，该对象提供有关元素大小及其相对于视口的位置的信息。",
+    content: "> 来源：网络\n\n本文带来5个难得一见的JavaScriot原生API，为我们的前端开发带来意想不到的便利。\n\n### 1. getBoundingClientRect()\nElement.getBoundingClientRect() 方法返回一个 DOMRect 对象，该对象提供有关元素大小及其相对于视口的位置的信息。\n``` js\ndomRect = element.getBoundingClientRect();\n```\n<a href=\"http://localhost:5000/v1/common/files/preview/img/1691244162315.png\" target=\"_blank\">\n<img src=\"http://localhost:5000/v1/common/files/preview/img/1691244162315.png\" alt=\"1691244162315.png\" width=\"100%\">\n</a>\n\n例如，获取DOM元素相对于页面左上角的top和left定位距离的值。\n\n``` js\nconst h3 = document.querySelector(\"h3\");\nconst rect = h3.getBoundingClientRect();\nconst topElement = document.documentElement;\n\nconst positionTop = topElement.scrollTop + rect.top;\nconst positionLeft = topElement.scrollLeft + rect.left;\n```\n\n### 2. window.getComputedStyle() \n\nwindow.getComputedStyle() 方法返回一个 CSSStyleDeclaration 对象，其类型与样式属性相同，其中包含元素的计算样式。\n\n``` js\ndocument.defaultView.getComputedStyle(element, [pseudo-element])\n// or\nwindow.getComputedStyle(element, [pseudo-element])\n```\n它有两个参数，第一个是计算样式的元素，第二个是伪元素；如果伪元素不存在，则传递 null。\n\n例子：\n``` html\n<!DOCTYPE html>\n<html>\n<head>\n    <style type=\"text/css\">\n        #root {\n            background-color: pink;\n            width: 100px;\n            height: 200px;\n        }\n        #root::after {\n            content: 'Haskell';\n            display: table;\n            clear: both;\n        }\n</style>\n</head>\n<body>\n    <div id=\"root\" style=\"background-color: rgb(135, 206, 235);\"></div>\n</body>\n<script>\n    function getStyleByAttr(node, name) {\n        return window.getComputedStyle(node, null)[name]\n    }\n    const node = document.getElementById('root')\n    // rgb(135, 206, 235)\n    console.log(getStyleByAttr(node, 'backgroundColor'))\n    // 100px\n    console.log(getStyleByAttr(node, 'width'))\n    // 200px\n    console.log(getStyleByAttr(node, 'height'))\n    // table\n    console.log(window.getComputedStyle(node, '::after').display)\n    // Haskell\n    console.log(window.getComputedStyle(node, '::after').content)\n</script>\n</html>\n3. once: true\nonce: true 不是 API，看起来也不像。用于属性配置，有了它，lodash的once就不用了。\nconst container = document.querySelector<HTMLDivElement>('.container');\n\ncontainer?.addEventListener('click', () => {\n  console.log('I will only do it once !')\n}, {\n  // After configuring once, it will be called at most once\n  once: true\n})\n```\n### 4. getModifierState()\n\n如果指定的修改键被按下或激活，则 getModifierState() 方法返回 true。\n\n例如，我们可以使用它来监听用户在打字时是否按下了尺寸切换键，然后根据情况给出适当的提示。\n\n``` js\n<input type=\"text\" size=\"40\" onkeydown=\"myFunction(event)\">\n\n<p id=\"demo\"></p>\n\n<script>\n    function myFunction(event) {\n        var x = event.getModifierState(\"CapsLock\");\n        document.getElementById(\"demo\").innerHTML = \"Caps Lock: \" + x;\n    }\n</script>\n```\n### 5.clipboard.readText()\n\nclipboard，我敢肯定，是一个常用的功能。\n\n要从剪贴板中读取文本，请调用 navigator.clipboard.readText() 并等待返回的 Promise 进行解析。\n\n``` js\nasync function getClipboardContents() {\n  try {\n    const text = await navigator.clipboard.readText();\n    console.log('Pasted content: ', text);\n  } catch (err) {\n    console.error('Failed to read clipboard contents: ', err);\n  }\n}\n```\n要将文本复制到剪贴板，只需调用 writeText()。\n\n``` js\nasync function copyPageUrl() {\n  try {\n    await navigator.clipboard.writeText(location.href);\n    console.log('Page URL copied to clipboard');\n  } catch (err) {\n    console.error('Failed to copy: ', err);\n  }\n}\n```\n### 总结\n\n以上就是我今天想与你分享的5个关于JavaScript原生的API的知识内容，希望这些内容对你有所帮助。",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    category: "JavaScript",
+    viewNum: NumberInt("39"),
+    likeNum: NumberInt("24"),
+    isReship: false,
+    recommended: true,
+    status: true,
+    createdAt: ISODate("2023-08-05T14:05:24.292Z"),
+    updatedAt: ISODate("2023-08-08T08:23:18.796Z"),
+    likeToken: [
+        "0.0.0.0"
+    ]
+} ]);
+
+// ----------------------------
+// Collection structure for codes
+// ----------------------------
+db.getCollection("codes").drop();
+db.createCollection("codes");
+
+// ----------------------------
+// Documents of codes
+// ----------------------------
+db.getCollection("codes").insert([ {
+    _id: ObjectId("64cfab22dd499496086e4bff"),
+    name: "portfolios.js",
+    type: "后端路由文件-JS",
+    url: "http://localhost:5000/v1/dev/codes/download?name=portfolios.js",
+    remark: "按钮权限：\n                    【 blog:portfolios:list  】  \n                    【 blog:portfolios:create  】   \n                    【 blog:portfolios:update  】   \n                    【 blog:portfolios:delete   】  \n                    ",
+    createdAt: ISODate("2023-08-06T14:16:02.12Z"),
+    updatedAt: ISODate("2023-08-06T14:16:02.12Z")
+} ]);
+db.getCollection("codes").insert([ {
+    _id: ObjectId("64cfab22dd499496086e4c00"),
+    name: "PortfoliosController.js",
+    type: "后端控制器文件-JS",
+    url: "http://localhost:5000/v1/dev/codes/download?name=PortfoliosController.js",
+    remark: "按钮权限：\n                    【 blog:portfolios:list  】  \n                    【 blog:portfolios:create  】   \n                    【 blog:portfolios:update  】   \n                    【 blog:portfolios:delete   】  \n                    ",
+    createdAt: ISODate("2023-08-06T14:16:02.12Z"),
+    updatedAt: ISODate("2023-08-06T14:16:02.12Z")
+} ]);
+db.getCollection("codes").insert([ {
+    _id: ObjectId("64cfab22dd499496086e4c01"),
+    name: "dir-portfolios-info.vue",
+    type: "前端页面-VUE",
+    url: "http://localhost:5000/v1/dev/codes/download?name=dir-portfolios-info.vue",
+    remark: "按钮权限：\n                    【 blog:portfolios:list  】  \n                    【 blog:portfolios:create  】   \n                    【 blog:portfolios:update  】   \n                    【 blog:portfolios:delete   】  \n                    ",
+    createdAt: ISODate("2023-08-06T14:16:02.121Z"),
+    updatedAt: ISODate("2023-08-06T14:16:02.121Z")
+} ]);
+db.getCollection("codes").insert([ {
+    _id: ObjectId("64cfab22dd499496086e4c02"),
+    name: "get-portfolios-info.vue",
+    type: "前端页面-VUE",
+    url: "http://localhost:5000/v1/dev/codes/download?name=get-portfolios-info.vue",
+    remark: "按钮权限：\n                    【 blog:portfolios:list  】  \n                    【 blog:portfolios:create  】   \n                    【 blog:portfolios:update  】   \n                    【 blog:portfolios:delete   】  \n                    ",
+    createdAt: ISODate("2023-08-06T14:16:02.121Z"),
+    updatedAt: ISODate("2023-08-06T14:16:02.121Z")
+} ]);
+db.getCollection("codes").insert([ {
+    _id: ObjectId("64cfab22dd499496086e4c03"),
+    name: "view-portfolios-info.vue",
+    type: "前端页面-VUE",
+    url: "http://localhost:5000/v1/dev/codes/download?name=view-portfolios-info.vue",
+    remark: "按钮权限：\n                    【 blog:portfolios:list  】  \n                    【 blog:portfolios:create  】   \n                    【 blog:portfolios:update  】   \n                    【 blog:portfolios:delete   】  \n                    ",
+    createdAt: ISODate("2023-08-06T14:16:02.121Z"),
+    updatedAt: ISODate("2023-08-06T14:16:02.121Z")
+} ]);
+db.getCollection("codes").insert([ {
+    _id: ObjectId("64cfab22dd499496086e4c04"),
+    name: "api.portfolios.js",
+    type: "前端请求接口-JS",
+    url: "http://localhost:5000/v1/dev/codes/download?name=api.portfolios.js",
+    remark: "按钮权限：\n                    【 blog:portfolios:list  】  \n                    【 blog:portfolios:create  】   \n                    【 blog:portfolios:update  】   \n                    【 blog:portfolios:delete   】  \n                    ",
+    createdAt: ISODate("2023-08-06T14:16:02.121Z"),
+    updatedAt: ISODate("2023-08-06T14:16:02.121Z")
+} ]);
+db.getCollection("codes").insert([ {
+    _id: ObjectId("64d077e095857bd72fd3a775"),
+    name: "messages.js",
+    type: "后端路由文件-JS",
+    url: "http://localhost:5000/v1/dev/codes/download?name=messages.js",
+    remark: "按钮权限：\n                    【 blog:messages:list  】  \n                    【 blog:messages:create  】   \n                    【 blog:messages:update  】   \n                    【 blog:messages:delete   】  \n                    ",
+    createdAt: ISODate("2023-08-07T04:49:36.548Z"),
+    updatedAt: ISODate("2023-08-07T04:49:36.548Z")
+} ]);
+db.getCollection("codes").insert([ {
+    _id: ObjectId("64d077e095857bd72fd3a776"),
+    name: "MessagesController.js",
+    type: "后端控制器文件-JS",
+    url: "http://localhost:5000/v1/dev/codes/download?name=MessagesController.js",
+    remark: "按钮权限：\n                    【 blog:messages:list  】  \n                    【 blog:messages:create  】   \n                    【 blog:messages:update  】   \n                    【 blog:messages:delete   】  \n                    ",
+    createdAt: ISODate("2023-08-07T04:49:36.548Z"),
+    updatedAt: ISODate("2023-08-07T04:49:36.548Z")
+} ]);
+db.getCollection("codes").insert([ {
+    _id: ObjectId("64d077e095857bd72fd3a777"),
+    name: "dir-messages-info.vue",
+    type: "前端页面-VUE",
+    url: "http://localhost:5000/v1/dev/codes/download?name=dir-messages-info.vue",
+    remark: "按钮权限：\n                    【 blog:messages:list  】  \n                    【 blog:messages:create  】   \n                    【 blog:messages:update  】   \n                    【 blog:messages:delete   】  \n                    ",
+    createdAt: ISODate("2023-08-07T04:49:36.548Z"),
+    updatedAt: ISODate("2023-08-07T04:49:36.548Z")
+} ]);
+db.getCollection("codes").insert([ {
+    _id: ObjectId("64d077e095857bd72fd3a778"),
+    name: "get-messages-info.vue",
+    type: "前端页面-VUE",
+    url: "http://localhost:5000/v1/dev/codes/download?name=get-messages-info.vue",
+    remark: "按钮权限：\n                    【 blog:messages:list  】  \n                    【 blog:messages:create  】   \n                    【 blog:messages:update  】   \n                    【 blog:messages:delete   】  \n                    ",
+    createdAt: ISODate("2023-08-07T04:49:36.548Z"),
+    updatedAt: ISODate("2023-08-07T04:49:36.548Z")
+} ]);
+db.getCollection("codes").insert([ {
+    _id: ObjectId("64d077e095857bd72fd3a779"),
+    name: "view-messages-info.vue",
+    type: "前端页面-VUE",
+    url: "http://localhost:5000/v1/dev/codes/download?name=view-messages-info.vue",
+    remark: "按钮权限：\n                    【 blog:messages:list  】  \n                    【 blog:messages:create  】   \n                    【 blog:messages:update  】   \n                    【 blog:messages:delete   】  \n                    ",
+    createdAt: ISODate("2023-08-07T04:49:36.548Z"),
+    updatedAt: ISODate("2023-08-07T04:49:36.548Z")
+} ]);
+db.getCollection("codes").insert([ {
+    _id: ObjectId("64d077e095857bd72fd3a77a"),
+    name: "api.messages.js",
+    type: "前端请求接口-JS",
+    url: "http://localhost:5000/v1/dev/codes/download?name=api.messages.js",
+    remark: "按钮权限：\n                    【 blog:messages:list  】  \n                    【 blog:messages:create  】   \n                    【 blog:messages:update  】   \n                    【 blog:messages:delete   】  \n                    ",
+    createdAt: ISODate("2023-08-07T04:49:36.548Z"),
+    updatedAt: ISODate("2023-08-07T04:49:36.548Z")
+} ]);
+
+// ----------------------------
+// Collection structure for messages
+// ----------------------------
+db.getCollection("messages").drop();
+db.createCollection("messages");
+
+// ----------------------------
+// Documents of messages
+// ----------------------------
+db.getCollection("messages").insert([ {
+    _id: ObjectId("64d1ce1a2ed69e514682b237"),
+    content: "// 关联用户表获取回复的用户信息，选择要返回的字段\n                {\n                    $lookup: {\n                        from: 'users',\n                        localField: 'user',\n                        foreignField: '_id',\n                        as: 'userInfo'\n                    },\n                },",
+    hidden: false,
+    user: ObjectId("64d1a95938164fd4b3f73238"),
+    likeNum: NumberInt("1"),
+    opposeNum: NumberInt("0"),
+    createdAt: ISODate("2023-08-08T05:09:46.664Z"),
+    updatedAt: ISODate("2023-08-08T05:27:55.667Z")
+} ]);
+db.getCollection("messages").insert([ {
+    _id: ObjectId("64d1ce7f2ed69e514682b240"),
+    content: "温柔是世间的宝藏，而你是世间的温柔",
+    hidden: false,
+    user: ObjectId("64d0fc4e98c726a2d735bc4f"),
+    likeNum: NumberInt("2"),
+    opposeNum: NumberInt("0"),
+    createdAt: ISODate("2023-08-08T05:11:27.414Z"),
+    updatedAt: ISODate("2023-08-08T05:27:59.268Z")
+} ]);
+db.getCollection("messages").insert([ {
+    _id: ObjectId("64d1cfaeec7d064adc726c2f"),
+    content: "万物皆有裂痕，那是光照进来的地方",
+    hidden: false,
+    user: ObjectId("64d0fc4e98c726a2d735bc4f"),
+    likeNum: NumberInt("1"),
+    opposeNum: NumberInt("0"),
+    createdAt: ISODate("2023-08-08T05:16:30.521Z"),
+    updatedAt: ISODate("2023-08-08T05:28:01.209Z")
+} ]);
+db.getCollection("messages").insert([ {
+    _id: ObjectId("64d1d2d053d1c684a73c849c"),
+    content: "666",
+    hidden: false,
+    user: ObjectId("64d1d2d053d1c684a73c849a"),
+    likeNum: NumberInt("0"),
+    opposeNum: NumberInt("0"),
+    createdAt: ISODate("2023-08-08T05:29:52.422Z"),
+    updatedAt: ISODate("2023-08-08T05:29:52.422Z")
+} ]);
+db.getCollection("messages").insert([ {
+    _id: ObjectId("64d1d2df53d1c684a73c84a3"),
+    content: "好开心啊",
+    hidden: false,
+    user: ObjectId("64d1d2d053d1c684a73c849a"),
+    likeNum: NumberInt("0"),
+    opposeNum: NumberInt("0"),
+    createdAt: ISODate("2023-08-08T05:30:07.947Z"),
+    updatedAt: ISODate("2023-08-08T05:30:07.947Z")
+} ]);
+db.getCollection("messages").insert([ {
+    _id: ObjectId("64d1d2ed53d1c684a73c84ab"),
+    content: "懂得抖动",
+    hidden: false,
+    user: ObjectId("64d1d2ed53d1c684a73c84a9"),
+    likeNum: NumberInt("0"),
+    opposeNum: NumberInt("0"),
+    createdAt: ISODate("2023-08-08T05:30:21.088Z"),
+    updatedAt: ISODate("2023-08-08T05:30:21.088Z")
+} ]);
+
+// ----------------------------
+// Collection structure for permissions
+// ----------------------------
+db.getCollection("permissions").drop();
+db.createCollection("permissions");
+
+// ----------------------------
+// Documents of permissions
+// ----------------------------
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a6767b2f517ae48b51de4a"),
+    name: "首页",
+    key: "index",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-06T08:08:27.735Z"),
+    updatedAt: ISODate("2023-07-18T03:16:59.334Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a676872f517ae48b51de50"),
+    name: "系统管理",
+    key: "sys",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-06T08:08:39.65Z"),
+    updatedAt: ISODate("2023-07-06T13:26:57.493Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a676942f517ae48b51de56"),
+    name: "用户管理",
+    key: "sys:users",
+    "parent_key": "sys",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-06T08:08:52.375Z"),
+    updatedAt: ISODate("2023-07-07T02:37:51.339Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a676a62f517ae48b51de5c"),
+    name: "查询",
+    key: "sys:users:list",
+    "parent_key": "sys:users",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-06T08:09:10.271Z"),
+    updatedAt: ISODate("2023-07-09T13:53:59.963Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a676b72f517ae48b51de62"),
+    name: "增加",
+    key: "sys:users:create",
+    "parent_key": "sys:users",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-06T08:09:27.173Z"),
+    updatedAt: ISODate("2023-07-06T14:41:34.107Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a676ca2f517ae48b51de68"),
+    name: "删除",
+    key: "sys:users:delete",
+    "parent_key": "sys:users",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-06T08:09:46.18Z"),
+    updatedAt: ISODate("2023-07-06T14:41:40.693Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a676d82f517ae48b51de6e"),
+    name: "重置密码",
+    key: "sys:users:reset",
+    "parent_key": "sys:users",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-06T08:10:00.965Z"),
+    updatedAt: ISODate("2023-07-06T14:41:54.406Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a6bce2210858fb6ec32f55"),
+    name: "开发工具",
+    key: "dev",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-06T13:08:50.188Z"),
+    updatedAt: ISODate("2023-07-06T13:27:34.278Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a6ec18bbab6245325057dc"),
+    name: "图标列表",
+    key: "dev:icon",
+    "parent_key": "dev",
+    auth: false,
+    sortOrder: NumberInt("1"),
+    status: true,
+    createdAt: ISODate("2023-07-06T16:30:16.901Z"),
+    updatedAt: ISODate("2023-07-07T03:22:12.747Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a6eca8bbab6245325057ee"),
+    name: "查询",
+    key: "sys:permissions:list",
+    "parent_key": "sys:permissions",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-06T16:32:40.326Z"),
+    updatedAt: ISODate("2023-07-06T16:32:40.326Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a6ecc0bbab6245325057f4"),
+    name: "增加",
+    key: "sys:permissions:create",
+    "parent_key": "sys:permissions",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-06T16:33:04.782Z"),
+    updatedAt: ISODate("2023-07-06T16:33:04.782Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a6ecdebbab6245325057fa"),
+    name: "删除",
+    key: "sys:permissions:delete",
+    "parent_key": "sys:permissions",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-06T16:33:34.613Z"),
+    updatedAt: ISODate("2023-07-06T16:33:34.613Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a6ecffbbab624532505800"),
+    name: "修改",
+    key: "sys:permissions:update",
+    "parent_key": "sys:permissions",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-06T16:34:07.219Z"),
+    updatedAt: ISODate("2023-07-06T16:34:07.219Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a6f171d2fac9dd58d3025c"),
+    name: "角色管理",
+    key: "sys:roles",
+    "parent_key": "sys",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-06T16:53:05.026Z"),
+    updatedAt: ISODate("2023-07-06T16:53:05.026Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a6f171d2fac9dd58d3025d"),
+    name: "查询",
+    key: "sys:roles:list",
+    "parent_key": "sys:roles",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-06T16:53:05.026Z"),
+    updatedAt: ISODate("2023-07-06T16:53:05.026Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a6f171d2fac9dd58d3025e"),
+    name: "增加",
+    key: "sys:roles:create",
+    "parent_key": "sys:roles",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-06T16:53:05.026Z"),
+    updatedAt: ISODate("2023-07-06T16:53:05.026Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a6f171d2fac9dd58d3025f"),
+    name: "删除",
+    key: "sys:roles:delete",
+    "parent_key": "sys:roles",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-06T16:53:05.026Z"),
+    updatedAt: ISODate("2023-07-06T16:53:05.026Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a6f171d2fac9dd58d30260"),
+    name: "更新",
+    key: "sys:roles:update",
+    "parent_key": "sys:roles",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-06T16:53:05.026Z"),
+    updatedAt: ISODate("2023-07-06T16:53:05.026Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a7799604246540f7286663"),
+    name: "权限管理",
+    key: "sys:permissions",
+    "parent_key": "sys",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T02:33:58.142Z"),
+    updatedAt: ISODate("2023-07-07T02:33:58.142Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a77a0104246540f7286681"),
+    name: "停用",
+    key: "sys:permissions:stop",
+    "parent_key": "sys:permissions",
+    auth: true,
+    sortOrder: null,
+    status: true,
+    createdAt: ISODate("2023-07-07T02:35:45.3Z"),
+    updatedAt: ISODate("2023-07-07T02:35:45.3Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a784d104a94eaa96595abb"),
+    name: "代码生成",
+    key: "dev:codes",
+    "parent_key": "dev",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T03:21:53.616Z"),
+    updatedAt: ISODate("2023-07-07T03:21:53.616Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a784d104a94eaa96595abc"),
+    name: "查询",
+    key: "dev:codes:list",
+    "parent_key": "dev:codes",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T03:21:53.616Z"),
+    updatedAt: ISODate("2023-07-07T03:21:53.616Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a784d104a94eaa96595abd"),
+    name: "创建",
+    key: "dev:codes:singleCurdFrontAndBack",
+    "parent_key": "dev:codes",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T03:21:53.616Z"),
+    updatedAt: ISODate("2023-07-07T05:28:34.029Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a784d104a94eaa96595abe"),
+    name: "删除",
+    key: "dev:codes:delete",
+    "parent_key": "dev:codes",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T03:21:53.617Z"),
+    updatedAt: ISODate("2023-07-07T03:21:53.617Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a784d104a94eaa96595abf"),
+    name: "批量删除",
+    key: "dev:codes:deleteAll",
+    "parent_key": "dev:codes",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T03:21:53.617Z"),
+    updatedAt: ISODate("2023-07-07T05:28:50.417Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a7a633f97cdac3cb1bbbcf"),
+    name: "页面示例",
+    key: "pages",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T05:44:19.405Z"),
+    updatedAt: ISODate("2023-07-07T05:44:19.405Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a7a67af97cdac3cb1bbbee"),
+    name: "组件示例",
+    key: "components",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T05:45:30.168Z"),
+    updatedAt: ISODate("2023-07-07T05:45:30.168Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a7a695f97cdac3cb1bbbf4"),
+    name: "图表地图",
+    key: "components:echart",
+    "parent_key": "components",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T05:45:57.351Z"),
+    updatedAt: ISODate("2023-07-07T05:45:57.351Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a7a695f97cdac3cb1bbbf5"),
+    name: "贵州地图",
+    key: "components:echart:guizhouMap",
+    "parent_key": "components:echart",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T05:45:57.351Z"),
+    updatedAt: ISODate("2023-07-07T05:46:19.623Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a7a695f97cdac3cb1bbbf6"),
+    name: "中国地图",
+    key: "components:echart:chinaMap",
+    "parent_key": "components:echart",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T05:45:57.351Z"),
+    updatedAt: ISODate("2023-07-07T05:46:33.902Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a7a695f97cdac3cb1bbbf7"),
+    name: "世界地图",
+    key: "components:echart:worldMap",
+    "parent_key": "components:echart",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T05:45:57.351Z"),
+    updatedAt: ISODate("2023-07-07T05:46:44.697Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a7a695f97cdac3cb1bbbf8"),
+    name: "折线图",
+    key: "components:echart:line",
+    "parent_key": "components:echart",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T05:45:57.352Z"),
+    updatedAt: ISODate("2023-07-07T05:46:56.584Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a7a6e1f97cdac3cb1bbc16"),
+    name: "饼图",
+    key: "components:echart:pie",
+    "parent_key": "components:echart",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T05:47:13.846Z"),
+    updatedAt: ISODate("2023-07-07T05:47:20.216Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a7a9dda971facd04696235"),
+    name: "综合页面",
+    key: "pages:all",
+    "parent_key": "pages",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T05:59:57.159Z"),
+    updatedAt: ISODate("2023-07-07T05:59:57.159Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a7ab9da971facd04696299"),
+    name: "富文本",
+    key: "components:editor",
+    "parent_key": "components",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T06:07:25.737Z"),
+    updatedAt: ISODate("2023-07-07T06:07:25.737Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a7abb7a971facd0469629f"),
+    name: "Tinymce",
+    key: "components:editor:Tinymce",
+    "parent_key": "components:editor",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T06:07:51.383Z"),
+    updatedAt: ISODate("2023-07-07T06:08:04.393Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a7abe1a971facd046962ab"),
+    name: "Vditor",
+    key: "components:editor:Vditor",
+    "parent_key": "components:editor",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T06:08:33.975Z"),
+    updatedAt: ISODate("2023-07-07T06:08:33.975Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a7abefa971facd046962b1"),
+    name: "VMdEditor",
+    key: "components:editor:VMdEditor",
+    "parent_key": "components:editor",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T06:08:47.735Z"),
+    updatedAt: ISODate("2023-07-07T06:08:47.735Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a7cbe6b85fe16110610cf5"),
+    name: "操作日志",
+    key: "sys:users_opt_logs",
+    "parent_key": "sys",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T08:25:10.645Z"),
+    updatedAt: ISODate("2023-07-07T08:25:10.645Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a7cbe6b85fe16110610cf6"),
+    name: "查询",
+    key: "sys:users_opt_logs:list",
+    "parent_key": "sys:users_opt_logs",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T08:25:10.645Z"),
+    updatedAt: ISODate("2023-07-07T08:25:10.645Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a7cbe6b85fe16110610cf7"),
+    name: "增加",
+    key: "sys:users_opt_logs:create",
+    "parent_key": "sys:users_opt_logs",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T08:25:10.645Z"),
+    updatedAt: ISODate("2023-07-07T08:25:10.645Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a7cbe6b85fe16110610cf8"),
+    name: "删除",
+    key: "sys:users_opt_logs:delete",
+    "parent_key": "sys:users_opt_logs",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T08:25:10.645Z"),
+    updatedAt: ISODate("2023-07-07T08:25:10.645Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a7cbe6b85fe16110610cf9"),
+    name: "更新",
+    key: "sys:users_opt_logs:update",
+    "parent_key": "sys:users_opt_logs",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T08:25:10.645Z"),
+    updatedAt: ISODate("2023-07-07T08:25:10.645Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64a7d30aacc04191a405fb61"),
+    name: "批量删除",
+    key: "sys:users_opt_logs:deleteAll",
+    "parent_key": "sys:users_opt_logs",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    createdAt: ISODate("2023-07-07T08:55:38.696Z"),
+    updatedAt: ISODate("2023-07-09T13:57:08.966Z"),
+    disabled: false
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64aabc5804fd30a2ac31c2a9"),
+    name: "导出",
+    key: "sys:users_opt_logs:export",
+    "parent_key": "sys:users_opt_logs",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-07-09T13:55:36.412Z"),
+    updatedAt: ISODate("2023-07-09T13:55:36.412Z")
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64aabc6b04fd30a2ac31c2b5"),
+    name: "导入",
+    key: "sys:users_opt_logs:import",
+    "parent_key": "sys:users_opt_logs",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-07-09T13:55:55.856Z"),
+    updatedAt: ISODate("2023-07-09T13:55:55.856Z")
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64b4c7dad6ac9bf24cecc6d1"),
+    name: "资源管理",
+    key: "sys:resources",
+    "parent_key": "sys",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-07-17T04:47:22.912Z"),
+    updatedAt: ISODate("2023-07-17T04:47:22.912Z")
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64b4c7dad6ac9bf24cecc6d2"),
+    name: "查询",
+    key: "sys:resources:list",
+    "parent_key": "sys:resources",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-07-17T04:47:22.913Z"),
+    updatedAt: ISODate("2023-07-17T04:47:22.913Z")
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64b4c7dad6ac9bf24cecc6d3"),
+    name: "增加",
+    key: "sys:resources:create",
+    "parent_key": "sys:resources",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-07-17T04:47:22.913Z"),
+    updatedAt: ISODate("2023-07-17T04:47:22.913Z")
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64b4c7dad6ac9bf24cecc6d4"),
+    name: "删除",
+    key: "sys:resources:delete",
+    "parent_key": "sys:resources",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-07-17T04:47:22.913Z"),
+    updatedAt: ISODate("2023-07-17T04:47:22.913Z")
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64b4c7dad6ac9bf24cecc6d5"),
+    name: "更新",
+    key: "sys:resources:update",
+    "parent_key": "sys:resources",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-07-17T04:47:22.913Z"),
+    updatedAt: ISODate("2023-07-17T04:47:22.913Z")
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64cfada9c3794728bc32ac40"),
+    name: "博客管理",
+    key: "blog",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-08-06T14:26:49.389Z"),
+    updatedAt: ISODate("2023-08-06T14:26:49.389Z")
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64cfade2c3794728bc32ac4c"),
+    name: "博文管理",
+    key: "blog:blog_articles",
+    "parent_key": "blog",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-08-06T14:27:46.488Z"),
+    updatedAt: ISODate("2023-08-06T14:27:46.488Z")
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64cfade2c3794728bc32ac4d"),
+    name: "查询",
+    key: "blog:blog_articles:list",
+    "parent_key": "blog:blog_articles",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-08-06T14:27:46.488Z"),
+    updatedAt: ISODate("2023-08-06T14:27:46.488Z")
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64cfade2c3794728bc32ac4e"),
+    name: "增加",
+    key: "blog:blog_articles:create",
+    "parent_key": "blog:blog_articles",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-08-06T14:27:46.489Z"),
+    updatedAt: ISODate("2023-08-06T14:27:46.489Z")
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64cfade2c3794728bc32ac4f"),
+    name: "删除",
+    key: "blog:blog_articles:delete",
+    "parent_key": "blog:blog_articles",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-08-06T14:27:46.489Z"),
+    updatedAt: ISODate("2023-08-06T14:27:46.489Z")
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64cfade2c3794728bc32ac50"),
+    name: "更新",
+    key: "blog:blog_articles:update",
+    "parent_key": "blog:blog_articles",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-08-06T14:27:46.489Z"),
+    updatedAt: ISODate("2023-08-06T14:27:46.489Z")
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64cfae09c3794728bc32ac5c"),
+    name: "作品管理",
+    key: "blog:portfolios",
+    "parent_key": "blog",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-08-06T14:28:25.623Z"),
+    updatedAt: ISODate("2023-08-06T14:28:25.623Z")
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64cfae09c3794728bc32ac5d"),
+    name: "查询",
+    key: "blog:portfolios:list",
+    "parent_key": "blog:portfolios",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-08-06T14:28:25.623Z"),
+    updatedAt: ISODate("2023-08-06T14:28:25.623Z")
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64cfae09c3794728bc32ac5e"),
+    name: "增加",
+    key: "blog:portfolios:create",
+    "parent_key": "blog:portfolios",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-08-06T14:28:25.623Z"),
+    updatedAt: ISODate("2023-08-06T14:28:25.623Z")
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64cfae09c3794728bc32ac5f"),
+    name: "删除",
+    key: "blog:portfolios:delete",
+    "parent_key": "blog:portfolios",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-08-06T14:28:25.623Z"),
+    updatedAt: ISODate("2023-08-06T14:28:25.623Z")
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64cfae09c3794728bc32ac60"),
+    name: "更新",
+    key: "blog:portfolios:update",
+    "parent_key": "blog:portfolios",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-08-06T14:28:25.624Z"),
+    updatedAt: ISODate("2023-08-06T14:28:25.624Z")
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64d1d19153d1c684a73c8412"),
+    name: "留言管理",
+    key: "blog:messages",
+    "parent_key": "blog",
+    auth: false,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-08-08T05:24:33.901Z"),
+    updatedAt: ISODate("2023-08-08T05:24:33.901Z")
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64d1d19153d1c684a73c8413"),
+    name: "查询",
+    key: "blog:messages:list",
+    "parent_key": "blog:messages",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-08-08T05:24:33.901Z"),
+    updatedAt: ISODate("2023-08-08T05:24:33.901Z")
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64d1d19153d1c684a73c8414"),
+    name: "增加",
+    key: "blog:messages:create",
+    "parent_key": "blog:messages",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-08-08T05:24:33.902Z"),
+    updatedAt: ISODate("2023-08-08T05:24:33.902Z")
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64d1d19153d1c684a73c8415"),
+    name: "删除",
+    key: "blog:messages:delete",
+    "parent_key": "blog:messages",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-08-08T05:24:33.902Z"),
+    updatedAt: ISODate("2023-08-08T05:24:33.902Z")
+} ]);
+db.getCollection("permissions").insert([ {
+    _id: ObjectId("64d1d19153d1c684a73c8416"),
+    name: "更新",
+    key: "blog:messages:update",
+    "parent_key": "blog:messages",
+    auth: true,
+    sortOrder: NumberInt("0"),
+    status: true,
+    disabled: false,
+    createdAt: ISODate("2023-08-08T05:24:33.902Z"),
+    updatedAt: ISODate("2023-08-08T05:24:33.902Z")
+} ]);
+
+// ----------------------------
+// Collection structure for portfolios
+// ----------------------------
+db.getCollection("portfolios").drop();
+db.createCollection("portfolios");
+
+// ----------------------------
+// Documents of portfolios
+// ----------------------------
+db.getCollection("portfolios").insert([ {
+    _id: ObjectId("64cfad6cc3794728bc32ac22"),
+    title: "视频测试",
+    cover: "http://localhost:5000/v1/common/files/preview/img/1691332658805.jpg",
+    abstract: "Ant Design Vue 是一个非常成熟的框架，使用 Ant Design Vue 创建用户界面非常简单，这些组件可以适应各种图标样式、字体和黑色主题。Ant Design Vue 不断改进其 60 多个组件，基本覆盖项目大部份需求，而且使它们变得更好，更易于访问。",
+    content: "Ant Design Vue\nAnt Design Vue 是一个非常成熟的框架，使用 Ant Design Vue 创建用户界面非常简单，这些组件可以适应各种图标样式、字体和黑色主题。Ant Design Vue 不断改进其 60 多个组件，基本覆盖项目大部份需求，而且使它们变得更好，更易于访问。\n\nVue3 上的 Ant Design 包更小，感觉更轻，并且支持 SSR（还包括组合 API），Ant Design 拥有成熟的复杂组件，如数据表、统计框、pop 确认、模态和弹出窗口。\nAnt Design Vue 在 GitHub 上拥有 15k+ 颗星，每周下载量为 49k，数据已经说明了它的受欢迎程度。\nJNPF\nJNPF快速开发平台是其中一个，后端深度集成java+.net 6 双技术引擎，前端采用Vue3等技术框架，包括场景建模、界面开发、系统对接、组件拓展、数据并发处理、动态菜单、权限校验、按钮级别权限控制等功能。\n详情可以去往官网自行体验更多：www.jnpfsoft.com/?juejin\n强大的动态信息数据模型可以让应用程序快速生成！JNPF引领低代码开发模式，帮助解决企业项目70%的重复工作，让开发更多关注业务。既能快速提高效率，节省成本，同时又不失灵活性。\n\n![Description](http://localhost:5000/v1/common/files/preview/img/1691332658805.jpg)\n\nBalmUI\nBalmUI 已经发布了他们的 9.0 版本了，该版本支持 Vue3。Balm 基于谷歌的 Material Design，这就是为什么它看起来很熟悉。Balm 附带 Vue 插件和指令，以及从简单到复杂的高度可定制的组件。\n\nBalmUI 发展非常迅速，如果想使用 Material Design 风格，使用复杂的内置指令（如 debouncing 和 UI 波纹）在创建自定义组件时能派上用场，那么它非常适合 Vue3 项目。\nWave UI\nWaveUI 在 Vue3 发布后进行了良好的定位，WaveUI 的开发是在 Vue3 仍处于 alpha 阶段时就开始了，其目标是在其 API 稳定后立即支持它，使其成为首批 Vue3 UI 框架之一。\n\nWaveUI 拥有 40 多个漂亮且响应迅速的组件，它们的范围从旋转器到日历，以及介于两者之间的任何东西。WaveUI 还提供实用程序、可定制性和成熟的集成表单验证功能。\nWaveUI 提供的组件非常漂亮，动画效果也非常好，它的风格在整个框架中是一致的。企业级响应式 Vue3 应用程序不错的选择。\nVuestic\nVuestic 是 Vue 最漂亮的开源管理面板之一，擅长编写可维护的 Vue 代码，制作灵活的组件和接口。\n\n该团队最近发布了 Vuestic 的 Vue3 版本，包含了流行的 Vuestic Admin UI 和更多的组件。Vuestic 强调它对键盘导航的开箱即用支持，由于它提供的用户体验，这个特性在前端社区很受欢迎。\nVuestic 提供了 50 多个具有独特功能和广泛可配置性的组件，应式设计，这些组件几乎适用于所有屏幕分辨率。Vuestic 在整个框架中提供无缝翻译支持和键盘可访问性。\nVuestic 已经凭借其漂亮的组件目录确立了自己作为最美观的 Vue3 UI 框架之一的地位。他们现在正在加快步伐创建更复杂的组件，例如日期选择器或数据表，它们肯定会像他们当前的产品一样具有创造性。\nElement+\nElement+ 已经在 Vue2 中声名鹊起，Element+ 为 Vue3 带来了大量不引人注目的组件，创建一个非常复杂的应用程序所需的大部分内容都已经制作完成并可供使用。Element+ 提供成熟的日期和时间选择器、树、时间线和日历组件。\n\nElement+ 甚至提供开发人员在构建 UI 界面时可能需要的最细微的部件，从简单的动画到框架范围的国际化系统，可以与 i18n 配对使用以创建自定义翻译，甚至添加非内置语言。\nElement+ 在 GitHub 上拥有 11.1k+ 颗星，正在成为 Github 上最受欢迎的 Vue3 UI 框架之一，它以出色的问题管理、及时更新、可插入组件和通过 SCSS 变量的高定制性达到了开发者的期望。\nIonic\nIonic 是最早提供 Vue3 支持的 UI 框架之一， Ionic 更倾向于移动 UI，团队知道如何迎合和维护一个优秀的 UI 框架。\n\nIonic Vue 是一个很成熟的框架，有一个令人震惊的社区、大量的 StackOverflow 问题、企业支持和一个拥有核心成员的大型 Slack 频道，这使得可以在需要帮助时轻松获得支持。\nIonic Vue 框架在 Github 上有 45k+ 颗星，已经被很多大公司使用，包括空客（Airbus）和艺电（Electronic Arts），而 Ionic 的团队以擅长维护他们的 UI 框架而闻名，这是现在和未来的一个很好的选择。\nNaive UI\nNaive UI 在 Twitter 上发布，然后被 Vue 的创建者转发，给这个新生的组件库带来了大量流量。现在，Naive UI 在不到三个月的时间里就在 GitHub 上获得了 5.1k 颗星。\n\n它提供了 70 多个制作精良的组件，这些组件可以无缝地融入几乎任何类型的 Vue3 应用。Naive 的组件性能优异，可定制性极强，并支持 TypeScript，提供了很棒的开发体验。\n文档网站易于浏览，并具有完整的自定义输入，可帮助开发人员预览组件在他们自己的主题中的外观。可以使用这些选项来创建自己的带有颜色图案和字体的完整主题。这个定制的主题可以下载并轻松添加到应用程序中以覆盖默认值。\nQuasar\nQuasar 是一个完整的、以性能为中心的框架，可帮助构建 Vue 用户界面（SPA、PWA、SSR、移动和桌面），除了 Vue、Node 和 Webpack，Quasar 还包含 Cordova、Capacitor 和 Electron，它们可以帮助构建桌面和移动体验，而无需单独学习。\n\nQuasar 框架似乎是基于 Material Design，但是一旦开始，一切都可以很好地定制以适应自己的设计体系。\n对 Vue3 支持也很迅速，而且 Quasar 已经发布了几乎所有的 v1 组件、插件和指令。此外，他们还发布了可组合组件，帮助开发人员更深入地了解 Quasar API。\nPrimeVUE\nPrimeVUE 也算是最早支持 Vue3 的框架之一，它并没有让人失望。PrimeVUE 拥有 80 多个组件，证明自己是此列表中组件范围最广的框架之一。\n\n组件包括带有仪表、滑块、树、图形、拆分按钮、旋钮、图表等的密码表单。PrimeVUE 甚至还集成了一个表单验证库 Vuelidate。附带了预先制作的主题，并提供了一个成熟的可视化编辑器，帮助开发人员定制自己的主题。\n总结\n随着生态系统的迁移，前端培训从 Vue2 迁移到 Vue3 将变得更加容易，因此，借助 Vue3 提供的 API 和响应性，并结合这些 UI 框架将会让项目开发变得更好、更快、更灵活。  标签： Vue.js   相关小册   VIP JavaScript 设计模式核心原理与应用实践 ",
+    remark: "Ant Design Vue 是一个非常成熟的框架，使用 Ant Design Vue 创建用户界面非常简单，这些组件可以适应各种图标样式、字体和黑色主题。Ant Design Vue 不断改进其 60 多个组件，基本覆盖项目大部份需求，而且使它们变得更好，更易于访问。",
+    category: "JavaScript",
+    framework: "Ant Design Vue ",
+    recommended: true,
+    status: true,
+    createdAt: ISODate("2023-08-06T14:25:48.403Z"),
+    updatedAt: ISODate("2023-08-07T03:06:47.814Z"),
+    demoUrl: "http://localhost:3002/#/index",
+    sourceUrl: "http://localhost:3002/#/index"
+} ]);
+db.getCollection("portfolios").insert([ {
+    _id: ObjectId("64d04db082afd55c3956f112"),
+    title: "Naive UI",
+    cover: "http://localhost:5000/v1/common/files/preview/img/1691372905177.jpeg",
+    abstract: "Naive UI 在 Twitter 上发布，然后被 Vue 的创建者转发，给这个新生的组件库带来了大量流量。现在，Naive UI 在不到三个月的时间里就在 GitHub 上获得了 5.1k 颗星。",
+    content: "<a href=\"http://localhost:5000/v1/common/files/preview/img/1691372923767.png\" target=\"_blank\">\n<img src=\"http://localhost:5000/v1/common/files/preview/img/1691372923767.png\" alt=\"1691372923767.png\" width=\"750\">\n</a>\n\n它提供了 70 多个制作精良的组件，这些组件可以无缝地融入几乎任何类型的 Vue3 应用。Naive 的组件性能优异，可定制性极强，并支持 TypeScript，提供了很棒的开发体验。\n文档网站易于浏览，并具有完整的自定义输入，可帮助开发人员预览组件在他们自己的主题中的外观。可以使用这些选项来创建自己的带有颜色图案和字体的完整主题。这个定制的主题可以下载并轻松添加到应用程序中以覆盖默认值。\n ",
+    category: "JavaScript",
+    framework: "JavaScript",
+    recommended: true,
+    status: true,
+    createdAt: ISODate("2023-08-07T01:49:36.499Z"),
+    updatedAt: ISODate("2023-08-07T01:49:36.499Z")
+} ]);
+db.getCollection("portfolios").insert([ {
+    _id: ObjectId("64d062f8239a766566ab861b"),
+    title: "REST API 轻量级样板",
+    cover: "http://www.zhouyi.run:3001/api/v1/files/preview?p=pexels-photo-276452.jpeg&&mimetype=image/jpeg",
+    abstract: "基于 Node.js、MongoDB 开发的REST API 轻量级样板。集成了Swagger UI、JWT、session、发送邮箱验证、日志管理、统一的预定义状态码响应格式等，对于为前端平台构建纯净的Web API非常有用。",
+    content: "<a style=\"text-decoration: none\" href='https://gitee.com/Z568_568/node.mongodb/stargazers'>\n                                    <img src='https://gitee.com/Z568_568/node.mongodb/badge/star.svg?theme=dark'\n                                         alt='star'/>\n                                </a>\n                          <a href='https://gitee.com/Z568_568/node.mongodb/members'><img src='https://gitee.com/Z568_568/node.mongodb/badge/fork.svg?theme=dark' alt='fork'/></a>\n\n------------------------------------\n\n\n``` js\nconst insertionHeight = 3.78 * 290;\n    const newParagraph = document.createElement('p');\n    newParagraph.style.height=\"50px\";\n    newParagraph.style.backgroundColor=\"red\";\n\n    const container = document.body; // 假设插入元素在文档的顶层元素中\n\n    // 遍历文档中所有的元素\n    let closestElement = container;\n    let distanceToClosest = Math.abs(insertionHeight - closestElement.offsetTop);\n    for (const element of container.getElementsByTagName('*')) {\n        const distance = Math.abs(insertionHeight - element.offsetTop);\n        if (distance < distanceToClosest) {\n            closestElement = element;\n            distanceToClosest = distance;\n        }\n    }\n    // 在距离所需高度最近的元素前面插入新元素\n    closestElement.parentNode.insertBefore(newParagraph, closestElement);\n```\n",
+    sourceUrl: "https://gitee.com/Z568_568/node.mongodb",
+    demoUrl: "https://gitee.com/Z568_568/node.mongodb",
+    category: "MongoDB",
+    framework: "Node.js、MongoDB",
+    recommended: true,
+    status: true,
+    createdAt: ISODate("2023-08-07T03:20:24.741Z"),
+    updatedAt: ISODate("2023-08-07T03:21:28.675Z")
+} ]);
+
+// ----------------------------
+// Collection structure for replies
+// ----------------------------
+db.getCollection("replies").drop();
+db.createCollection("replies");
+
+// ----------------------------
+// Documents of replies
+// ----------------------------
+db.getCollection("replies").insert([ {
+    _id: ObjectId("64d1cfe7ec7d064adc726c40"),
+    message: ObjectId("64d1ce1a2ed69e514682b237"),
+    user: ObjectId("64d0fc4e98c726a2d735bc4f"),
+    toUser: ObjectId("64d1a95938164fd4b3f73238"),
+    content: "笑死了哈哈",
+    createdAt: ISODate("2023-08-08T05:17:27.123Z"),
+    updatedAt: ISODate("2023-08-08T05:17:27.123Z")
+} ]);
+
+// ----------------------------
+// Collection structure for resources
+// ----------------------------
+db.getCollection("resources").drop();
+db.createCollection("resources");
+
+// ----------------------------
+// Documents of resources
+// ----------------------------
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64b4c728fd78c3d149523479"),
+    srcName: "1689569064059.jpg",
+    srcType: "image/jpeg",
+    previewPath: "http://localhost:3089/v1/common/files/preview/img/1689569064059.jpg",
+    downloadPath: "http://localhost:3089/v1/common/files/download/img/1689569064059.jpg",
+    deletePath: "http://localhost:3089/v1/common/files/delete/img/1689569064059.jpg",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "865.38 KB",
+    status: true,
+    createdAt: ISODate("2023-07-17T04:44:24.082Z"),
+    updatedAt: ISODate("2023-07-17T04:44:24.082Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64b4df5d8f44512182b353c2"),
+    srcName: "1689575261833.jpg",
+    srcType: "image/jpeg",
+    previewPath: "http://localhost:3089/v1/common/files/preview/img/1689575261833.jpg",
+    downloadPath: "http://localhost:3089/v1/common/files/download/img/1689575261833.jpg",
+    deletePath: "http://localhost:3089/v1/common/files/delete/img/1689575261833.jpg",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "1.23 MB",
+    status: true,
+    createdAt: ISODate("2023-07-17T06:27:41.865Z"),
+    updatedAt: ISODate("2023-07-17T06:27:41.865Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64b4df958f44512182b353c4"),
+    srcName: "1689575317106.jpg",
+    srcType: "image/jpeg",
+    previewPath: "http://localhost:3089/v1/common/files/preview/img/1689575317106.jpg",
+    downloadPath: "http://localhost:3089/v1/common/files/download/img/1689575317106.jpg",
+    deletePath: "http://localhost:3089/v1/common/files/delete/img/1689575317106.jpg",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "1.23 MB",
+    status: true,
+    createdAt: ISODate("2023-07-17T06:28:37.12Z"),
+    updatedAt: ISODate("2023-07-17T06:28:37.12Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64b4dfcd8f44512182b353c6"),
+    srcName: "1689575373764.jpg",
+    srcType: "image/jpeg",
+    previewPath: "http://localhost:3089/v1/common/files/preview/img/1689575373764.jpg",
+    downloadPath: "http://localhost:3089/v1/common/files/download/img/1689575373764.jpg",
+    deletePath: "http://localhost:3089/v1/common/files/delete/img/1689575373764.jpg",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "865.38 KB",
+    status: true,
+    createdAt: ISODate("2023-07-17T06:29:33.821Z"),
+    updatedAt: ISODate("2023-07-17T06:29:33.821Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64b4e0698f44512182b353c8"),
+    srcName: "1689575529993.jpg",
+    srcType: "image/jpeg",
+    previewPath: "http://localhost:3089/v1/common/files/preview/img/1689575529993.jpg",
+    downloadPath: "http://localhost:3089/v1/common/files/download/img/1689575529993.jpg",
+    deletePath: "http://localhost:3089/v1/common/files/delete/img/1689575529993.jpg",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "1.23 MB",
+    status: true,
+    createdAt: ISODate("2023-07-17T06:32:09.998Z"),
+    updatedAt: ISODate("2023-07-17T06:32:09.998Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64b5034f51bfc3d5fb4e494b"),
+    srcName: "1689584463201.mp4",
+    srcType: "video/mp4",
+    previewPath: "http://localhost:5000/v1/common/files/preview/media/1689584463201.mp4",
+    downloadPath: "http://localhost:5000/v1/common/files/download/media/1689584463201.mp4",
+    deletePath: "http://localhost:5000/v1/common/files/delete/media/1689584463201.mp4",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "4.93 MB",
+    status: true,
+    createdAt: ISODate("2023-07-17T09:01:03.268Z"),
+    updatedAt: ISODate("2023-07-17T09:01:03.268Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64b5f48cc3750294d8b8f58e"),
+    srcName: "1689646220831.png",
+    srcType: "image/png",
+    previewPath: "http://localhost:5000/v1/common/files/preview/img/1689646220831.png",
+    downloadPath: "http://localhost:5000/v1/common/files/download/img/1689646220831.png",
+    deletePath: "http://localhost:5000/v1/common/files/delete/img/1689646220831.png",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "2.45 KB",
+    status: true,
+    createdAt: ISODate("2023-07-18T02:10:20.848Z"),
+    updatedAt: ISODate("2023-07-18T02:10:20.848Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64b5f49dc3750294d8b8f5a8"),
+    srcName: "1689646237024.png",
+    srcType: "image/png",
+    previewPath: "http://localhost:5000/v1/common/files/preview/img/1689646237024.png",
+    downloadPath: "http://localhost:5000/v1/common/files/download/img/1689646237024.png",
+    deletePath: "http://localhost:5000/v1/common/files/delete/img/1689646237024.png",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "44.80 KB",
+    status: true,
+    createdAt: ISODate("2023-07-18T02:10:37.027Z"),
+    updatedAt: ISODate("2023-07-18T02:10:37.027Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64b60ecd3686241acdbd1289"),
+    srcName: "1689652941565.jpg",
+    srcType: "image/jpeg",
+    previewPath: "http://localhost:5000/v1/common/files/preview/img/1689652941565.jpg",
+    downloadPath: "http://localhost:5000/v1/common/files/download/img/1689652941565.jpg",
+    deletePath: "http://localhost:5000/v1/common/files/delete/img/1689652941565.jpg",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "491.12 KB",
+    status: true,
+    createdAt: ISODate("2023-07-18T04:02:21.597Z"),
+    updatedAt: ISODate("2023-07-18T04:02:21.597Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64b612b33686241acdbd12ad"),
+    srcName: "1689653939740.png",
+    srcType: "image/png",
+    previewPath: "http://localhost:5000/v1/common/files/preview/img/1689653939740.png",
+    downloadPath: "http://localhost:5000/v1/common/files/download/img/1689653939740.png",
+    deletePath: "http://localhost:5000/v1/common/files/delete/img/1689653939740.png",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "14.69 KB",
+    status: true,
+    createdAt: ISODate("2023-07-18T04:18:59.745Z"),
+    updatedAt: ISODate("2023-07-18T04:18:59.745Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64b613593686241acdbd12af"),
+    srcName: "1689654105801.png",
+    srcType: "image/png",
+    previewPath: "http://localhost:5000/v1/common/files/preview/img/1689654105801.png",
+    downloadPath: "http://localhost:5000/v1/common/files/download/img/1689654105801.png",
+    deletePath: "http://localhost:5000/v1/common/files/delete/img/1689654105801.png",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "90.12 KB",
+    status: true,
+    createdAt: ISODate("2023-07-18T04:21:45.804Z"),
+    updatedAt: ISODate("2023-07-18T04:21:45.804Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64b613b83686241acdbd12c1"),
+    srcName: "1689654200488.jpg",
+    srcType: "image/jpeg",
+    previewPath: "http://localhost:5000/v1/common/files/preview/img/1689654200488.jpg",
+    downloadPath: "http://localhost:5000/v1/common/files/download/img/1689654200488.jpg",
+    deletePath: "http://localhost:5000/v1/common/files/delete/img/1689654200488.jpg",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "865.38 KB",
+    status: true,
+    createdAt: ISODate("2023-07-18T04:23:20.496Z"),
+    updatedAt: ISODate("2023-07-18T04:23:20.496Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64b613ea3686241acdbd12cb"),
+    srcName: "1689654250618.png",
+    srcType: "image/png",
+    previewPath: "http://localhost:5000/v1/common/files/preview/img/1689654250618.png",
+    downloadPath: "http://localhost:5000/v1/common/files/download/img/1689654250618.png",
+    deletePath: "http://localhost:5000/v1/common/files/delete/img/1689654250618.png",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "445.23 KB",
+    status: true,
+    createdAt: ISODate("2023-07-18T04:24:10.626Z"),
+    updatedAt: ISODate("2023-07-18T04:24:10.626Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64b76f4800e297e95f3c0ac1"),
+    srcName: "1689743176673.jpg",
+    srcType: "image/jpeg",
+    previewPath: "http://localhost:5000/v1/common/files/preview/img/1689743176673.jpg",
+    downloadPath: "http://localhost:5000/v1/common/files/download/img/1689743176673.jpg",
+    deletePath: "http://localhost:5000/v1/common/files/delete/img/1689743176673.jpg",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "491.12 KB",
+    status: true,
+    createdAt: ISODate("2023-07-19T05:06:16.693Z"),
+    updatedAt: ISODate("2023-07-19T05:06:16.693Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64ce14a4f8cb66aa2134dc66"),
+    srcName: "1691227300758.jpg",
+    srcType: "image/jpeg",
+    previewPath: "http://localhost:5000/v1/common/files/preview/img/1691227300758.jpg",
+    downloadPath: "http://localhost:5000/v1/common/files/download/img/1691227300758.jpg",
+    deletePath: "http://localhost:5000/v1/common/files/delete/img/1691227300758.jpg",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "482.89 KB",
+    status: true,
+    createdAt: ISODate("2023-08-05T09:21:40.775Z"),
+    updatedAt: ISODate("2023-08-05T09:21:40.775Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64ce50b9ea542e7d002d9241"),
+    srcName: "1691242681110.jpg",
+    srcType: "image/jpeg",
+    previewPath: "http://localhost:5000/v1/common/files/preview/img/1691242681110.jpg",
+    downloadPath: "http://localhost:5000/v1/common/files/download/img/1691242681110.jpg",
+    deletePath: "http://localhost:5000/v1/common/files/delete/img/1691242681110.jpg",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "215.99 KB",
+    status: true,
+    createdAt: ISODate("2023-08-05T13:38:01.13Z"),
+    updatedAt: ISODate("2023-08-05T13:38:01.13Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64ce50c7ea542e7d002d9243"),
+    srcName: "1691242695128.jpg",
+    srcType: "image/jpeg",
+    previewPath: "http://localhost:5000/v1/common/files/preview/img/1691242695128.jpg",
+    downloadPath: "http://localhost:5000/v1/common/files/download/img/1691242695128.jpg",
+    deletePath: "http://localhost:5000/v1/common/files/delete/img/1691242695128.jpg",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "1.27 MB",
+    status: true,
+    createdAt: ISODate("2023-08-05T13:38:15.139Z"),
+    updatedAt: ISODate("2023-08-05T13:38:15.139Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64ce50cdea542e7d002d9245"),
+    srcName: "1691242701395.jpg",
+    srcType: "image/jpeg",
+    previewPath: "http://localhost:5000/v1/common/files/preview/img/1691242701395.jpg",
+    downloadPath: "http://localhost:5000/v1/common/files/download/img/1691242701395.jpg",
+    deletePath: "http://localhost:5000/v1/common/files/delete/img/1691242701395.jpg",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "215.99 KB",
+    status: true,
+    createdAt: ISODate("2023-08-05T13:38:21.414Z"),
+    updatedAt: ISODate("2023-08-05T13:38:21.414Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64ce527eea542e7d002d9257"),
+    srcName: "1691243134311.jpg",
+    srcType: "image/jpeg",
+    previewPath: "http://localhost:5000/v1/common/files/preview/img/1691243134311.jpg",
+    downloadPath: "http://localhost:5000/v1/common/files/download/img/1691243134311.jpg",
+    deletePath: "http://localhost:5000/v1/common/files/delete/img/1691243134311.jpg",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "215.99 KB",
+    status: true,
+    createdAt: ISODate("2023-08-05T13:45:34.316Z"),
+    updatedAt: ISODate("2023-08-05T13:45:34.316Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64ce5633288bbd4d5cc2d2e3"),
+    srcName: "1691244083420.png",
+    srcType: "image/png",
+    previewPath: "http://localhost:5000/v1/common/files/preview/img/1691244083420.png",
+    downloadPath: "http://localhost:5000/v1/common/files/download/img/1691244083420.png",
+    deletePath: "http://localhost:5000/v1/common/files/delete/img/1691244083420.png",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "1.53 MB",
+    status: true,
+    createdAt: ISODate("2023-08-05T14:01:23.446Z"),
+    updatedAt: ISODate("2023-08-05T14:01:23.446Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64ce5682288bbd4d5cc2d2e5"),
+    srcName: "1691244162315.png",
+    srcType: "image/png",
+    previewPath: "http://localhost:5000/v1/common/files/preview/img/1691244162315.png",
+    downloadPath: "http://localhost:5000/v1/common/files/download/img/1691244162315.png",
+    deletePath: "http://localhost:5000/v1/common/files/delete/img/1691244162315.png",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "45.30 KB",
+    status: true,
+    createdAt: ISODate("2023-08-05T14:02:42.317Z"),
+    updatedAt: ISODate("2023-08-05T14:02:42.317Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64cfb03232bd20af549a995b"),
+    srcName: "1691332658805.jpg",
+    srcType: "image/jpeg",
+    previewPath: "http://localhost:5000/v1/common/files/preview/img/1691332658805.jpg",
+    downloadPath: "http://localhost:5000/v1/common/files/download/img/1691332658805.jpg",
+    deletePath: "http://localhost:5000/v1/common/files/delete/img/1691332658805.jpg",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "1.27 MB",
+    status: true,
+    createdAt: ISODate("2023-08-06T14:37:38.822Z"),
+    updatedAt: ISODate("2023-08-06T14:37:38.822Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64d04d6982afd55c3956f10a"),
+    srcName: "1691372905177.jpeg",
+    srcType: "image/jpeg",
+    previewPath: "http://localhost:5000/v1/common/files/preview/img/1691372905177.jpeg",
+    downloadPath: "http://localhost:5000/v1/common/files/download/img/1691372905177.jpeg",
+    deletePath: "http://localhost:5000/v1/common/files/delete/img/1691372905177.jpeg",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "66.11 KB",
+    status: true,
+    createdAt: ISODate("2023-08-07T01:48:25.181Z"),
+    updatedAt: ISODate("2023-08-07T01:48:25.181Z")
+} ]);
+db.getCollection("resources").insert([ {
+    _id: ObjectId("64d04d7b82afd55c3956f10c"),
+    srcName: "1691372923767.png",
+    srcType: "image/png",
+    previewPath: "http://localhost:5000/v1/common/files/preview/img/1691372923767.png",
+    downloadPath: "http://localhost:5000/v1/common/files/download/img/1691372923767.png",
+    deletePath: "http://localhost:5000/v1/common/files/delete/img/1691372923767.png",
+    userId: ObjectId("64aabf3d28f413f08d51cc00"),
+    srcSize: "118.82 KB",
+    status: true,
+    createdAt: ISODate("2023-08-07T01:48:43.769Z"),
+    updatedAt: ISODate("2023-08-07T01:48:43.769Z")
+} ]);
+
+// ----------------------------
+// Collection structure for roles
+// ----------------------------
+db.getCollection("roles").drop();
+db.createCollection("roles");
+db.getCollection("roles").createIndex({
+    roleName: NumberInt("1")
+}, {
+    name: "roleName_1",
+    background: true,
+    unique: true
+});
+
+// ----------------------------
+// Documents of roles
+// ----------------------------
+db.getCollection("roles").insert([ {
+    _id: ObjectId("64a423816f4197cfc70375e3"),
+    roleName: "超级管理员",
+    roleAuth: "SUPER-ADMIN",
+    perms: [
+        "*"
+    ],
+    remark: "拥有所有权限",
+    status: true,
+    createdAt: ISODate("2023-07-04T13:49:53.993Z"),
+    updatedAt: ISODate("2023-07-04T13:50:42.566Z")
+} ]);
+db.getCollection("roles").insert([ {
+    _id: ObjectId("64a426a56f4197cfc70375f6"),
+    roleName: "普通管理员",
+    roleAuth: "NORMALL-ADMIN",
+    perms: [
+        "index",
+        "sys:users:list",
+        "sys:roles:list",
+        "sys:permissions:list"
+    ],
+    remark: "拥有部分权限",
+    status: true,
+    createdAt: ISODate("2023-07-04T14:03:17.858Z"),
+    updatedAt: ISODate("2023-07-06T16:53:42.888Z")
+} ]);
+db.getCollection("roles").insert([ {
+    _id: ObjectId("64a6e9c04ef9906878daeced"),
+    roleName: "开发人员",
+    roleAuth: "DEV-ADMIN",
+    perms: [
+        "index",
+        "dev",
+        "dev:codes",
+        "dev:codes:delete",
+        "dev:icon",
+        "dev:codes:list",
+        "dev:codes:singleCurdFrontAndBack",
+        "dev:codes:deleteAll",
+        "sys:resources",
+        "sys:resources:list",
+        "sys:resources:create",
+        "sys:resources:delete",
+        "sys:resources:update"
+    ],
+    remark: "开发人员",
+    status: true,
+    createdAt: ISODate("2023-07-06T16:20:16.785Z"),
+    updatedAt: ISODate("2023-07-17T04:48:00.257Z")
+} ]);
+db.getCollection("roles").insert([ {
+    _id: ObjectId("64a7aa20a971facd04696242"),
+    roleName: "访客",
+    roleAuth: "VISITOR-ADMIN",
+    perms: [
+        "index",
+        "components:echart:chinaMap",
+        "components:echart:worldMap",
+        "components:echart:line",
+        "components:echart:pie",
+        "pages",
+        "pages:all",
+        "dev:icon",
+        "dev:codes:list",
+        "components:editor",
+        "components:editor:Tinymce",
+        "components:editor:Vditor",
+        "components:editor:VMdEditor",
+        "components",
+        "components:echart",
+        "components:echart:guizhouMap",
+        "sys:permissions:list",
+        "blog:blog_articles:list",
+        "blog:portfolios:list",
+        "blog:messages:list",
+        "blog:messages:delete"
+    ],
+    remark: "一般访客，更多的是有查看权限",
+    status: true,
+    createdAt: ISODate("2023-07-07T06:01:04.121Z"),
+    updatedAt: ISODate("2023-08-08T05:25:44.071Z")
+} ]);
+
+// ----------------------------
+// Collection structure for users
+// ----------------------------
+db.getCollection("users").drop();
+db.createCollection("users");
+db.getCollection("users").createIndex({
+    email: NumberInt("1")
+}, {
+    name: "email_1",
+    background: true
+});
+
+// ----------------------------
+// Documents of users
+// ----------------------------
+db.getCollection("users").insert([ {
+    _id: ObjectId("64a7aab3a971facd0469625d"),
+    avatar: "http://localhost:5000/v1/common/files/preview/img/1689646237024.png",
+    username: "visitor",
+    nickname: "亡命之徒",
+    password: "$2a$10$d0MQyKMyvNcX8whJsF7O0OLqulGKo3GE0hS/WqoGFKpU.dmFRIHFO",
+    roleId: ObjectId("64a7aa20a971facd04696242"),
+    status: true,
+    createdAt: ISODate("2023-07-07T06:03:31.69Z"),
+    updatedAt: ISODate("2023-07-18T02:10:38.282Z"),
+    type: "admin"
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("64aabf3d28f413f08d51cc00"),
+    avatar: "http://localhost:5000/v1/common/files/preview/img/1689646220831.png",
+    username: "admin",
+    nickname: "ZY·Admin",
+    password: "$2a$10$hdgL5ydnB8oLLcrgwjXdouAaZV/by32gWPOBiMl3wwFEzSVmdTvtG",
+    roleId: ObjectId("64a423816f4197cfc70375e3"),
+    status: true,
+    createdAt: ISODate("2023-07-09T14:07:57.766Z"),
+    updatedAt: ISODate("2023-07-18T02:10:23.14Z"),
+    type: "admin",
+    email: "1840354092@qq.com"
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("64d0a524050d4e56664640a3"),
+    avatar: "https://q1.qlogo.cn/g?b=qq&nk=1840354099@qq.com&s=100",
+    username: "1840354099@qq.com",
+    nickname: "BraveTiger",
+    password: "$2a$10$8Py3q427e4aOM3TSWDD68uNSjZMe/GYJcDGsClhIiy6LdBnJyJDaK",
+    email: "1840354099@qq.com",
+    roleId: ObjectId("64a7aa20a971facd04696242"),
+    status: true,
+    type: "user",
+    website: "www.zhouyi.run",
+    platform: "Chrome.v115",
+    userIp: "0.0.0.0",
+    address: "保留地址",
+    createdAt: ISODate("2023-08-07T08:02:44.055Z"),
+    updatedAt: ISODate("2023-08-07T08:02:44.055Z")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("64d0a544050d4e56664640aa"),
+    avatar: "https://q1.qlogo.cn/g?b=qq&nk=18403099@qq.com&s=100",
+    username: "18403099@qq.com",
+    nickname: "LovelyLion",
+    password: "$2a$10$wWHE4VDS/QzWmG4tjg16TeGoOoILOQGpDCFzoiAMKNrlF1TOwX24C",
+    email: "18403099@qq.com",
+    roleId: ObjectId("64a7aa20a971facd04696242"),
+    status: true,
+    type: "user",
+    website: "www.zhouyi.run",
+    platform: "Chrome.v115",
+    userIp: "0.0.0.0",
+    address: "保留地址",
+    createdAt: ISODate("2023-08-07T08:03:16.38Z"),
+    updatedAt: ISODate("2023-08-07T08:03:16.38Z")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("64d0a556050d4e56664640b1"),
+    avatar: "https://gravatar.kuibu.net/avatar/703e25762b056e4da576c886e1059479?s=100",
+    username: "18403099@xxx.com",
+    nickname: "LovelyLion",
+    password: "$2a$10$9Cdw1wgeqF9B8ULJoIrV9uihSs8AejRUIkBE8nU5fXUZz5oCRhpAC",
+    email: "18403099@xxx.com",
+    roleId: ObjectId("64a7aa20a971facd04696242"),
+    status: true,
+    type: "user",
+    website: "www.zhouyi.run",
+    platform: "Chrome.v115",
+    userIp: "0.0.0.0",
+    address: "保留地址",
+    createdAt: ISODate("2023-08-07T08:03:34.486Z"),
+    updatedAt: ISODate("2023-08-07T08:03:34.486Z")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("64d0a6c3571bc80e84717c2a"),
+    avatar: "https://gravatar.kuibu.net/avatar/860254b3da9c08b769e5a62ae9628282?s=100",
+    username: "18003099@xxx.com",
+    nickname: "LovelyLion",
+    password: "$2a$10$Udf3tAP0IE5y4Dci4kmGl.Oc.6keOGqq035QAXXLGuCFOsR8pJts6",
+    email: "18003099@xxx.com",
+    roleId: ObjectId("64a7aa20a971facd04696242"),
+    status: true,
+    type: "user",
+    website: "www.zhouyi.run",
+    platform: "Chrome.v115",
+    userIp: "0.0.0.0",
+    address: "保留地址",
+    createdAt: ISODate("2023-08-07T08:09:39.553Z"),
+    updatedAt: ISODate("2023-08-07T08:09:39.553Z")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("64d0a6cc571bc80e84717c31"),
+    avatar: "https://gravatar.kuibu.net/avatar/32ad41830da9a7edab6cea138ff1ca44?s=100",
+    username: "1800303299@xxx.com",
+    nickname: "LovelyLion",
+    password: "$2a$10$D2Y1kwDXqohcgR7CPG7Ov.GNFg/pwVPvaRWTwBlzxxf/5/PJ84JzC",
+    email: "1800303299@xxx.com",
+    roleId: ObjectId("64a7aa20a971facd04696242"),
+    status: true,
+    type: "user",
+    website: "www.zhouyi.run",
+    platform: "Chrome.v115",
+    userIp: "0.0.0.0",
+    address: "保留地址",
+    createdAt: ISODate("2023-08-07T08:09:48.789Z"),
+    updatedAt: ISODate("2023-08-07T08:09:48.789Z")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("64d0a859ccf7303b30150025"),
+    avatar: "https://gravatar.kuibu.net/avatar/88361aff47cbf913225d05f04f8d108a?s=100",
+    username: "1840354095@xxx.com",
+    nickname: "Contact Me",
+    password: "$2a$10$fGTwZlLg2R9KbpulSakGWOJYpe7QiSZO5xGfIQV4KfNKmcz8HsSFy",
+    email: "1840354095@xxx.com",
+    roleId: ObjectId("64a7aa20a971facd04696242"),
+    status: true,
+    type: "user",
+    website: "www.zhouyi.run",
+    platform: "Chrome.v115",
+    userIp: "0.0.0.0",
+    address: "保留地址",
+    createdAt: ISODate("2023-08-07T08:16:25.352Z"),
+    updatedAt: ISODate("2023-08-07T08:16:25.352Z")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("64d0a863ccf7303b3015002c"),
+    avatar: "https://q1.qlogo.cn/g?b=qq&nk=1840354095@qq.com&s=100",
+    username: "1840354095@qq.com",
+    nickname: "Contact Me",
+    password: "$2a$10$epwgGKjjO74kGY8QTNpiXuUebTaDcBVJKA4bDO5ueazHgv4xrTOqG",
+    email: "1840354095@qq.com",
+    roleId: ObjectId("64a7aa20a971facd04696242"),
+    status: true,
+    type: "user",
+    website: "https://blog.dandyweng.com/messages/",
+    platform: "Chrome.v115",
+    userIp: "0.0.0.0",
+    address: "保留地址",
+    createdAt: ISODate("2023-08-07T08:16:35.554Z"),
+    updatedAt: ISODate("2023-08-07T08:16:35.554Z")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("64d0fc4e98c726a2d735bc4f"),
+    avatar: "https://q1.qlogo.cn/g?b=qq&nk=1840354093@qq.com&s=100",
+    username: "1840354093@qq.com",
+    nickname: "王俊凯",
+    password: "$2a$10$MNNXu8zdOGg21V73ucSm4evgoFydreyvctqtQSxl2GzMPgk3VdYdG",
+    email: "1840354093@qq.com",
+    roleId: ObjectId("64a7aa20a971facd04696242"),
+    status: true,
+    type: "user",
+    website: "",
+    platform: "Edge.v115",
+    userIp: "0.0.0.0",
+    address: "保留地址",
+    createdAt: ISODate("2023-08-07T14:14:38.633Z"),
+    updatedAt: ISODate("2023-08-08T05:16:30.516Z")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("64d0fea486d5d5f10315b6c1"),
+    avatar: "https://q1.qlogo.cn/g?b=qq&nk=1840354096@qq.com&s=100",
+    username: "1840354096@qq.com",
+    nickname: "嗨得很啊",
+    password: "$2a$10$fuP72uC7eXZGOFOiqBdPpObk7qJhd8Atg1g8V70/6CxheKHH/eSsK",
+    email: "1840354096@qq.com",
+    roleId: ObjectId("64a7aa20a971facd04696242"),
+    status: true,
+    type: "user",
+    website: "www.zhouyi.run",
+    platform: "Chrome.v115",
+    userIp: "0.0.0.0",
+    address: "保留地址",
+    createdAt: ISODate("2023-08-07T14:24:36.66Z"),
+    updatedAt: ISODate("2023-08-07T14:24:36.66Z")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("64d10f83c2028cae81a0a831"),
+    avatar: "https://q1.qlogo.cn/g?b=qq&nk=1048660927@qq.com&s=100",
+    username: "1048660927@qq.com",
+    nickname: "成小沙",
+    password: "$2a$10$pKnwnlyONMKirG6IME3J6.ay8R1cDTwnB7ogvsdyky16Pw.YwINdu",
+    email: "1048660927@qq.com",
+    roleId: ObjectId("64a7aa20a971facd04696242"),
+    status: true,
+    type: "user",
+    website: "",
+    platform: "Chrome.v115",
+    userIp: "0.0.0.0",
+    address: "保留地址",
+    createdAt: ISODate("2023-08-07T15:36:35.821Z"),
+    updatedAt: ISODate("2023-08-07T15:36:35.821Z")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("64d19e2138164fd4b3f73175"),
+    avatar: "https://q1.qlogo.cn/g?b=qq&nk=1840354025@qq.com&s=100",
+    username: "1840354025@qq.com",
+    nickname: "Contact Me",
+    password: "$2a$10$vXA2XItmUGLdtXQmMPynxORxQqwOENFtZykJRgMNXs3zcKeOWUEru",
+    email: "1840354025@qq.com",
+    roleId: ObjectId("64a7aa20a971facd04696242"),
+    status: true,
+    type: "user",
+    website: "www.zhouyi.run",
+    platform: "Chrome.v115",
+    userIp: "0.0.0.0",
+    address: "保留地址",
+    createdAt: ISODate("2023-08-08T01:45:05.643Z"),
+    updatedAt: ISODate("2023-08-08T01:45:05.643Z")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("64d19e4438164fd4b3f73181"),
+    avatar: "https://q1.qlogo.cn/g?b=qq&nk=1840394025@qq.com&s=100",
+    username: "1840394025@qq.com",
+    nickname: "Contact Me",
+    password: "$2a$10$04G.l6m4KLY3sO5Z4faj/e7d3mvsplHUxr9UZnZQ6l89CHPzjykpe",
+    email: "1840394025@qq.com",
+    roleId: ObjectId("64a7aa20a971facd04696242"),
+    status: true,
+    type: "user",
+    website: "www.zhouyi.run",
+    platform: "Chrome.v115",
+    userIp: "0.0.0.0",
+    address: "保留地址",
+    createdAt: ISODate("2023-08-08T01:45:40.807Z"),
+    updatedAt: ISODate("2023-08-08T01:45:40.807Z")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("64d19e7638164fd4b3f731b5"),
+    avatar: "https://q1.qlogo.cn/g?b=qq&nk=1840894025@qq.com&s=100",
+    username: "1840894025@qq.com",
+    nickname: "Contact Me",
+    password: "$2a$10$3fDTR4FYaK45tH7FELB73u63Fcz2/uYi0d6Uk8mCVJ4dL1uyGvife",
+    email: "1840894025@qq.com",
+    roleId: ObjectId("64a7aa20a971facd04696242"),
+    status: true,
+    type: "user",
+    website: "www.zhouyi.run",
+    platform: "Chrome.v115",
+    userIp: "0.0.0.0",
+    address: "保留地址",
+    createdAt: ISODate("2023-08-08T01:46:30.156Z"),
+    updatedAt: ISODate("2023-08-08T01:46:30.156Z")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("64d19e7a38164fd4b3f731bc"),
+    avatar: "https://q1.qlogo.cn/g?b=qq&nk=1840804025@qq.com&s=100",
+    username: "1840804025@qq.com",
+    nickname: "Contact Me",
+    password: "$2a$10$7sXbME5kfDSpXNQzodMNledA82vreknBkXnU1D3V8uDhuxBvH93A.",
+    email: "1840804025@qq.com",
+    roleId: ObjectId("64a7aa20a971facd04696242"),
+    status: true,
+    type: "user",
+    website: "www.zhouyi.run",
+    platform: "Chrome.v115",
+    userIp: "0.0.0.0",
+    address: "保留地址",
+    createdAt: ISODate("2023-08-08T01:46:34.65Z"),
+    updatedAt: ISODate("2023-08-08T01:46:34.65Z")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("64d1a8b038164fd4b3f73214"),
+    avatar: "https://q1.qlogo.cn/g?b=qq&nk=140354092@qq.com&s=100",
+    username: "140354092@qq.com",
+    nickname: "小可爱",
+    password: "$2a$10$hJL11Wf5HeFUmtpyAvM2ausdCST4XhnrTBd4bCoZ5DDxM7vMD37Kq",
+    email: "140354092@qq.com",
+    roleId: ObjectId("64a7aa20a971facd04696242"),
+    status: true,
+    type: "user",
+    website: "www.zhouyi.run",
+    platform: "Chrome.v115",
+    userIp: "0.0.0.0",
+    address: "保留地址",
+    createdAt: ISODate("2023-08-08T02:30:08.053Z"),
+    updatedAt: ISODate("2023-08-08T02:30:08.053Z")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("64d1a91538164fd4b3f7322d"),
+    avatar: "https://q1.qlogo.cn/g?b=qq&nk=1740354092@qq.com&s=100",
+    username: "1740354092@qq.com",
+    nickname: "小可爱",
+    password: "$2a$10$/QuGCmjYwIKn33JLebjn.em2D6N3sjGTeee2LIYIX0.Ui4AtHaolu",
+    email: "1740354092@qq.com",
+    roleId: ObjectId("64a7aa20a971facd04696242"),
+    status: true,
+    type: "user",
+    website: "www.zhouyi.run",
+    platform: "Chrome.v115",
+    userIp: "0.0.0.0",
+    address: "保留地址",
+    createdAt: ISODate("2023-08-08T02:31:49.575Z"),
+    updatedAt: ISODate("2023-08-08T02:31:49.575Z")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("64d1a95938164fd4b3f73238"),
+    avatar: "https://q1.qlogo.cn/g?b=qq&nk=1540354092@qq.com&s=100",
+    username: "1540354092@qq.com",
+    nickname: "大笨蛋",
+    password: "$2a$10$sikHoaMb5E3NPCiW74LxD.dJIP0Ez5aV2suemFks3tmE6Br7ZWN5q",
+    email: "1540354092@qq.com",
+    roleId: ObjectId("64a7aa20a971facd04696242"),
+    status: true,
+    type: "user",
+    website: "www.zhouyi.run",
+    platform: "Chrome.v115",
+    userIp: "0.0.0.0",
+    address: "保留地址",
+    createdAt: ISODate("2023-08-08T02:32:57.953Z"),
+    updatedAt: ISODate("2023-08-08T02:32:57.953Z")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("64d1d2d053d1c684a73c849a"),
+    avatar: "https://q1.qlogo.cn/g?b=qq&nk=1800354093@qq.com&s=100",
+    username: "1800354093@qq.com",
+    nickname: "匿名",
+    password: "$2a$10$wg3bFVGNKHPxfDGsIA1yA.LNl73.F8MeEbMA4cikskWO0VLck4h4C",
+    email: "1800354093@qq.com",
+    roleId: ObjectId("64a7aa20a971facd04696242"),
+    status: true,
+    type: "user",
+    website: "",
+    platform: "Edge.v115",
+    userIp: "0.0.0.0",
+    address: "保留地址",
+    createdAt: ISODate("2023-08-08T05:29:52.419Z"),
+    updatedAt: ISODate("2023-08-08T05:29:52.419Z")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("64d1d2ed53d1c684a73c84a9"),
+    avatar: "https://q1.qlogo.cn/g?b=qq&nk=1830354093@qq.com&s=100",
+    username: "1830354093@qq.com",
+    nickname: "匿名",
+    password: "$2a$10$5Oeu.XAI0rBf.5npsqLcJeKae4zdmhQ.Y1cdFdLevQiVvzT7DrNia",
+    email: "1830354093@qq.com",
+    roleId: ObjectId("64a7aa20a971facd04696242"),
+    status: true,
+    type: "user",
+    website: "",
+    platform: "Edge.v115",
+    userIp: "0.0.0.0",
+    address: "保留地址",
+    createdAt: ISODate("2023-08-08T05:30:21.046Z"),
+    updatedAt: ISODate("2023-08-08T05:30:21.046Z")
+} ]);
+
+// ----------------------------
+// Collection structure for users_opt_logs
+// ----------------------------
+db.getCollection("users_opt_logs").drop();
+db.createCollection("users_opt_logs");
+
+// ----------------------------
+// Documents of users_opt_logs
+// ----------------------------
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5ea36c3750294d8b8f514"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/操作日志/批量删除",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users_opt_logs/deleteAll",
+    createdAt: ISODate("2023-07-18T01:26:14.136Z"),
+    updatedAt: ISODate("2023-07-18T01:26:14.136Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5ea3ac3750294d8b8f51b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/list",
+    createdAt: ISODate("2023-07-18T01:26:18.197Z"),
+    updatedAt: ISODate("2023-07-18T01:26:18.197Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5ea3cc3750294d8b8f521"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T01:26:20.41Z"),
+    updatedAt: ISODate("2023-07-18T01:26:20.41Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5ea3dc3750294d8b8f527"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/list",
+    createdAt: ISODate("2023-07-18T01:26:21.781Z"),
+    updatedAt: ISODate("2023-07-18T01:26:21.781Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5ea40c3750294d8b8f52f"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/list",
+    createdAt: ISODate("2023-07-18T01:26:24.28Z"),
+    updatedAt: ISODate("2023-07-18T01:26:24.28Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5ea52c3750294d8b8f535"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/删除",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/delete",
+    createdAt: ISODate("2023-07-18T01:26:42.268Z"),
+    updatedAt: ISODate("2023-07-18T01:26:42.268Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5ea52c3750294d8b8f53a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/list",
+    createdAt: ISODate("2023-07-18T01:26:42.385Z"),
+    updatedAt: ISODate("2023-07-18T01:26:42.385Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5ea55c3750294d8b8f540"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/list",
+    createdAt: ISODate("2023-07-18T01:26:45.691Z"),
+    updatedAt: ISODate("2023-07-18T01:26:45.691Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5ea56c3750294d8b8f546"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T01:26:46.795Z"),
+    updatedAt: ISODate("2023-07-18T01:26:46.795Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5ea66c3750294d8b8f54e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T01:27:02.358Z"),
+    updatedAt: ISODate("2023-07-18T01:27:02.358Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5ea68c3750294d8b8f554"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T01:27:04.407Z"),
+    updatedAt: ISODate("2023-07-18T01:27:04.407Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5ea83c3750294d8b8f55a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T01:27:31.134Z"),
+    updatedAt: ISODate("2023-07-18T01:27:31.134Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5eab4c3750294d8b8f560"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T01:28:20.96Z"),
+    updatedAt: ISODate("2023-07-18T01:28:20.96Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5eab5c3750294d8b8f566"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T01:28:21.227Z"),
+    updatedAt: ISODate("2023-07-18T01:28:21.227Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5eab7c3750294d8b8f56c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T01:28:23.094Z"),
+    updatedAt: ISODate("2023-07-18T01:28:23.094Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5eccbc3750294d8b8f572"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T01:37:15.493Z"),
+    updatedAt: ISODate("2023-07-18T01:37:15.493Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5edfdc3750294d8b8f578"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T01:42:21.248Z"),
+    updatedAt: ISODate("2023-07-18T01:42:21.248Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5f1c0c3750294d8b8f57e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T01:58:24.735Z"),
+    updatedAt: ISODate("2023-07-18T01:58:24.735Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5f483c3750294d8b8f584"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T02:10:11.605Z"),
+    updatedAt: ISODate("2023-07-18T02:10:11.605Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5f487c3750294d8b8f58a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/list",
+    createdAt: ISODate("2023-07-18T02:10:15.363Z"),
+    updatedAt: ISODate("2023-07-18T02:10:15.363Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5f48fc3750294d8b8f592"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/update",
+    createdAt: ISODate("2023-07-18T02:10:23.135Z"),
+    updatedAt: ISODate("2023-07-18T02:10:23.135Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5f48fc3750294d8b8f598"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T02:10:23.271Z"),
+    updatedAt: ISODate("2023-07-18T02:10:23.271Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5f491c3750294d8b8f59e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T02:10:25.255Z"),
+    updatedAt: ISODate("2023-07-18T02:10:25.255Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5f493c3750294d8b8f5a4"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/list",
+    createdAt: ISODate("2023-07-18T02:10:27.156Z"),
+    updatedAt: ISODate("2023-07-18T02:10:27.156Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5f49ec3750294d8b8f5ac"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/update",
+    createdAt: ISODate("2023-07-18T02:10:38.277Z"),
+    updatedAt: ISODate("2023-07-18T02:10:38.277Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5f49ec3750294d8b8f5b2"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T02:10:38.421Z"),
+    updatedAt: ISODate("2023-07-18T02:10:38.421Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b5f4a0c3750294d8b8f5b8"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "资源管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/resources/list",
+    createdAt: ISODate("2023-07-18T02:10:40.871Z"),
+    updatedAt: ISODate("2023-07-18T02:10:40.871Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6008cc3750294d8b8f5be"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:01:32.175Z"),
+    updatedAt: ISODate("2023-07-18T03:01:32.175Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b600dec3750294d8b8f5c4"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:02:54.104Z"),
+    updatedAt: ISODate("2023-07-18T03:02:54.104Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b600eec3750294d8b8f5ca"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:03:10.032Z"),
+    updatedAt: ISODate("2023-07-18T03:03:10.032Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6013cc3750294d8b8f5d0"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/update",
+    createdAt: ISODate("2023-07-18T03:04:28.952Z"),
+    updatedAt: ISODate("2023-07-18T03:04:28.952Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6013dc3750294d8b8f5d6"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:04:29.136Z"),
+    updatedAt: ISODate("2023-07-18T03:04:29.136Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6013dc3750294d8b8f5dc"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/update",
+    createdAt: ISODate("2023-07-18T03:04:29.517Z"),
+    updatedAt: ISODate("2023-07-18T03:04:29.517Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6013dc3750294d8b8f5e2"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:04:29.647Z"),
+    updatedAt: ISODate("2023-07-18T03:04:29.647Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b601a6c3750294d8b8f5e8"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:06:14.411Z"),
+    updatedAt: ISODate("2023-07-18T03:06:14.411Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b601b2c3750294d8b8f5ee"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:06:26.124Z"),
+    updatedAt: ISODate("2023-07-18T03:06:26.124Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b601dfc3750294d8b8f5f4"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:07:11.494Z"),
+    updatedAt: ISODate("2023-07-18T03:07:11.494Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b60241c3750294d8b8f5fa"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:08:49.522Z"),
+    updatedAt: ISODate("2023-07-18T03:08:49.522Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b60244c3750294d8b8f600"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:08:52.619Z"),
+    updatedAt: ISODate("2023-07-18T03:08:52.619Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b60247c3750294d8b8f606"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:08:55.165Z"),
+    updatedAt: ISODate("2023-07-18T03:08:55.165Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6025ec3750294d8b8f60c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:09:18.588Z"),
+    updatedAt: ISODate("2023-07-18T03:09:18.588Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b602d6c3750294d8b8f612"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:11:18.019Z"),
+    updatedAt: ISODate("2023-07-18T03:11:18.019Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b60331c3750294d8b8f618"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:12:49.573Z"),
+    updatedAt: ISODate("2023-07-18T03:12:49.573Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b60360c3750294d8b8f61e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:13:36.028Z"),
+    updatedAt: ISODate("2023-07-18T03:13:36.028Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b60366c3750294d8b8f624"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:13:42.8Z"),
+    updatedAt: ISODate("2023-07-18T03:13:42.8Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b60368c3750294d8b8f62a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:13:44.423Z"),
+    updatedAt: ISODate("2023-07-18T03:13:44.423Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b60371c3750294d8b8f630"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:13:53.771Z"),
+    updatedAt: ISODate("2023-07-18T03:13:53.771Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6037cc3750294d8b8f636"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:14:04.099Z"),
+    updatedAt: ISODate("2023-07-18T03:14:04.099Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b603abc3750294d8b8f63c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:14:51.962Z"),
+    updatedAt: ISODate("2023-07-18T03:14:51.962Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b603b2c3750294d8b8f642"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:14:58.723Z"),
+    updatedAt: ISODate("2023-07-18T03:14:58.723Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b603fcc3750294d8b8f648"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:16:12.553Z"),
+    updatedAt: ISODate("2023-07-18T03:16:12.553Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b60413c3750294d8b8f64e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/list",
+    createdAt: ISODate("2023-07-18T03:16:35.325Z"),
+    updatedAt: ISODate("2023-07-18T03:16:35.325Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b60414c3750294d8b8f654"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:16:36.947Z"),
+    updatedAt: ISODate("2023-07-18T03:16:36.947Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b60417c3750294d8b8f65a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/list",
+    createdAt: ISODate("2023-07-18T03:16:39.652Z"),
+    updatedAt: ISODate("2023-07-18T03:16:39.652Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6042ac3750294d8b8f660"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/停用权限",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/stop",
+    createdAt: ISODate("2023-07-18T03:16:58.136Z"),
+    updatedAt: ISODate("2023-07-18T03:16:58.136Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6042ac3750294d8b8f666"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/list",
+    createdAt: ISODate("2023-07-18T03:16:58.276Z"),
+    updatedAt: ISODate("2023-07-18T03:16:58.276Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6042bc3750294d8b8f66c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/停用权限",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/stop",
+    createdAt: ISODate("2023-07-18T03:16:59.331Z"),
+    updatedAt: ISODate("2023-07-18T03:16:59.331Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6042bc3750294d8b8f672"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/list",
+    createdAt: ISODate("2023-07-18T03:16:59.456Z"),
+    updatedAt: ISODate("2023-07-18T03:16:59.456Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6042fc3750294d8b8f678"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/list",
+    createdAt: ISODate("2023-07-18T03:17:03.198Z"),
+    updatedAt: ISODate("2023-07-18T03:17:03.198Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6044dc3750294d8b8f67e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-07-18T03:17:33.998Z"),
+    updatedAt: ISODate("2023-07-18T03:17:33.998Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b604aec3750294d8b8f684"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T03:19:10.191Z"),
+    updatedAt: ISODate("2023-07-18T03:19:10.191Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b604bac3750294d8b8f68a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T03:19:22.53Z"),
+    updatedAt: ISODate("2023-07-18T03:19:22.53Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b604d5c3750294d8b8f690"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T03:19:49.173Z"),
+    updatedAt: ISODate("2023-07-18T03:19:49.173Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b604d6c3750294d8b8f696"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T03:19:50.004Z"),
+    updatedAt: ISODate("2023-07-18T03:19:50.004Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b604d6c3750294d8b8f69c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T03:19:50.714Z"),
+    updatedAt: ISODate("2023-07-18T03:19:50.714Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b604d7c3750294d8b8f6a2"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T03:19:51.573Z"),
+    updatedAt: ISODate("2023-07-18T03:19:51.573Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b604d8c3750294d8b8f6a8"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T03:19:52.213Z"),
+    updatedAt: ISODate("2023-07-18T03:19:52.213Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b60508c3750294d8b8f6ae"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T03:20:40.292Z"),
+    updatedAt: ISODate("2023-07-18T03:20:40.292Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b60513c3750294d8b8f6b4"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T03:20:51.824Z"),
+    updatedAt: ISODate("2023-07-18T03:20:51.824Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b60518c3750294d8b8f6ba"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T03:20:56.503Z"),
+    updatedAt: ISODate("2023-07-18T03:20:56.503Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6051ac3750294d8b8f6c0"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T03:20:58.012Z"),
+    updatedAt: ISODate("2023-07-18T03:20:58.012Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6051cc3750294d8b8f6c6"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T03:21:00.017Z"),
+    updatedAt: ISODate("2023-07-18T03:21:00.017Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6051ec3750294d8b8f6cc"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T03:21:02.873Z"),
+    updatedAt: ISODate("2023-07-18T03:21:02.873Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b60556c3750294d8b8f6d2"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T03:21:58.343Z"),
+    updatedAt: ISODate("2023-07-18T03:21:58.343Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6055fc3750294d8b8f6d8"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T03:22:07.113Z"),
+    updatedAt: ISODate("2023-07-18T03:22:07.113Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b60561c3750294d8b8f6de"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T03:22:09.249Z"),
+    updatedAt: ISODate("2023-07-18T03:22:09.249Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b60c923686241acdbd125f"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T03:52:50.816Z"),
+    updatedAt: ISODate("2023-07-18T03:52:50.816Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b60c923686241acdbd1265"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T03:52:50.991Z"),
+    updatedAt: ISODate("2023-07-18T03:52:50.991Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b60e9e3686241acdbd127b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T04:01:34.398Z"),
+    updatedAt: ISODate("2023-07-18T04:01:34.398Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b60e9e3686241acdbd1281"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T04:01:34.57Z"),
+    updatedAt: ISODate("2023-07-18T04:01:34.57Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b60ed33686241acdbd128d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T04:02:27.528Z"),
+    updatedAt: ISODate("2023-07-18T04:02:27.528Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b60ed33686241acdbd1293"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T04:02:27.683Z"),
+    updatedAt: ISODate("2023-07-18T04:02:27.683Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6123d3686241acdbd129b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T04:17:01.301Z"),
+    updatedAt: ISODate("2023-07-18T04:17:01.301Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6123d3686241acdbd12a1"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T04:17:01.477Z"),
+    updatedAt: ISODate("2023-07-18T04:17:01.477Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b612523686241acdbd12a9"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T04:17:22.097Z"),
+    updatedAt: ISODate("2023-07-18T04:17:22.097Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b613783686241acdbd12b3"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T04:22:16.179Z"),
+    updatedAt: ISODate("2023-07-18T04:22:16.179Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b613783686241acdbd12b9"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T04:22:16.357Z"),
+    updatedAt: ISODate("2023-07-18T04:22:16.357Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b613ca3686241acdbd12c5"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T04:23:38.768Z"),
+    updatedAt: ISODate("2023-07-18T04:23:38.768Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b613ed3686241acdbd12cf"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T04:24:13.67Z"),
+    updatedAt: ISODate("2023-07-18T04:24:13.67Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b613ed3686241acdbd12d5"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T04:24:13.844Z"),
+    updatedAt: ISODate("2023-07-18T04:24:13.844Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b615ac3686241acdbd12dd"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T04:31:40.729Z"),
+    updatedAt: ISODate("2023-07-18T04:31:40.729Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b615ac3686241acdbd12e3"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T04:31:40.891Z"),
+    updatedAt: ISODate("2023-07-18T04:31:40.891Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b616813686241acdbd12f7"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T04:35:13.035Z"),
+    updatedAt: ISODate("2023-07-18T04:35:13.035Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b616813686241acdbd12fd"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T04:35:13.207Z"),
+    updatedAt: ISODate("2023-07-18T04:35:13.207Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b616ae3686241acdbd1305"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T04:35:58.998Z"),
+    updatedAt: ISODate("2023-07-18T04:35:58.998Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b616af3686241acdbd130b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T04:35:59.144Z"),
+    updatedAt: ISODate("2023-07-18T04:35:59.144Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b616e53686241acdbd1315"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T04:36:53.734Z"),
+    updatedAt: ISODate("2023-07-18T04:36:53.734Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b616e53686241acdbd131b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T04:36:53.879Z"),
+    updatedAt: ISODate("2023-07-18T04:36:53.879Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b61ebd3686241acdbd133d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T05:10:21.628Z"),
+    updatedAt: ISODate("2023-07-18T05:10:21.628Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b61ebd3686241acdbd1343"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T05:10:21.796Z"),
+    updatedAt: ISODate("2023-07-18T05:10:21.796Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b625eb3686241acdbd1357"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T05:40:59.278Z"),
+    updatedAt: ISODate("2023-07-18T05:40:59.278Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b625eb3686241acdbd135d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T05:40:59.46Z"),
+    updatedAt: ISODate("2023-07-18T05:40:59.46Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6282c3686241acdbd1375"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T05:50:36.23Z"),
+    updatedAt: ISODate("2023-07-18T05:50:36.23Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6282c3686241acdbd137b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T05:50:36.431Z"),
+    updatedAt: ISODate("2023-07-18T05:50:36.431Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b62af23686241acdbd1393"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T06:02:26.543Z"),
+    updatedAt: ISODate("2023-07-18T06:02:26.543Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b62af23686241acdbd1399"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T06:02:26.943Z"),
+    updatedAt: ISODate("2023-07-18T06:02:26.943Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b62c583686241acdbd13a3"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T06:08:24.651Z"),
+    updatedAt: ISODate("2023-07-18T06:08:24.651Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b62c773686241acdbd13a9"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T06:08:55.476Z"),
+    updatedAt: ISODate("2023-07-18T06:08:55.476Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6342b3686241acdbd13c7"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T06:41:47.911Z"),
+    updatedAt: ISODate("2023-07-18T06:41:47.911Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b635793686241acdbd13d1"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T06:47:21.401Z"),
+    updatedAt: ISODate("2023-07-18T06:47:21.401Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b635793686241acdbd13d7"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T06:47:21.602Z"),
+    updatedAt: ISODate("2023-07-18T06:47:21.602Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b635b53686241acdbd13df"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T06:48:21.005Z"),
+    updatedAt: ISODate("2023-07-18T06:48:21.005Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b635b53686241acdbd13e5"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T06:48:21.179Z"),
+    updatedAt: ISODate("2023-07-18T06:48:21.179Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6368b3686241acdbd13ed"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T06:51:55.153Z"),
+    updatedAt: ISODate("2023-07-18T06:51:55.153Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6368b3686241acdbd13f3"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T06:51:55.315Z"),
+    updatedAt: ISODate("2023-07-18T06:51:55.315Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b637983686241acdbd1401"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T06:56:24.175Z"),
+    updatedAt: ISODate("2023-07-18T06:56:24.175Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b637983686241acdbd1407"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T06:56:24.332Z"),
+    updatedAt: ISODate("2023-07-18T06:56:24.332Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b63a7d3686241acdbd1411"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T07:08:45.99Z"),
+    updatedAt: ISODate("2023-07-18T07:08:45.99Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b63a7e3686241acdbd1417"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T07:08:46.137Z"),
+    updatedAt: ISODate("2023-07-18T07:08:46.137Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b63b333686241acdbd1421"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T07:11:47.662Z"),
+    updatedAt: ISODate("2023-07-18T07:11:47.662Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b63b333686241acdbd1427"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T07:11:47.806Z"),
+    updatedAt: ISODate("2023-07-18T07:11:47.806Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b63b923686241acdbd142f"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T07:13:22.774Z"),
+    updatedAt: ISODate("2023-07-18T07:13:22.774Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b63b923686241acdbd1435"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T07:13:22.919Z"),
+    updatedAt: ISODate("2023-07-18T07:13:22.919Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b63ba93686241acdbd143d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T07:13:45.865Z"),
+    updatedAt: ISODate("2023-07-18T07:13:45.865Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b63baa3686241acdbd1443"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T07:13:46.027Z"),
+    updatedAt: ISODate("2023-07-18T07:13:46.027Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b63c6a3686241acdbd144b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T07:16:58.348Z"),
+    updatedAt: ISODate("2023-07-18T07:16:58.348Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b63c6a3686241acdbd1451"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T07:16:58.506Z"),
+    updatedAt: ISODate("2023-07-18T07:16:58.506Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b63c903686241acdbd1459"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T07:17:36.345Z"),
+    updatedAt: ISODate("2023-07-18T07:17:36.345Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b63c903686241acdbd145f"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T07:17:36.48Z"),
+    updatedAt: ISODate("2023-07-18T07:17:36.48Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b641e73686241acdbd1489"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T07:40:23.243Z"),
+    updatedAt: ISODate("2023-07-18T07:40:23.243Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b641e73686241acdbd148f"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T07:40:23.503Z"),
+    updatedAt: ISODate("2023-07-18T07:40:23.503Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b642d33686241acdbd1497"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T07:44:19.884Z"),
+    updatedAt: ISODate("2023-07-18T07:44:19.884Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b642d43686241acdbd149d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T07:44:20.048Z"),
+    updatedAt: ISODate("2023-07-18T07:44:20.048Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6447c3686241acdbd14a9"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T07:51:24.862Z"),
+    updatedAt: ISODate("2023-07-18T07:51:24.862Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6447d3686241acdbd14af"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T07:51:25.061Z"),
+    updatedAt: ISODate("2023-07-18T07:51:25.061Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b647463686241acdbd14bf"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T08:03:18.877Z"),
+    updatedAt: ISODate("2023-07-18T08:03:18.877Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b647473686241acdbd14c5"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T08:03:19.066Z"),
+    updatedAt: ISODate("2023-07-18T08:03:19.066Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b647aa3686241acdbd14cd"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T08:04:58.469Z"),
+    updatedAt: ISODate("2023-07-18T08:04:58.469Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b647aa3686241acdbd14d3"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T08:04:58.632Z"),
+    updatedAt: ISODate("2023-07-18T08:04:58.632Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6480c3686241acdbd14dd"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T08:06:36.319Z"),
+    updatedAt: ISODate("2023-07-18T08:06:36.319Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6480c3686241acdbd14e3"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T08:06:36.467Z"),
+    updatedAt: ISODate("2023-07-18T08:06:36.467Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b648403686241acdbd14eb"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T08:07:28.62Z"),
+    updatedAt: ISODate("2023-07-18T08:07:28.62Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b648403686241acdbd14f1"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T08:07:28.806Z"),
+    updatedAt: ISODate("2023-07-18T08:07:28.806Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64a0e3686241acdbd14fb"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T08:15:10.054Z"),
+    updatedAt: ISODate("2023-07-18T08:15:10.054Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64a0e3686241acdbd1501"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T08:15:10.284Z"),
+    updatedAt: ISODate("2023-07-18T08:15:10.284Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64b243686241acdbd150b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T08:19:48.3Z"),
+    updatedAt: ISODate("2023-07-18T08:19:48.3Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64b243686241acdbd1511"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T08:19:48.479Z"),
+    updatedAt: ISODate("2023-07-18T08:19:48.479Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64bbe3686241acdbd151b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T08:22:22.435Z"),
+    updatedAt: ISODate("2023-07-18T08:22:22.435Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64bbe3686241acdbd1521"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T08:22:22.619Z"),
+    updatedAt: ISODate("2023-07-18T08:22:22.619Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64bf23686241acdbd1529"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T08:23:14.77Z"),
+    updatedAt: ISODate("2023-07-18T08:23:14.77Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64bf23686241acdbd152f"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T08:23:14.959Z"),
+    updatedAt: ISODate("2023-07-18T08:23:14.959Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64c3e3686241acdbd1537"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T08:24:30.691Z"),
+    updatedAt: ISODate("2023-07-18T08:24:30.691Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64c3e3686241acdbd153d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T08:24:30.862Z"),
+    updatedAt: ISODate("2023-07-18T08:24:30.862Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64c8d3686241acdbd1545"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T08:25:49.489Z"),
+    updatedAt: ISODate("2023-07-18T08:25:49.489Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64c8d3686241acdbd154b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T08:25:49.643Z"),
+    updatedAt: ISODate("2023-07-18T08:25:49.643Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64d093686241acdbd1557"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T08:27:53.347Z"),
+    updatedAt: ISODate("2023-07-18T08:27:53.347Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64d093686241acdbd155d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T08:27:53.536Z"),
+    updatedAt: ISODate("2023-07-18T08:27:53.536Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64d603686241acdbd1565"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T08:29:20.112Z"),
+    updatedAt: ISODate("2023-07-18T08:29:20.112Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64d603686241acdbd156b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T08:29:20.285Z"),
+    updatedAt: ISODate("2023-07-18T08:29:20.285Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64d7c3686241acdbd1573"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T08:29:48.475Z"),
+    updatedAt: ISODate("2023-07-18T08:29:48.475Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64d7c3686241acdbd1579"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T08:29:48.627Z"),
+    updatedAt: ISODate("2023-07-18T08:29:48.627Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64d9d3686241acdbd1581"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T08:30:21.007Z"),
+    updatedAt: ISODate("2023-07-18T08:30:21.007Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64d9d3686241acdbd1587"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T08:30:21.181Z"),
+    updatedAt: ISODate("2023-07-18T08:30:21.181Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64e723686241acdbd1595"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T08:33:54.432Z"),
+    updatedAt: ISODate("2023-07-18T08:33:54.432Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64e723686241acdbd159b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T08:33:54.628Z"),
+    updatedAt: ISODate("2023-07-18T08:33:54.628Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64ec33686241acdbd15a5"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T08:35:15.155Z"),
+    updatedAt: ISODate("2023-07-18T08:35:15.155Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b64ec33686241acdbd15ab"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T08:35:15.313Z"),
+    updatedAt: ISODate("2023-07-18T08:35:15.313Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b654349e47d0ef6e0db0f8"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T08:58:28.141Z"),
+    updatedAt: ISODate("2023-07-18T08:58:28.141Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b654349e47d0ef6e0db0fe"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T08:58:28.384Z"),
+    updatedAt: ISODate("2023-07-18T08:58:28.384Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b654f39e47d0ef6e0db106"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T09:01:39.419Z"),
+    updatedAt: ISODate("2023-07-18T09:01:39.419Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b654f39e47d0ef6e0db10c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T09:01:39.576Z"),
+    updatedAt: ISODate("2023-07-18T09:01:39.576Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b65a0c9e47d0ef6e0db12c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T09:23:24.208Z"),
+    updatedAt: ISODate("2023-07-18T09:23:24.208Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b65a0c9e47d0ef6e0db132"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T09:23:24.369Z"),
+    updatedAt: ISODate("2023-07-18T09:23:24.369Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b65e119e47d0ef6e0db148"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T09:40:33.165Z"),
+    updatedAt: ISODate("2023-07-18T09:40:33.165Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b65e119e47d0ef6e0db14e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T09:40:33.331Z"),
+    updatedAt: ISODate("2023-07-18T09:40:33.331Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b6676f9e47d0ef6e0db174"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T10:20:31.911Z"),
+    updatedAt: ISODate("2023-07-18T10:20:31.911Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b667709e47d0ef6e0db17a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T10:20:32.073Z"),
+    updatedAt: ISODate("2023-07-18T10:20:32.073Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b667aa9e47d0ef6e0db182"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T10:21:30.849Z"),
+    updatedAt: ISODate("2023-07-18T10:21:30.849Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b667af9e47d0ef6e0db188"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T10:21:35.696Z"),
+    updatedAt: ISODate("2023-07-18T10:21:35.696Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b667af9e47d0ef6e0db18e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T10:21:35.837Z"),
+    updatedAt: ISODate("2023-07-18T10:21:35.837Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b667fa9e47d0ef6e0db196"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T10:22:50.721Z"),
+    updatedAt: ISODate("2023-07-18T10:22:50.721Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b667fa9e47d0ef6e0db19c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T10:22:50.881Z"),
+    updatedAt: ISODate("2023-07-18T10:22:50.881Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b669399e47d0ef6e0db1ac"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T10:28:09.661Z"),
+    updatedAt: ISODate("2023-07-18T10:28:09.661Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b669399e47d0ef6e0db1b2"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T10:28:09.9Z"),
+    updatedAt: ISODate("2023-07-18T10:28:09.9Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b66a349e47d0ef6e0db1c6"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T10:32:20.658Z"),
+    updatedAt: ISODate("2023-07-18T10:32:20.658Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b66a379e47d0ef6e0db1cc"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T10:32:23.694Z"),
+    updatedAt: ISODate("2023-07-18T10:32:23.694Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b66a379e47d0ef6e0db1d2"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T10:32:23.891Z"),
+    updatedAt: ISODate("2023-07-18T10:32:23.891Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b66ac29e47d0ef6e0db1e0"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T10:34:42.383Z"),
+    updatedAt: ISODate("2023-07-18T10:34:42.383Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b66ac29e47d0ef6e0db1e6"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T10:34:42.531Z"),
+    updatedAt: ISODate("2023-07-18T10:34:42.531Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b66d289e47d0ef6e0db202"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-18T10:44:56.506Z"),
+    updatedAt: ISODate("2023-07-18T10:44:56.506Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b66d289e47d0ef6e0db208"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-18T10:44:56.67Z"),
+    updatedAt: ISODate("2023-07-18T10:44:56.67Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b73b2a00e297e95f3c0a2d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-19T01:23:54.358Z"),
+    updatedAt: ISODate("2023-07-19T01:23:54.358Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b73b3100e297e95f3c0a33"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-19T01:24:01.777Z"),
+    updatedAt: ISODate("2023-07-19T01:24:01.777Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b743ce00e297e95f3c0a43"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-19T02:00:46.797Z"),
+    updatedAt: ISODate("2023-07-19T02:00:46.797Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b743ce00e297e95f3c0a49"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-19T02:00:46.965Z"),
+    updatedAt: ISODate("2023-07-19T02:00:46.965Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b7533300e297e95f3c0a71"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-19T03:06:27.293Z"),
+    updatedAt: ISODate("2023-07-19T03:06:27.293Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b76d7900e297e95f3c0aaf"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-19T04:58:33.979Z"),
+    updatedAt: ISODate("2023-07-19T04:58:33.979Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b76d7a00e297e95f3c0ab5"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-19T04:58:34.16Z"),
+    updatedAt: ISODate("2023-07-19T04:58:34.16Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b76f4f00e297e95f3c0ac5"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-19T05:06:23.115Z"),
+    updatedAt: ISODate("2023-07-19T05:06:23.115Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b76f4f00e297e95f3c0acb"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-19T05:06:23.283Z"),
+    updatedAt: ISODate("2023-07-19T05:06:23.283Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b76fe200e297e95f3c0ad3"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-19T05:08:50.119Z"),
+    updatedAt: ISODate("2023-07-19T05:08:50.119Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b76fe200e297e95f3c0ad9"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-19T05:08:50.294Z"),
+    updatedAt: ISODate("2023-07-19T05:08:50.294Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b7761300e297e95f3c0aed"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-19T05:35:15.775Z"),
+    updatedAt: ISODate("2023-07-19T05:35:15.775Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b7761300e297e95f3c0af3"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-19T05:35:15.962Z"),
+    updatedAt: ISODate("2023-07-19T05:35:15.962Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b7805700e297e95f3c0aff"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-19T06:19:03.897Z"),
+    updatedAt: ISODate("2023-07-19T06:19:03.897Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b7805800e297e95f3c0b05"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-19T06:19:04.053Z"),
+    updatedAt: ISODate("2023-07-19T06:19:04.053Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b7aa2800e297e95f3c0bad"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-07-19T09:17:28.615Z"),
+    updatedAt: ISODate("2023-07-19T09:17:28.615Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b7aa2800e297e95f3c0bb3"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-19T09:17:28.793Z"),
+    updatedAt: ISODate("2023-07-19T09:17:28.793Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b7cccc136d92a3a62cd946"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-19T11:45:16.126Z"),
+    updatedAt: ISODate("2023-07-19T11:45:16.126Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b7d1e3136d92a3a62cd962"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-19T12:06:59.32Z"),
+    updatedAt: ISODate("2023-07-19T12:06:59.32Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b7d1ed136d92a3a62cd968"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-19T12:07:09.88Z"),
+    updatedAt: ISODate("2023-07-19T12:07:09.88Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b7ed85136d92a3a62cd98c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-19T14:04:53.364Z"),
+    updatedAt: ISODate("2023-07-19T14:04:53.364Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b7ef8c136d92a3a62cd992"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-19T14:13:32.612Z"),
+    updatedAt: ISODate("2023-07-19T14:13:32.612Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b92fe7f8039d48b360f3b7"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-07-20T13:00:23.719Z"),
+    updatedAt: ISODate("2023-07-20T13:00:23.719Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64b953e7f8039d48b360f3c3"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "资源管理/查询",
+    platform: "Chrome.v114",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/resources/list",
+    createdAt: ISODate("2023-07-20T15:33:59.042Z"),
+    updatedAt: ISODate("2023-07-20T15:33:59.042Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce09391f76efae3dc0ad31"),
+    operator: "admin",
+    operatorId: "-",
+    module: "登录",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/auth/login",
+    createdAt: ISODate("2023-08-05T08:32:57.174Z"),
+    updatedAt: ISODate("2023-08-05T08:32:57.174Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce094c1f76efae3dc0ad3a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-05T08:33:16.083Z"),
+    updatedAt: ISODate("2023-08-05T08:33:16.083Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce0e55d9a4c83a225cc018"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-08-05T08:54:45.732Z"),
+    updatedAt: ISODate("2023-08-05T08:54:45.732Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce0e55d9a4c83a225cc01e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-05T08:54:45.989Z"),
+    updatedAt: ISODate("2023-08-05T08:54:45.989Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce1399f8cb66aa2134dc56"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/创建",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/create",
+    createdAt: ISODate("2023-08-05T09:17:13.742Z"),
+    updatedAt: ISODate("2023-08-05T09:17:13.742Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce1399f8cb66aa2134dc5c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-05T09:17:13.99Z"),
+    updatedAt: ISODate("2023-08-05T09:17:13.99Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce14bbf8cb66aa2134dc6a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-08-05T09:22:03.711Z"),
+    updatedAt: ISODate("2023-08-05T09:22:03.711Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce14bcf8cb66aa2134dc70"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-05T09:22:04.283Z"),
+    updatedAt: ISODate("2023-08-05T09:22:04.283Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce16a6f8cb66aa2134dc7a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-08-05T09:30:14.665Z"),
+    updatedAt: ISODate("2023-08-05T09:30:14.665Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce16a6f8cb66aa2134dc80"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-05T09:30:14.916Z"),
+    updatedAt: ISODate("2023-08-05T09:30:14.916Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce16e8f8cb66aa2134dc87"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-08-05T09:31:20.145Z"),
+    updatedAt: ISODate("2023-08-05T09:31:20.145Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce16e8f8cb66aa2134dc8d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-05T09:31:20.384Z"),
+    updatedAt: ISODate("2023-08-05T09:31:20.384Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce1700f8cb66aa2134dc94"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-08-05T09:31:44.833Z"),
+    updatedAt: ISODate("2023-08-05T09:31:44.833Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce1701f8cb66aa2134dc9a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-05T09:31:45.38Z"),
+    updatedAt: ISODate("2023-08-05T09:31:45.38Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce2998f8cb66aa2134dcc2"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-05T10:51:04.013Z"),
+    updatedAt: ISODate("2023-08-05T10:51:04.013Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce2e07f8cb66aa2134dd08"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/delete",
+    createdAt: ISODate("2023-08-05T11:09:59.183Z"),
+    updatedAt: ISODate("2023-08-05T11:09:59.183Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce2e07f8cb66aa2134dd0d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-05T11:09:59.436Z"),
+    updatedAt: ISODate("2023-08-05T11:09:59.436Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce2e09f8cb66aa2134dd13"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/delete",
+    createdAt: ISODate("2023-08-05T11:10:01.148Z"),
+    updatedAt: ISODate("2023-08-05T11:10:01.148Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce2e09f8cb66aa2134dd18"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-05T11:10:01.64Z"),
+    updatedAt: ISODate("2023-08-05T11:10:01.64Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce2e0bf8cb66aa2134dd1e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/delete",
+    createdAt: ISODate("2023-08-05T11:10:03.633Z"),
+    updatedAt: ISODate("2023-08-05T11:10:03.633Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce2e0cf8cb66aa2134dd23"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-05T11:10:04.119Z"),
+    updatedAt: ISODate("2023-08-05T11:10:04.119Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce521cea542e7d002d9249"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/创建",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/create",
+    createdAt: ISODate("2023-08-05T13:43:56.17Z"),
+    updatedAt: ISODate("2023-08-05T13:43:56.17Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce521cea542e7d002d924f"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-05T13:43:56.432Z"),
+    updatedAt: ISODate("2023-08-05T13:43:56.432Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce5280ea542e7d002d925b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-08-05T13:45:36.833Z"),
+    updatedAt: ISODate("2023-08-05T13:45:36.833Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce5281ea542e7d002d9261"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-05T13:45:37.089Z"),
+    updatedAt: ISODate("2023-08-05T13:45:37.089Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce5724288bbd4d5cc2d2e9"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/创建",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/create",
+    createdAt: ISODate("2023-08-05T14:05:24.287Z"),
+    updatedAt: ISODate("2023-08-05T14:05:24.287Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce5724288bbd4d5cc2d2ef"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-05T14:05:24.522Z"),
+    updatedAt: ISODate("2023-08-05T14:05:24.522Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce658f288bbd4d5cc2d3d9"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/list",
+    createdAt: ISODate("2023-08-05T15:06:55.225Z"),
+    updatedAt: ISODate("2023-08-05T15:06:55.225Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce6591288bbd4d5cc2d3df"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-05T15:06:57.329Z"),
+    updatedAt: ISODate("2023-08-05T15:06:57.329Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce659f288bbd4d5cc2d3e9"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-05T15:07:11.364Z"),
+    updatedAt: ISODate("2023-08-05T15:07:11.364Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64ce65a2288bbd4d5cc2d3ef"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/list",
+    createdAt: ISODate("2023-08-05T15:07:14.214Z"),
+    updatedAt: ISODate("2023-08-05T15:07:14.214Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf3ed8ae322b7f48d7d86e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:34:00.775Z"),
+    updatedAt: ISODate("2023-08-06T06:34:00.775Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf3f0cae322b7f48d7d874"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:34:52.681Z"),
+    updatedAt: ISODate("2023-08-06T06:34:52.681Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf3f8eae322b7f48d7d87a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:37:02.378Z"),
+    updatedAt: ISODate("2023-08-06T06:37:02.378Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf3fa3ae322b7f48d7d880"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:37:23.595Z"),
+    updatedAt: ISODate("2023-08-06T06:37:23.595Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf4014ae322b7f48d7d886"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:39:16.82Z"),
+    updatedAt: ISODate("2023-08-06T06:39:16.82Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf4090ae322b7f48d7d88c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:41:20.138Z"),
+    updatedAt: ISODate("2023-08-06T06:41:20.138Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf417aae322b7f48d7d892"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:45:14.228Z"),
+    updatedAt: ISODate("2023-08-06T06:45:14.228Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf4180ae322b7f48d7d898"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:45:20.478Z"),
+    updatedAt: ISODate("2023-08-06T06:45:20.478Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf4183ae322b7f48d7d89e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:45:23.375Z"),
+    updatedAt: ISODate("2023-08-06T06:45:23.375Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf418aae322b7f48d7d8a4"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:45:30.04Z"),
+    updatedAt: ISODate("2023-08-06T06:45:30.04Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf4190ae322b7f48d7d8aa"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:45:36.812Z"),
+    updatedAt: ISODate("2023-08-06T06:45:36.812Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf4192ae322b7f48d7d8b0"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:45:38.975Z"),
+    updatedAt: ISODate("2023-08-06T06:45:38.975Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf420ec700ff0ee8a13927"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:47:42.75Z"),
+    updatedAt: ISODate("2023-08-06T06:47:42.75Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf4211c700ff0ee8a1392d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:47:45.978Z"),
+    updatedAt: ISODate("2023-08-06T06:47:45.978Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf4213c700ff0ee8a13933"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:47:47.898Z"),
+    updatedAt: ISODate("2023-08-06T06:47:47.898Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf425b7161519cbc0ed4ff"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:48:59.14Z"),
+    updatedAt: ISODate("2023-08-06T06:48:59.14Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf42677161519cbc0ed505"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:49:11.628Z"),
+    updatedAt: ISODate("2023-08-06T06:49:11.628Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf42697161519cbc0ed50b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:49:13.784Z"),
+    updatedAt: ISODate("2023-08-06T06:49:13.784Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf426c7161519cbc0ed511"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:49:16.27Z"),
+    updatedAt: ISODate("2023-08-06T06:49:16.27Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf426f7161519cbc0ed517"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:49:19.983Z"),
+    updatedAt: ISODate("2023-08-06T06:49:19.983Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf42717161519cbc0ed51d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:49:21.608Z"),
+    updatedAt: ISODate("2023-08-06T06:49:21.608Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf42747161519cbc0ed523"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:49:24.467Z"),
+    updatedAt: ISODate("2023-08-06T06:49:24.467Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf42767161519cbc0ed529"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:49:26.423Z"),
+    updatedAt: ISODate("2023-08-06T06:49:26.423Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf42787161519cbc0ed52f"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:49:28.04Z"),
+    updatedAt: ISODate("2023-08-06T06:49:28.04Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf42797161519cbc0ed535"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:49:29.109Z"),
+    updatedAt: ISODate("2023-08-06T06:49:29.109Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf42797161519cbc0ed53b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:49:29.74Z"),
+    updatedAt: ISODate("2023-08-06T06:49:29.74Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf42887161519cbc0ed541"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:49:44.379Z"),
+    updatedAt: ISODate("2023-08-06T06:49:44.379Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf42907161519cbc0ed547"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:49:52.515Z"),
+    updatedAt: ISODate("2023-08-06T06:49:52.515Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf42cadab9831e4ca024f0"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:50:50.391Z"),
+    updatedAt: ISODate("2023-08-06T06:50:50.391Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf42d09a94456bdc89045d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:50:56.429Z"),
+    updatedAt: ISODate("2023-08-06T06:50:56.429Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf42d19a94456bdc890463"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:50:57.573Z"),
+    updatedAt: ISODate("2023-08-06T06:50:57.573Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf42d9d4038a489214b0ac"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:51:05.166Z"),
+    updatedAt: ISODate("2023-08-06T06:51:05.166Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf431734b484d3b328594e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:52:07.283Z"),
+    updatedAt: ISODate("2023-08-06T06:52:07.283Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf431834b484d3b3285954"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:52:08.845Z"),
+    updatedAt: ISODate("2023-08-06T06:52:08.845Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf431b34b484d3b328595a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:52:11.388Z"),
+    updatedAt: ISODate("2023-08-06T06:52:11.388Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf431c34b484d3b3285960"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:52:12.879Z"),
+    updatedAt: ISODate("2023-08-06T06:52:12.879Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf43483f0f1bc788413aa3"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:52:56.73Z"),
+    updatedAt: ISODate("2023-08-06T06:52:56.73Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf434b3f0f1bc788413aa9"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:52:59.189Z"),
+    updatedAt: ISODate("2023-08-06T06:52:59.189Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf434d3f0f1bc788413aaf"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:53:01.599Z"),
+    updatedAt: ISODate("2023-08-06T06:53:01.599Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf43c50c36c9762d9233f8"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:55:01.262Z"),
+    updatedAt: ISODate("2023-08-06T06:55:01.262Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf43ca0c36c9762d9233fe"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:55:06.605Z"),
+    updatedAt: ISODate("2023-08-06T06:55:06.605Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf43cd0c36c9762d923404"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:55:09.048Z"),
+    updatedAt: ISODate("2023-08-06T06:55:09.048Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf43ce0c36c9762d92340a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:55:10.773Z"),
+    updatedAt: ISODate("2023-08-06T06:55:10.773Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf43d20c36c9762d923410"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:55:14.032Z"),
+    updatedAt: ISODate("2023-08-06T06:55:14.032Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf43d40c36c9762d923416"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:55:16.239Z"),
+    updatedAt: ISODate("2023-08-06T06:55:16.239Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf43d50c36c9762d92341c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:55:17.884Z"),
+    updatedAt: ISODate("2023-08-06T06:55:17.884Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf43d70c36c9762d923422"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:55:19.111Z"),
+    updatedAt: ISODate("2023-08-06T06:55:19.111Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf43da0c36c9762d923428"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:55:22.59Z"),
+    updatedAt: ISODate("2023-08-06T06:55:22.59Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf43f80c36c9762d92342e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:55:52.916Z"),
+    updatedAt: ISODate("2023-08-06T06:55:52.916Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf43fb0c36c9762d923434"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:55:55.048Z"),
+    updatedAt: ISODate("2023-08-06T06:55:55.048Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf43fb0c36c9762d92343a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:55:55.708Z"),
+    updatedAt: ISODate("2023-08-06T06:55:55.708Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf44150c36c9762d923440"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:56:21.65Z"),
+    updatedAt: ISODate("2023-08-06T06:56:21.65Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf44170c36c9762d923446"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:56:23.147Z"),
+    updatedAt: ISODate("2023-08-06T06:56:23.147Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf44170c36c9762d92344c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:56:23.929Z"),
+    updatedAt: ISODate("2023-08-06T06:56:23.929Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf449f0c36c9762d923452"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:58:39.295Z"),
+    updatedAt: ISODate("2023-08-06T06:58:39.295Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf44a10c36c9762d923458"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:58:41.155Z"),
+    updatedAt: ISODate("2023-08-06T06:58:41.155Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf44a20c36c9762d92345e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T06:58:42.87Z"),
+    updatedAt: ISODate("2023-08-06T06:58:42.87Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf45580c36c9762d923464"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T07:01:44.278Z"),
+    updatedAt: ISODate("2023-08-06T07:01:44.278Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf466e0c36c9762d92346a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T07:06:22.353Z"),
+    updatedAt: ISODate("2023-08-06T07:06:22.353Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf46d043a13bcc259ed03c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T07:08:00.885Z"),
+    updatedAt: ISODate("2023-08-06T07:08:00.885Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf46d143a13bcc259ed042"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T07:08:01.562Z"),
+    updatedAt: ISODate("2023-08-06T07:08:01.562Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf46d343a13bcc259ed048"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T07:08:03.103Z"),
+    updatedAt: ISODate("2023-08-06T07:08:03.103Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf46d343a13bcc259ed04e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T07:08:03.611Z"),
+    updatedAt: ISODate("2023-08-06T07:08:03.611Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf533e3f4a9c2087df5898"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T08:01:02.608Z"),
+    updatedAt: ISODate("2023-08-06T08:01:02.608Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf535e3f4a9c2087df58a2"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T08:01:34.573Z"),
+    updatedAt: ISODate("2023-08-06T08:01:34.573Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf5715beabb6038b25f533"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T08:17:25.413Z"),
+    updatedAt: ISODate("2023-08-06T08:17:25.413Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf576cbeabb6038b25f539"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-08-06T08:18:52.775Z"),
+    updatedAt: ISODate("2023-08-06T08:18:52.775Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf576dbeabb6038b25f53f"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T08:18:53.033Z"),
+    updatedAt: ISODate("2023-08-06T08:18:53.033Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf576fbeabb6038b25f545"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T08:18:55.664Z"),
+    updatedAt: ISODate("2023-08-06T08:18:55.664Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf5950ea61e1c94005c899"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-08-06T08:26:56.145Z"),
+    updatedAt: ISODate("2023-08-06T08:26:56.145Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf5950ea61e1c94005c89f"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T08:26:56.411Z"),
+    updatedAt: ISODate("2023-08-06T08:26:56.411Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf5955ea61e1c94005c8a5"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-08-06T08:27:01.853Z"),
+    updatedAt: ISODate("2023-08-06T08:27:01.853Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf5956ea61e1c94005c8ab"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T08:27:02.422Z"),
+    updatedAt: ISODate("2023-08-06T08:27:02.422Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf5a10ea61e1c94005c8c1"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T08:30:08.846Z"),
+    updatedAt: ISODate("2023-08-06T08:30:08.846Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf5a13ea61e1c94005c8c7"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T08:30:11.942Z"),
+    updatedAt: ISODate("2023-08-06T08:30:11.942Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf5a3cea61e1c94005c8cd"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T08:30:52.325Z"),
+    updatedAt: ISODate("2023-08-06T08:30:52.325Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf5a73ea61e1c94005c8db"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/更新",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/update",
+    createdAt: ISODate("2023-08-06T08:31:47.893Z"),
+    updatedAt: ISODate("2023-08-06T08:31:47.893Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cf5a74ea61e1c94005c8e1"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T08:31:48.257Z"),
+    updatedAt: ISODate("2023-08-06T08:31:48.257Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfaadcdd499496086e4be0"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/list",
+    createdAt: ISODate("2023-08-06T14:14:52.16Z"),
+    updatedAt: ISODate("2023-08-06T14:14:52.16Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfaae7dd499496086e4bea"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "开发工具/代码生成/批量删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/dev/codes/deleteAll",
+    createdAt: ISODate("2023-08-06T14:15:03.923Z"),
+    updatedAt: ISODate("2023-08-06T14:15:03.923Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfab22dd499496086e4bfd"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "开发工具/代码生成/创建",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/dev/codes/singleCurdFrontAndBack",
+    createdAt: ISODate("2023-08-06T14:16:02.054Z"),
+    updatedAt: ISODate("2023-08-06T14:16:02.054Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfac7ba451a172c5bb3101"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-06T14:21:47.929Z"),
+    updatedAt: ISODate("2023-08-06T14:21:47.929Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfac7ca451a172c5bb3107"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-06T14:21:48.909Z"),
+    updatedAt: ISODate("2023-08-06T14:21:48.909Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfac7ea451a172c5bb310d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-06T14:21:50.794Z"),
+    updatedAt: ISODate("2023-08-06T14:21:50.794Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfac8e619d1cb6bade78c4"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-06T14:22:06.039Z"),
+    updatedAt: ISODate("2023-08-06T14:22:06.039Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfad15619d1cb6bade78ca"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/创建",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/create",
+    createdAt: ISODate("2023-08-06T14:24:21.018Z"),
+    updatedAt: ISODate("2023-08-06T14:24:21.018Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfad27619d1cb6bade78ce"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/创建",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/create",
+    createdAt: ISODate("2023-08-06T14:24:39.363Z"),
+    updatedAt: ISODate("2023-08-06T14:24:39.363Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfad6cc3794728bc32ac20"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/创建",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/create",
+    createdAt: ISODate("2023-08-06T14:25:48.395Z"),
+    updatedAt: ISODate("2023-08-06T14:25:48.395Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfad6cc3794728bc32ac26"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-06T14:25:48.902Z"),
+    updatedAt: ISODate("2023-08-06T14:25:48.902Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfad77c3794728bc32ac2c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/list",
+    createdAt: ISODate("2023-08-06T14:25:59.297Z"),
+    updatedAt: ISODate("2023-08-06T14:25:59.297Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfad83c3794728bc32ac32"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T14:26:11.469Z"),
+    updatedAt: ISODate("2023-08-06T14:26:11.469Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfad88c3794728bc32ac38"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/list",
+    createdAt: ISODate("2023-08-06T14:26:16.009Z"),
+    updatedAt: ISODate("2023-08-06T14:26:16.009Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfada9c3794728bc32ac3e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/新增",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/create",
+    createdAt: ISODate("2023-08-06T14:26:49.383Z"),
+    updatedAt: ISODate("2023-08-06T14:26:49.383Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfada9c3794728bc32ac44"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/list",
+    createdAt: ISODate("2023-08-06T14:26:49.597Z"),
+    updatedAt: ISODate("2023-08-06T14:26:49.597Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfade2c3794728bc32ac4a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/新增",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/create",
+    createdAt: ISODate("2023-08-06T14:27:46.478Z"),
+    updatedAt: ISODate("2023-08-06T14:27:46.478Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfade2c3794728bc32ac54"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/list",
+    createdAt: ISODate("2023-08-06T14:27:46.737Z"),
+    updatedAt: ISODate("2023-08-06T14:27:46.737Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfae09c3794728bc32ac5a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/新增",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/create",
+    createdAt: ISODate("2023-08-06T14:28:25.62Z"),
+    updatedAt: ISODate("2023-08-06T14:28:25.62Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfae0ac3794728bc32ac64"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/list",
+    createdAt: ISODate("2023-08-06T14:28:26.107Z"),
+    updatedAt: ISODate("2023-08-06T14:28:26.107Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfae10c3794728bc32ac6a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/list",
+    createdAt: ISODate("2023-08-06T14:28:32.934Z"),
+    updatedAt: ISODate("2023-08-06T14:28:32.934Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfae22c3794728bc32ac72"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/list",
+    createdAt: ISODate("2023-08-06T14:28:50.785Z"),
+    updatedAt: ISODate("2023-08-06T14:28:50.785Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfae24c3794728bc32ac78"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-06T14:28:52.282Z"),
+    updatedAt: ISODate("2023-08-06T14:28:52.282Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfae2dc3794728bc32ac7e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/delete",
+    createdAt: ISODate("2023-08-06T14:29:01.925Z"),
+    updatedAt: ISODate("2023-08-06T14:29:01.925Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfae2ec3794728bc32ac84"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-06T14:29:02.124Z"),
+    updatedAt: ISODate("2023-08-06T14:29:02.124Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfae30c3794728bc32ac8a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-06T14:29:04.222Z"),
+    updatedAt: ISODate("2023-08-06T14:29:04.222Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfae3bc3794728bc32ac90"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T14:29:15.529Z"),
+    updatedAt: ISODate("2023-08-06T14:29:15.529Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfae3fc3794728bc32ac96"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-06T14:29:19.888Z"),
+    updatedAt: ISODate("2023-08-06T14:29:19.888Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfaedb32bd20af549a994b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-06T14:31:55.546Z"),
+    updatedAt: ISODate("2023-08-06T14:31:55.546Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfafda32bd20af549a9951"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-06T14:36:10.461Z"),
+    updatedAt: ISODate("2023-08-06T14:36:10.461Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfb01332bd20af549a9957"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-06T14:37:07.312Z"),
+    updatedAt: ISODate("2023-08-06T14:37:07.312Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfb03632bd20af549a995f"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/更新",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/update",
+    createdAt: ISODate("2023-08-06T14:37:42.669Z"),
+    updatedAt: ISODate("2023-08-06T14:37:42.669Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64cfb03732bd20af549a9965"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-06T14:37:43.177Z"),
+    updatedAt: ISODate("2023-08-06T14:37:43.177Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0469082afd55c3956f034"),
+    operator: "admin",
+    operatorId: "-",
+    module: "登录",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/auth/login",
+    createdAt: ISODate("2023-08-07T01:19:12.762Z"),
+    updatedAt: ISODate("2023-08-07T01:19:12.762Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0469882afd55c3956f037"),
+    operator: "admin",
+    operatorId: "-",
+    module: "登录",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/auth/login",
+    createdAt: ISODate("2023-08-07T01:19:20.408Z"),
+    updatedAt: ISODate("2023-08-07T01:19:20.408Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0473982afd55c3956f03e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-07T01:22:01.681Z"),
+    updatedAt: ISODate("2023-08-07T01:22:01.681Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0474c82afd55c3956f044"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:22:20.363Z"),
+    updatedAt: ISODate("2023-08-07T01:22:20.363Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04a0982afd55c3956f04a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-07T01:34:01.202Z"),
+    updatedAt: ISODate("2023-08-07T01:34:01.202Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04a0b82afd55c3956f050"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:34:03.441Z"),
+    updatedAt: ISODate("2023-08-07T01:34:03.441Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04a1f82afd55c3956f056"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:34:23.879Z"),
+    updatedAt: ISODate("2023-08-07T01:34:23.879Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04a2382afd55c3956f05c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:34:27.091Z"),
+    updatedAt: ISODate("2023-08-07T01:34:27.091Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04a2482afd55c3956f062"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:34:28.807Z"),
+    updatedAt: ISODate("2023-08-07T01:34:28.807Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04a3e82afd55c3956f068"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:34:54.398Z"),
+    updatedAt: ISODate("2023-08-07T01:34:54.398Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04a4482afd55c3956f06e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:35:00.683Z"),
+    updatedAt: ISODate("2023-08-07T01:35:00.683Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04a4b82afd55c3956f074"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:35:07.527Z"),
+    updatedAt: ISODate("2023-08-07T01:35:07.527Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04a4f82afd55c3956f07a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:35:11.58Z"),
+    updatedAt: ISODate("2023-08-07T01:35:11.58Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04a5a82afd55c3956f080"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:35:22.92Z"),
+    updatedAt: ISODate("2023-08-07T01:35:22.92Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04a5e82afd55c3956f086"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:35:26.633Z"),
+    updatedAt: ISODate("2023-08-07T01:35:26.633Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04a6382afd55c3956f08c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:35:31.204Z"),
+    updatedAt: ISODate("2023-08-07T01:35:31.204Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04a7082afd55c3956f092"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:35:44.573Z"),
+    updatedAt: ISODate("2023-08-07T01:35:44.573Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04a7d82afd55c3956f098"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:35:57.846Z"),
+    updatedAt: ISODate("2023-08-07T01:35:57.846Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04a8182afd55c3956f09e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:36:01.842Z"),
+    updatedAt: ISODate("2023-08-07T01:36:01.842Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04b4582afd55c3956f0a4"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:39:17.563Z"),
+    updatedAt: ISODate("2023-08-07T01:39:17.563Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04bbd82afd55c3956f0aa"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/更新",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/update",
+    createdAt: ISODate("2023-08-07T01:41:17.803Z"),
+    updatedAt: ISODate("2023-08-07T01:41:17.803Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04bbd82afd55c3956f0b0"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:41:17.986Z"),
+    updatedAt: ISODate("2023-08-07T01:41:17.986Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04c0d82afd55c3956f0b8"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/更新",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/update",
+    createdAt: ISODate("2023-08-07T01:42:37.758Z"),
+    updatedAt: ISODate("2023-08-07T01:42:37.758Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04c0d82afd55c3956f0be"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:42:37.924Z"),
+    updatedAt: ISODate("2023-08-07T01:42:37.924Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04c1c82afd55c3956f0c4"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:42:52.731Z"),
+    updatedAt: ISODate("2023-08-07T01:42:52.731Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04c2382afd55c3956f0ca"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:42:59.246Z"),
+    updatedAt: ISODate("2023-08-07T01:42:59.246Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04c3a82afd55c3956f0d0"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:43:22.939Z"),
+    updatedAt: ISODate("2023-08-07T01:43:22.939Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04cbb82afd55c3956f0d6"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:45:31.478Z"),
+    updatedAt: ISODate("2023-08-07T01:45:31.478Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04cc082afd55c3956f0dc"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:45:36.519Z"),
+    updatedAt: ISODate("2023-08-07T01:45:36.519Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04cc582afd55c3956f0e2"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:45:41.497Z"),
+    updatedAt: ISODate("2023-08-07T01:45:41.497Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04cca82afd55c3956f0e8"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:45:46.387Z"),
+    updatedAt: ISODate("2023-08-07T01:45:46.387Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04ccf82afd55c3956f0ee"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:45:51.545Z"),
+    updatedAt: ISODate("2023-08-07T01:45:51.545Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04d0582afd55c3956f0f4"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:46:45.437Z"),
+    updatedAt: ISODate("2023-08-07T01:46:45.437Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04d0d82afd55c3956f0fa"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:46:53.167Z"),
+    updatedAt: ISODate("2023-08-07T01:46:53.167Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04d1382afd55c3956f100"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:46:59.884Z"),
+    updatedAt: ISODate("2023-08-07T01:46:59.884Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04d1a82afd55c3956f106"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:47:06.745Z"),
+    updatedAt: ISODate("2023-08-07T01:47:06.745Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04db082afd55c3956f110"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/创建",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/create",
+    createdAt: ISODate("2023-08-07T01:49:36.496Z"),
+    updatedAt: ISODate("2023-08-07T01:49:36.496Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04db082afd55c3956f116"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:49:36.661Z"),
+    updatedAt: ISODate("2023-08-07T01:49:36.661Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d04db382afd55c3956f11c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T01:49:39.913Z"),
+    updatedAt: ISODate("2023-08-07T01:49:39.913Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0549c239a766566ab85bd"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T02:19:08.302Z"),
+    updatedAt: ISODate("2023-08-07T02:19:08.302Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d05fac239a766566ab85ef"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T03:06:20.673Z"),
+    updatedAt: ISODate("2023-08-07T03:06:20.673Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d05fb3239a766566ab85f5"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T03:06:27.125Z"),
+    updatedAt: ISODate("2023-08-07T03:06:27.125Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d05fb9239a766566ab85fb"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T03:06:33.839Z"),
+    updatedAt: ISODate("2023-08-07T03:06:33.839Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d05fc7239a766566ab8601"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/更新",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/update",
+    createdAt: ISODate("2023-08-07T03:06:47.81Z"),
+    updatedAt: ISODate("2023-08-07T03:06:47.81Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d05fc7239a766566ab8607"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T03:06:47.983Z"),
+    updatedAt: ISODate("2023-08-07T03:06:47.983Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d062f8239a766566ab8619"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/创建",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/create",
+    createdAt: ISODate("2023-08-07T03:20:24.728Z"),
+    updatedAt: ISODate("2023-08-07T03:20:24.728Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d062f8239a766566ab861f"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T03:20:24.931Z"),
+    updatedAt: ISODate("2023-08-07T03:20:24.931Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d06338239a766566ab8627"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/更新",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/update",
+    createdAt: ISODate("2023-08-07T03:21:28.673Z"),
+    updatedAt: ISODate("2023-08-07T03:21:28.673Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d06338239a766566ab862d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T03:21:28.879Z"),
+    updatedAt: ISODate("2023-08-07T03:21:28.879Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d077e095857bd72fd3a773"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "开发工具/代码生成/创建",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/dev/codes/singleCurdFrontAndBack",
+    createdAt: ISODate("2023-08-07T04:49:36.48Z"),
+    updatedAt: ISODate("2023-08-07T04:49:36.48Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d079cf0c32773d51923f68"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T04:57:51.828Z"),
+    updatedAt: ISODate("2023-08-07T04:57:51.828Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d079e00c32773d51923f6e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/创建",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/create",
+    createdAt: ISODate("2023-08-07T04:58:08.361Z"),
+    updatedAt: ISODate("2023-08-07T04:58:08.361Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d079e00c32773d51923f74"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T04:58:08.493Z"),
+    updatedAt: ISODate("2023-08-07T04:58:08.493Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d07a250c32773d51923f7a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T04:59:17.39Z"),
+    updatedAt: ISODate("2023-08-07T04:59:17.39Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d07a550c32773d51923f80"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T05:00:05.432Z"),
+    updatedAt: ISODate("2023-08-07T05:00:05.432Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d07a830c32773d51923f86"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T05:00:51.965Z"),
+    updatedAt: ISODate("2023-08-07T05:00:51.965Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d07a950c32773d51923f8c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T05:01:09.516Z"),
+    updatedAt: ISODate("2023-08-07T05:01:09.516Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d07aab0c32773d51923f92"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T05:01:31.647Z"),
+    updatedAt: ISODate("2023-08-07T05:01:31.647Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d07b1a0c32773d51923f98"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/更新",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/update",
+    createdAt: ISODate("2023-08-07T05:03:22.232Z"),
+    updatedAt: ISODate("2023-08-07T05:03:22.232Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d07b1a0c32773d51923f9e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T05:03:22.364Z"),
+    updatedAt: ISODate("2023-08-07T05:03:22.364Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d07b1b0c32773d51923fa4"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T05:03:23.512Z"),
+    updatedAt: ISODate("2023-08-07T05:03:23.512Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d07b2b0c32773d51923faa"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T05:03:39.905Z"),
+    updatedAt: ISODate("2023-08-07T05:03:39.905Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d07b2e0c32773d51923fb0"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T05:03:42.679Z"),
+    updatedAt: ISODate("2023-08-07T05:03:42.679Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d07b300c32773d51923fb6"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T05:03:44.718Z"),
+    updatedAt: ISODate("2023-08-07T05:03:44.718Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d07b340c32773d51923fbc"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T05:03:48.733Z"),
+    updatedAt: ISODate("2023-08-07T05:03:48.733Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d07b360c32773d51923fc2"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T05:03:50.331Z"),
+    updatedAt: ISODate("2023-08-07T05:03:50.331Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d08fb368bb07f2697e5c2b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T06:31:15.119Z"),
+    updatedAt: ISODate("2023-08-07T06:31:15.119Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d08fc268bb07f2697e5c31"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T06:31:30.668Z"),
+    updatedAt: ISODate("2023-08-07T06:31:30.668Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d08fd468bb07f2697e5c37"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T06:31:48.726Z"),
+    updatedAt: ISODate("2023-08-07T06:31:48.726Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d08fd968bb07f2697e5c3d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T06:31:53.386Z"),
+    updatedAt: ISODate("2023-08-07T06:31:53.386Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d08fdd68bb07f2697e5c43"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T06:31:57.672Z"),
+    updatedAt: ISODate("2023-08-07T06:31:57.672Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d08fe168bb07f2697e5c49"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T06:32:01.827Z"),
+    updatedAt: ISODate("2023-08-07T06:32:01.827Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d08fe468bb07f2697e5c4f"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T06:32:04.646Z"),
+    updatedAt: ISODate("2023-08-07T06:32:04.646Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d08fef68bb07f2697e5c55"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T06:32:15.678Z"),
+    updatedAt: ISODate("2023-08-07T06:32:15.678Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d08ff868bb07f2697e5c5b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T06:32:24.894Z"),
+    updatedAt: ISODate("2023-08-07T06:32:24.894Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d08ff968bb07f2697e5c60"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T06:32:25.057Z"),
+    updatedAt: ISODate("2023-08-07T06:32:25.057Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d08ffb68bb07f2697e5c66"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T06:32:27.166Z"),
+    updatedAt: ISODate("2023-08-07T06:32:27.166Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d08ffb68bb07f2697e5c6b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T06:32:27.276Z"),
+    updatedAt: ISODate("2023-08-07T06:32:27.276Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d08ffe68bb07f2697e5c71"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T06:32:30.815Z"),
+    updatedAt: ISODate("2023-08-07T06:32:30.815Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d08ffe68bb07f2697e5c76"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T06:32:30.952Z"),
+    updatedAt: ISODate("2023-08-07T06:32:30.952Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0906268bb07f2697e5c7e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T06:34:10.438Z"),
+    updatedAt: ISODate("2023-08-07T06:34:10.438Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0906468bb07f2697e5c84"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T06:34:12.162Z"),
+    updatedAt: ISODate("2023-08-07T06:34:12.162Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0906868bb07f2697e5c8a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T06:34:16.171Z"),
+    updatedAt: ISODate("2023-08-07T06:34:16.171Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0906968bb07f2697e5c90"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-07T06:34:17.451Z"),
+    updatedAt: ISODate("2023-08-07T06:34:17.451Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0906b68bb07f2697e5c96"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T06:34:19.583Z"),
+    updatedAt: ISODate("2023-08-07T06:34:19.583Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0936b68bb07f2697e5ca8"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T06:47:07.47Z"),
+    updatedAt: ISODate("2023-08-07T06:47:07.47Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0936b68bb07f2697e5cad"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T06:47:07.602Z"),
+    updatedAt: ISODate("2023-08-07T06:47:07.602Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0936d68bb07f2697e5cb3"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T06:47:09.447Z"),
+    updatedAt: ISODate("2023-08-07T06:47:09.447Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0936d68bb07f2697e5cb8"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T06:47:09.576Z"),
+    updatedAt: ISODate("2023-08-07T06:47:09.576Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0936f68bb07f2697e5cbe"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T06:47:11.157Z"),
+    updatedAt: ISODate("2023-08-07T06:47:11.157Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0936f68bb07f2697e5cc3"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T06:47:11.292Z"),
+    updatedAt: ISODate("2023-08-07T06:47:11.292Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0937068bb07f2697e5cc9"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T06:47:12.829Z"),
+    updatedAt: ISODate("2023-08-07T06:47:12.829Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0937068bb07f2697e5cce"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T06:47:12.948Z"),
+    updatedAt: ISODate("2023-08-07T06:47:12.948Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0937368bb07f2697e5cd4"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T06:47:15.606Z"),
+    updatedAt: ISODate("2023-08-07T06:47:15.606Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0937368bb07f2697e5cd9"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T06:47:15.713Z"),
+    updatedAt: ISODate("2023-08-07T06:47:15.713Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0983868bb07f2697e5d22"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T07:07:36.253Z"),
+    updatedAt: ISODate("2023-08-07T07:07:36.253Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a00168bb07f2697e5d2c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T07:40:49.453Z"),
+    updatedAt: ISODate("2023-08-07T07:40:49.453Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a2217c87ae13e44de5ca"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T07:49:53.534Z"),
+    updatedAt: ISODate("2023-08-07T07:49:53.534Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a2267c87ae13e44de5d0"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T07:49:58.778Z"),
+    updatedAt: ISODate("2023-08-07T07:49:58.778Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a2267c87ae13e44de5d5"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T07:49:58.909Z"),
+    updatedAt: ISODate("2023-08-07T07:49:58.909Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a2297c87ae13e44de5db"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T07:50:01.127Z"),
+    updatedAt: ISODate("2023-08-07T07:50:01.127Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a2297c87ae13e44de5e0"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T07:50:01.257Z"),
+    updatedAt: ISODate("2023-08-07T07:50:01.257Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a22c7c87ae13e44de5e6"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T07:50:04.333Z"),
+    updatedAt: ISODate("2023-08-07T07:50:04.333Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a22c7c87ae13e44de5eb"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T07:50:04.46Z"),
+    updatedAt: ISODate("2023-08-07T07:50:04.46Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a2367c87ae13e44de5f1"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T07:50:14.203Z"),
+    updatedAt: ISODate("2023-08-07T07:50:14.203Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a2547c87ae13e44de5f7"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T07:50:44.437Z"),
+    updatedAt: ISODate("2023-08-07T07:50:44.437Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a2717c87ae13e44de5fd"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-07T07:51:13.461Z"),
+    updatedAt: ISODate("2023-08-07T07:51:13.461Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a30a050d4e5666463fd2"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T07:53:46.163Z"),
+    updatedAt: ISODate("2023-08-07T07:53:46.163Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a30f050d4e5666463fd8"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T07:53:51.138Z"),
+    updatedAt: ISODate("2023-08-07T07:53:51.138Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a30f050d4e5666463fdd"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T07:53:51.288Z"),
+    updatedAt: ISODate("2023-08-07T07:53:51.288Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a312050d4e5666463fe3"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-07T07:53:54.047Z"),
+    updatedAt: ISODate("2023-08-07T07:53:54.047Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a318050d4e5666463fe9"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/delete",
+    createdAt: ISODate("2023-08-07T07:54:00.288Z"),
+    updatedAt: ISODate("2023-08-07T07:54:00.288Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a318050d4e5666463fef"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-07T07:54:00.414Z"),
+    updatedAt: ISODate("2023-08-07T07:54:00.414Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a31a050d4e5666463ff5"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/delete",
+    createdAt: ISODate("2023-08-07T07:54:02.794Z"),
+    updatedAt: ISODate("2023-08-07T07:54:02.794Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a31a050d4e5666463ffb"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-07T07:54:02.93Z"),
+    updatedAt: ISODate("2023-08-07T07:54:02.93Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a31b050d4e5666464001"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/list",
+    createdAt: ISODate("2023-08-07T07:54:03.9Z"),
+    updatedAt: ISODate("2023-08-07T07:54:03.9Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a320050d4e5666464007"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/delete",
+    createdAt: ISODate("2023-08-07T07:54:08.713Z"),
+    updatedAt: ISODate("2023-08-07T07:54:08.713Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a321050d4e566646400d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-07T07:54:09.011Z"),
+    updatedAt: ISODate("2023-08-07T07:54:09.011Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a323050d4e5666464013"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/delete",
+    createdAt: ISODate("2023-08-07T07:54:11.214Z"),
+    updatedAt: ISODate("2023-08-07T07:54:11.214Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a323050d4e5666464019"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-07T07:54:11.337Z"),
+    updatedAt: ISODate("2023-08-07T07:54:11.337Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a325050d4e566646401f"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/delete",
+    createdAt: ISODate("2023-08-07T07:54:13.282Z"),
+    updatedAt: ISODate("2023-08-07T07:54:13.282Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a325050d4e5666464025"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-07T07:54:13.398Z"),
+    updatedAt: ISODate("2023-08-07T07:54:13.398Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a32a050d4e566646402b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/delete",
+    createdAt: ISODate("2023-08-07T07:54:18.098Z"),
+    updatedAt: ISODate("2023-08-07T07:54:18.098Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a32a050d4e5666464031"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-07T07:54:18.218Z"),
+    updatedAt: ISODate("2023-08-07T07:54:18.218Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a32e050d4e5666464037"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/list",
+    createdAt: ISODate("2023-08-07T07:54:22.754Z"),
+    updatedAt: ISODate("2023-08-07T07:54:22.754Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a388050d4e5666464044"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-07T07:55:52.449Z"),
+    updatedAt: ISODate("2023-08-07T07:55:52.449Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a395050d4e566646404a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-07T07:56:05.209Z"),
+    updatedAt: ISODate("2023-08-07T07:56:05.209Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a3b9050d4e5666464050"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-07T07:56:41.091Z"),
+    updatedAt: ISODate("2023-08-07T07:56:41.091Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a451050d4e5666464056"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/list",
+    createdAt: ISODate("2023-08-07T07:59:13.016Z"),
+    updatedAt: ISODate("2023-08-07T07:59:13.016Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a45b050d4e566646405c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-07T07:59:23.791Z"),
+    updatedAt: ISODate("2023-08-07T07:59:23.791Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a45d050d4e5666464062"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-07T07:59:25.846Z"),
+    updatedAt: ISODate("2023-08-07T07:59:25.846Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a46b050d4e5666464068"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-07T07:59:39.824Z"),
+    updatedAt: ISODate("2023-08-07T07:59:39.824Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a46d050d4e566646406e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-07T07:59:41.119Z"),
+    updatedAt: ISODate("2023-08-07T07:59:41.119Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a46d050d4e5666464074"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-07T07:59:41.785Z"),
+    updatedAt: ISODate("2023-08-07T07:59:41.785Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a484050d4e566646407a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-07T08:00:04.42Z"),
+    updatedAt: ISODate("2023-08-07T08:00:04.42Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a486050d4e5666464080"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-07T08:00:06.571Z"),
+    updatedAt: ISODate("2023-08-07T08:00:06.571Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a490050d4e5666464086"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-07T08:00:16.883Z"),
+    updatedAt: ISODate("2023-08-07T08:00:16.883Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a496050d4e566646408c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/delete",
+    createdAt: ISODate("2023-08-07T08:00:22.295Z"),
+    updatedAt: ISODate("2023-08-07T08:00:22.295Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a496050d4e5666464092"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-07T08:00:22.462Z"),
+    updatedAt: ISODate("2023-08-07T08:00:22.462Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a4a5050d4e5666464098"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/list",
+    createdAt: ISODate("2023-08-07T08:00:37.715Z"),
+    updatedAt: ISODate("2023-08-07T08:00:37.715Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a4be050d4e566646409e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T08:01:02.366Z"),
+    updatedAt: ISODate("2023-08-07T08:01:02.366Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a570050d4e56664640b9"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T08:04:00.683Z"),
+    updatedAt: ISODate("2023-08-07T08:04:00.683Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a572050d4e56664640bf"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T08:04:02.516Z"),
+    updatedAt: ISODate("2023-08-07T08:04:02.516Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a58e050d4e56664640c5"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T08:04:30.293Z"),
+    updatedAt: ISODate("2023-08-07T08:04:30.293Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a59d050d4e56664640cb"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T08:04:45.364Z"),
+    updatedAt: ISODate("2023-08-07T08:04:45.364Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a5b1050d4e56664640d1"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T08:05:05.974Z"),
+    updatedAt: ISODate("2023-08-07T08:05:05.974Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a5ba050d4e56664640d7"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T08:05:14.164Z"),
+    updatedAt: ISODate("2023-08-07T08:05:14.164Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a70eccf7303b30150006"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T08:10:54.454Z"),
+    updatedAt: ISODate("2023-08-07T08:10:54.454Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a71eccf7303b3015000c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/创建",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/create",
+    createdAt: ISODate("2023-08-07T08:11:10.755Z"),
+    updatedAt: ISODate("2023-08-07T08:11:10.755Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0a71eccf7303b30150012"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T08:11:10.876Z"),
+    updatedAt: ISODate("2023-08-07T08:11:10.876Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0aa02ccf7303b30150036"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T08:23:30.168Z"),
+    updatedAt: ISODate("2023-08-07T08:23:30.168Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0aa1eccf7303b3015003c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T08:23:58.926Z"),
+    updatedAt: ISODate("2023-08-07T08:23:58.926Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0aa4accf7303b30150044"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/创建",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/create",
+    createdAt: ISODate("2023-08-07T08:24:42.947Z"),
+    updatedAt: ISODate("2023-08-07T08:24:42.947Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0aa4bccf7303b3015004a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T08:24:43.093Z"),
+    updatedAt: ISODate("2023-08-07T08:24:43.093Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0aa4eccf7303b30150050"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/创建",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/create",
+    createdAt: ISODate("2023-08-07T08:24:46.735Z"),
+    updatedAt: ISODate("2023-08-07T08:24:46.735Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0aa4eccf7303b30150056"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T08:24:46.857Z"),
+    updatedAt: ISODate("2023-08-07T08:24:46.857Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0ad9eccf7303b30150082"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T08:38:54.459Z"),
+    updatedAt: ISODate("2023-08-07T08:38:54.459Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0afcfccf7303b3015008c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T08:48:15.543Z"),
+    updatedAt: ISODate("2023-08-07T08:48:15.543Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0afcfccf7303b30150091"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T08:48:15.653Z"),
+    updatedAt: ISODate("2023-08-07T08:48:15.653Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0afd1ccf7303b30150097"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T08:48:17.306Z"),
+    updatedAt: ISODate("2023-08-07T08:48:17.306Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0afd1ccf7303b3015009c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T08:48:17.423Z"),
+    updatedAt: ISODate("2023-08-07T08:48:17.423Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0afd2ccf7303b301500a2"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T08:48:18.969Z"),
+    updatedAt: ISODate("2023-08-07T08:48:18.969Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0afd3ccf7303b301500a7"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T08:48:19.102Z"),
+    updatedAt: ISODate("2023-08-07T08:48:19.102Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0afd5ccf7303b301500ad"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T08:48:21.04Z"),
+    updatedAt: ISODate("2023-08-07T08:48:21.04Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0afd5ccf7303b301500b2"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T08:48:21.169Z"),
+    updatedAt: ISODate("2023-08-07T08:48:21.169Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0afd7ccf7303b301500b8"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T08:48:23.516Z"),
+    updatedAt: ISODate("2023-08-07T08:48:23.516Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0afd7ccf7303b301500bd"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T08:48:23.623Z"),
+    updatedAt: ISODate("2023-08-07T08:48:23.623Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0afd9ccf7303b301500c3"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T08:48:25.956Z"),
+    updatedAt: ISODate("2023-08-07T08:48:25.956Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0afdaccf7303b301500c8"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T08:48:26.079Z"),
+    updatedAt: ISODate("2023-08-07T08:48:26.079Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0ed2e8e925d6cefc9efa1"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-07T13:10:06.346Z"),
+    updatedAt: ISODate("2023-08-07T13:10:06.346Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0ed318e925d6cefc9efad"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T13:10:09.987Z"),
+    updatedAt: ISODate("2023-08-07T13:10:09.987Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0ed338e925d6cefc9efb3"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-07T13:10:11.431Z"),
+    updatedAt: ISODate("2023-08-07T13:10:11.431Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0ed3d8e925d6cefc9efb9"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-07T13:10:21.152Z"),
+    updatedAt: ISODate("2023-08-07T13:10:21.152Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0ed458e925d6cefc9efc1"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-07T13:10:29.593Z"),
+    updatedAt: ISODate("2023-08-07T13:10:29.593Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0ed488e925d6cefc9efc7"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T13:10:32.405Z"),
+    updatedAt: ISODate("2023-08-07T13:10:32.405Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0fc6198c726a2d735bc57"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T14:14:57.653Z"),
+    updatedAt: ISODate("2023-08-07T14:14:57.653Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0fc6398c726a2d735bc5d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T14:14:59.966Z"),
+    updatedAt: ISODate("2023-08-07T14:14:59.966Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0fc6498c726a2d735bc62"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T14:15:00.475Z"),
+    updatedAt: ISODate("2023-08-07T14:15:00.475Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0fc6698c726a2d735bc68"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T14:15:02.061Z"),
+    updatedAt: ISODate("2023-08-07T14:15:02.061Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0fc6698c726a2d735bc6d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T14:15:02.547Z"),
+    updatedAt: ISODate("2023-08-07T14:15:02.547Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0fc6898c726a2d735bc73"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T14:15:04.031Z"),
+    updatedAt: ISODate("2023-08-07T14:15:04.031Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0fc6898c726a2d735bc78"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T14:15:04.518Z"),
+    updatedAt: ISODate("2023-08-07T14:15:04.518Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0fc6998c726a2d735bc7e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T14:15:05.971Z"),
+    updatedAt: ISODate("2023-08-07T14:15:05.971Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0fc6a98c726a2d735bc83"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T14:15:06.462Z"),
+    updatedAt: ISODate("2023-08-07T14:15:06.462Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0fc6b98c726a2d735bc89"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T14:15:07.874Z"),
+    updatedAt: ISODate("2023-08-07T14:15:07.874Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0fc6c98c726a2d735bc8e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T14:15:08.382Z"),
+    updatedAt: ISODate("2023-08-07T14:15:08.382Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0fc6d98c726a2d735bc94"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T14:15:09.974Z"),
+    updatedAt: ISODate("2023-08-07T14:15:09.974Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0fc6e98c726a2d735bc99"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T14:15:10.472Z"),
+    updatedAt: ISODate("2023-08-07T14:15:10.472Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0fc7098c726a2d735bc9f"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-07T14:15:12.24Z"),
+    updatedAt: ISODate("2023-08-07T14:15:12.24Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0fc7098c726a2d735bca4"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T14:15:12.735Z"),
+    updatedAt: ISODate("2023-08-07T14:15:12.735Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d0fc7298c726a2d735bcaa"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T14:15:14.323Z"),
+    updatedAt: ISODate("2023-08-07T14:15:14.323Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d10f8dc2028cae81a0a839"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-07T15:36:45.575Z"),
+    updatedAt: ISODate("2023-08-07T15:36:45.575Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d10fffc2028cae81a0a848"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/list",
+    createdAt: ISODate("2023-08-07T15:38:39.533Z"),
+    updatedAt: ISODate("2023-08-07T15:38:39.533Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d11004c2028cae81a0a84e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/list",
+    createdAt: ISODate("2023-08-07T15:38:44.02Z"),
+    updatedAt: ISODate("2023-08-07T15:38:44.02Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d11010c2028cae81a0a856"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-07T15:38:56.052Z"),
+    updatedAt: ISODate("2023-08-07T15:38:56.052Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d11012c2028cae81a0a85c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-07T15:38:58.345Z"),
+    updatedAt: ISODate("2023-08-07T15:38:58.345Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d11013c2028cae81a0a862"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-07T15:38:59.313Z"),
+    updatedAt: ISODate("2023-08-07T15:38:59.313Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d19cf538164fd4b3f7313f"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-08T01:40:05.585Z"),
+    updatedAt: ISODate("2023-08-08T01:40:05.585Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d19cf638164fd4b3f73145"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-08T01:40:06.964Z"),
+    updatedAt: ISODate("2023-08-08T01:40:06.964Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d19cf838164fd4b3f7314b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-08T01:40:08.485Z"),
+    updatedAt: ISODate("2023-08-08T01:40:08.485Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d19cfc38164fd4b3f73151"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-08T01:40:12.712Z"),
+    updatedAt: ISODate("2023-08-08T01:40:12.712Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d19d0138164fd4b3f73157"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T01:40:17.56Z"),
+    updatedAt: ISODate("2023-08-08T01:40:17.56Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1a97238164fd4b3f73240"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:33:22.33Z"),
+    updatedAt: ISODate("2023-08-08T02:33:22.33Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1a98138164fd4b3f73246"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:33:37.744Z"),
+    updatedAt: ISODate("2023-08-08T02:33:37.744Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1a98938164fd4b3f7324c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:33:45.136Z"),
+    updatedAt: ISODate("2023-08-08T02:33:45.136Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1a98a38164fd4b3f73252"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:33:46.729Z"),
+    updatedAt: ISODate("2023-08-08T02:33:46.729Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1a98b38164fd4b3f73258"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:33:47.336Z"),
+    updatedAt: ISODate("2023-08-08T02:33:47.336Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1a99238164fd4b3f7325e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:33:54.259Z"),
+    updatedAt: ISODate("2023-08-08T02:33:54.259Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1a9b338164fd4b3f73264"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:34:27.748Z"),
+    updatedAt: ISODate("2023-08-08T02:34:27.748Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1aa5c38164fd4b3f7326a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:37:16.193Z"),
+    updatedAt: ISODate("2023-08-08T02:37:16.193Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1aa7c38164fd4b3f73270"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:37:48.67Z"),
+    updatedAt: ISODate("2023-08-08T02:37:48.67Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1aa8438164fd4b3f73276"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:37:56.205Z"),
+    updatedAt: ISODate("2023-08-08T02:37:56.205Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1aa8538164fd4b3f7327c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:37:57.56Z"),
+    updatedAt: ISODate("2023-08-08T02:37:57.56Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1aa8738164fd4b3f73282"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:37:59.031Z"),
+    updatedAt: ISODate("2023-08-08T02:37:59.031Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1aa8b38164fd4b3f73288"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:38:03.162Z"),
+    updatedAt: ISODate("2023-08-08T02:38:03.162Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1aaa238164fd4b3f7328e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/创建",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/create",
+    createdAt: ISODate("2023-08-08T02:38:26.722Z"),
+    updatedAt: ISODate("2023-08-08T02:38:26.722Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1aaa238164fd4b3f73294"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:38:26.862Z"),
+    updatedAt: ISODate("2023-08-08T02:38:26.862Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1aaa538164fd4b3f7329a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:38:29.037Z"),
+    updatedAt: ISODate("2023-08-08T02:38:29.037Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1aacb38164fd4b3f732a2"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:39:07.304Z"),
+    updatedAt: ISODate("2023-08-08T02:39:07.304Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1ac24ab2a17c4f0314edd"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:44:52.959Z"),
+    updatedAt: ISODate("2023-08-08T02:44:52.959Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1ac61f75a3de4633f23f5"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:45:53.959Z"),
+    updatedAt: ISODate("2023-08-08T02:45:53.959Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1ac8cf75a3de4633f2400"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:46:36.024Z"),
+    updatedAt: ISODate("2023-08-08T02:46:36.024Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1acd9aa11485aae6897be"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-08T02:47:53.446Z"),
+    updatedAt: ISODate("2023-08-08T02:47:53.446Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1acdbaa11485aae6897c4"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/list",
+    createdAt: ISODate("2023-08-08T02:47:55.936Z"),
+    updatedAt: ISODate("2023-08-08T02:47:55.936Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1ad5caa11485aae6897ca"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:50:04.922Z"),
+    updatedAt: ISODate("2023-08-08T02:50:04.922Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1ad82aa11485aae6897d0"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/list",
+    createdAt: ISODate("2023-08-08T02:50:42.121Z"),
+    updatedAt: ISODate("2023-08-08T02:50:42.121Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1ad92aa11485aae6897d6"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:50:58.587Z"),
+    updatedAt: ISODate("2023-08-08T02:50:58.587Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1ade5aa11485aae6897dc"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:52:21.435Z"),
+    updatedAt: ISODate("2023-08-08T02:52:21.435Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1ae26aa11485aae6897e2"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:53:26.305Z"),
+    updatedAt: ISODate("2023-08-08T02:53:26.305Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1ae84aa11485aae6897e8"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:55:00.643Z"),
+    updatedAt: ISODate("2023-08-08T02:55:00.643Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1aeddaa11485aae6897ee"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:56:29.622Z"),
+    updatedAt: ISODate("2023-08-08T02:56:29.622Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1aee4aa11485aae6897f4"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:56:36.294Z"),
+    updatedAt: ISODate("2023-08-08T02:56:36.294Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1af03aa11485aae6897fa"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:57:07.061Z"),
+    updatedAt: ISODate("2023-08-08T02:57:07.061Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1af57aa11485aae689800"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:58:31.708Z"),
+    updatedAt: ISODate("2023-08-08T02:58:31.708Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1af9aaa11485aae689806"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T02:59:38.708Z"),
+    updatedAt: ISODate("2023-08-08T02:59:38.708Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1afd0aa11485aae68980c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:00:32.158Z"),
+    updatedAt: ISODate("2023-08-08T03:00:32.158Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b002aa11485aae689812"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:01:22.076Z"),
+    updatedAt: ISODate("2023-08-08T03:01:22.076Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b016aa11485aae689818"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:01:42.194Z"),
+    updatedAt: ISODate("2023-08-08T03:01:42.194Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b038aa11485aae68981e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:02:16.102Z"),
+    updatedAt: ISODate("2023-08-08T03:02:16.102Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b0dbaa11485aae689824"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:04:59.595Z"),
+    updatedAt: ISODate("2023-08-08T03:04:59.595Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b11daa11485aae68982a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:06:05.135Z"),
+    updatedAt: ISODate("2023-08-08T03:06:05.135Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b121aa11485aae689830"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:06:09.019Z"),
+    updatedAt: ISODate("2023-08-08T03:06:09.019Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b13baa11485aae689836"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:06:35.119Z"),
+    updatedAt: ISODate("2023-08-08T03:06:35.119Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b178aa11485aae68983c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:07:36.87Z"),
+    updatedAt: ISODate("2023-08-08T03:07:36.87Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b1f7aa11485aae689842"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:09:43.175Z"),
+    updatedAt: ISODate("2023-08-08T03:09:43.175Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b237aa11485aae689848"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:10:47.396Z"),
+    updatedAt: ISODate("2023-08-08T03:10:47.396Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b23aaa11485aae68984e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:10:50.455Z"),
+    updatedAt: ISODate("2023-08-08T03:10:50.455Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b24baa11485aae689854"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:11:07.14Z"),
+    updatedAt: ISODate("2023-08-08T03:11:07.14Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b269aa11485aae68985a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:11:37.436Z"),
+    updatedAt: ISODate("2023-08-08T03:11:37.436Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b297aa11485aae689860"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:12:23.864Z"),
+    updatedAt: ISODate("2023-08-08T03:12:23.864Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b2faaa11485aae689868"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:14:02.105Z"),
+    updatedAt: ISODate("2023-08-08T03:14:02.105Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b2faaa11485aae68986c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:14:02.113Z"),
+    updatedAt: ISODate("2023-08-08T03:14:02.113Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b2ffaa11485aae689872"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:14:07.982Z"),
+    updatedAt: ISODate("2023-08-08T03:14:07.982Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b305aa11485aae689878"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:14:13.851Z"),
+    updatedAt: ISODate("2023-08-08T03:14:13.851Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b307aa11485aae68987e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:14:15.718Z"),
+    updatedAt: ISODate("2023-08-08T03:14:15.718Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b393aa11485aae689884"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:16:35.747Z"),
+    updatedAt: ISODate("2023-08-08T03:16:35.747Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b3c4aa11485aae68988c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:17:24.453Z"),
+    updatedAt: ISODate("2023-08-08T03:17:24.453Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b3c4aa11485aae689890"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:17:24.513Z"),
+    updatedAt: ISODate("2023-08-08T03:17:24.513Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b3e0aa11485aae689896"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:17:52.374Z"),
+    updatedAt: ISODate("2023-08-08T03:17:52.374Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b3fbaa11485aae68989c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:18:19.418Z"),
+    updatedAt: ISODate("2023-08-08T03:18:19.418Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b4beaa11485aae6898a2"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:21:34.849Z"),
+    updatedAt: ISODate("2023-08-08T03:21:34.849Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b518aa11485aae6898a6"),
+    operator: "admin",
+    operatorId: "-",
+    module: "登录",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/auth/login",
+    createdAt: ISODate("2023-08-08T03:23:04.206Z"),
+    updatedAt: ISODate("2023-08-08T03:23:04.206Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b51eaa11485aae6898ad"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:23:10.91Z"),
+    updatedAt: ISODate("2023-08-08T03:23:10.91Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b535aa11485aae6898b6"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:23:33.321Z"),
+    updatedAt: ISODate("2023-08-08T03:23:33.321Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b54eaa11485aae6898c0"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:23:58.073Z"),
+    updatedAt: ISODate("2023-08-08T03:23:58.073Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b550aa11485aae6898c8"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:24:00.226Z"),
+    updatedAt: ISODate("2023-08-08T03:24:00.226Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b57faa11485aae6898d0"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:24:47.842Z"),
+    updatedAt: ISODate("2023-08-08T03:24:47.842Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b632aa11485aae6898d6"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:27:46.075Z"),
+    updatedAt: ISODate("2023-08-08T03:27:46.075Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b63faa11485aae6898dc"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:27:59.507Z"),
+    updatedAt: ISODate("2023-08-08T03:27:59.507Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b64baa11485aae6898e5"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:28:11.606Z"),
+    updatedAt: ISODate("2023-08-08T03:28:11.606Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b65faa11485aae6898ee"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:28:31.53Z"),
+    updatedAt: ISODate("2023-08-08T03:28:31.53Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b66aaa11485aae6898f4"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:28:42.818Z"),
+    updatedAt: ISODate("2023-08-08T03:28:42.818Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b66caa11485aae6898fa"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:28:44.64Z"),
+    updatedAt: ISODate("2023-08-08T03:28:44.64Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b66eaa11485aae689900"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:28:46.19Z"),
+    updatedAt: ISODate("2023-08-08T03:28:46.19Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b66faa11485aae689906"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:28:47.444Z"),
+    updatedAt: ISODate("2023-08-08T03:28:47.444Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b670aa11485aae68990c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:28:48.603Z"),
+    updatedAt: ISODate("2023-08-08T03:28:48.603Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b6e1aa11485aae689912"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:30:41.557Z"),
+    updatedAt: ISODate("2023-08-08T03:30:41.557Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b6e3aa11485aae689918"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:30:43.172Z"),
+    updatedAt: ISODate("2023-08-08T03:30:43.172Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b6e5aa11485aae68991e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:30:45.627Z"),
+    updatedAt: ISODate("2023-08-08T03:30:45.627Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b6efaa11485aae689924"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:30:55.849Z"),
+    updatedAt: ISODate("2023-08-08T03:30:55.849Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b6f3aa11485aae68992a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:30:59.769Z"),
+    updatedAt: ISODate("2023-08-08T03:30:59.769Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b6f6aa11485aae689930"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:31:02.508Z"),
+    updatedAt: ISODate("2023-08-08T03:31:02.508Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b6f8aa11485aae689936"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:31:04.182Z"),
+    updatedAt: ISODate("2023-08-08T03:31:04.182Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b706aa11485aae68993c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:31:18.591Z"),
+    updatedAt: ISODate("2023-08-08T03:31:18.591Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b71aaa11485aae689942"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:31:38.726Z"),
+    updatedAt: ISODate("2023-08-08T03:31:38.726Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b71daa11485aae689948"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:31:41.741Z"),
+    updatedAt: ISODate("2023-08-08T03:31:41.741Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b725aa11485aae68994e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:31:49.238Z"),
+    updatedAt: ISODate("2023-08-08T03:31:49.238Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b729aa11485aae689954"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:31:53.766Z"),
+    updatedAt: ISODate("2023-08-08T03:31:53.766Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b9397f1373b5496fe88b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:40:41.05Z"),
+    updatedAt: ISODate("2023-08-08T03:40:41.05Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b93c7f1373b5496fe891"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:40:44.552Z"),
+    updatedAt: ISODate("2023-08-08T03:40:44.552Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b9637f1373b5496fe897"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:41:23.967Z"),
+    updatedAt: ISODate("2023-08-08T03:41:23.967Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1b97c7f1373b5496fe89d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:41:48.832Z"),
+    updatedAt: ISODate("2023-08-08T03:41:48.832Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1ba197f1373b5496fe8a3"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:44:25.69Z"),
+    updatedAt: ISODate("2023-08-08T03:44:25.69Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1ba3f7f1373b5496fe8a9"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:45:03.106Z"),
+    updatedAt: ISODate("2023-08-08T03:45:03.106Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1ba537f1373b5496fe8af"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:45:23.741Z"),
+    updatedAt: ISODate("2023-08-08T03:45:23.741Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1ba647f1373b5496fe8b5"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:45:40.028Z"),
+    updatedAt: ISODate("2023-08-08T03:45:40.028Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1ba6a7f1373b5496fe8bb"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:45:46.49Z"),
+    updatedAt: ISODate("2023-08-08T03:45:46.49Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1ba6d7f1373b5496fe8c1"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:45:49.429Z"),
+    updatedAt: ISODate("2023-08-08T03:45:49.429Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1ba877f1373b5496fe8c7"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:46:15.885Z"),
+    updatedAt: ISODate("2023-08-08T03:46:15.885Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1bb867f1373b5496fe8cd"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T03:50:30.49Z"),
+    updatedAt: ISODate("2023-08-08T03:50:30.49Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c30a7f1373b5496fe8d6"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T04:22:34.815Z"),
+    updatedAt: ISODate("2023-08-08T04:22:34.815Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c3978534b5d6cd62f56e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T04:24:55.608Z"),
+    updatedAt: ISODate("2023-08-08T04:24:55.608Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c3a48534b5d6cd62f574"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T04:25:08.943Z"),
+    updatedAt: ISODate("2023-08-08T04:25:08.943Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c3a98534b5d6cd62f578"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T04:25:13.991Z"),
+    updatedAt: ISODate("2023-08-08T04:25:13.991Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c3fc8534b5d6cd62f57e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T04:26:36.523Z"),
+    updatedAt: ISODate("2023-08-08T04:26:36.523Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c4018534b5d6cd62f582"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T04:26:41.541Z"),
+    updatedAt: ISODate("2023-08-08T04:26:41.541Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c4058534b5d6cd62f588"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T04:26:45.685Z"),
+    updatedAt: ISODate("2023-08-08T04:26:45.685Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c40a8534b5d6cd62f58c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T04:26:50.722Z"),
+    updatedAt: ISODate("2023-08-08T04:26:50.722Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c48bb42bf0cbc0dbb42b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T04:28:59.295Z"),
+    updatedAt: ISODate("2023-08-08T04:28:59.295Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c48bb42bf0cbc0dbb430"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T04:28:59.469Z"),
+    updatedAt: ISODate("2023-08-08T04:28:59.469Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c52a3338cf4ef6732605"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T04:31:38.102Z"),
+    updatedAt: ISODate("2023-08-08T04:31:38.102Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c5333338cf4ef673260b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T04:31:47.209Z"),
+    updatedAt: ISODate("2023-08-08T04:31:47.209Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c5333338cf4ef6732611"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T04:31:47.334Z"),
+    updatedAt: ISODate("2023-08-08T04:31:47.334Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c5a6eff2529c71ae2878"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T04:33:42.2Z"),
+    updatedAt: ISODate("2023-08-08T04:33:42.2Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c633169448b39716b8e7"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/更新",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/update",
+    createdAt: ISODate("2023-08-08T04:36:03.303Z"),
+    updatedAt: ISODate("2023-08-08T04:36:03.303Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c633169448b39716b8ed"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T04:36:03.474Z"),
+    updatedAt: ISODate("2023-08-08T04:36:03.474Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c63d169448b39716b8f3"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/更新",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/update",
+    createdAt: ISODate("2023-08-08T04:36:13.694Z"),
+    updatedAt: ISODate("2023-08-08T04:36:13.694Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c655169448b39716b8f8"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/更新",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/update",
+    createdAt: ISODate("2023-08-08T04:36:37.194Z"),
+    updatedAt: ISODate("2023-08-08T04:36:37.194Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c69db985cdf2171674df"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T04:37:49.667Z"),
+    updatedAt: ISODate("2023-08-08T04:37:49.667Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c6a7b985cdf2171674e5"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/更新",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/update",
+    createdAt: ISODate("2023-08-08T04:37:59.135Z"),
+    updatedAt: ISODate("2023-08-08T04:37:59.135Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c6a7b985cdf2171674eb"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T04:37:59.276Z"),
+    updatedAt: ISODate("2023-08-08T04:37:59.276Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c6b3b985cdf2171674f1"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/更新",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/update",
+    createdAt: ISODate("2023-08-08T04:38:11.874Z"),
+    updatedAt: ISODate("2023-08-08T04:38:11.874Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c6b4b985cdf2171674f7"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T04:38:12.011Z"),
+    updatedAt: ISODate("2023-08-08T04:38:12.011Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c6b7b985cdf2171674fd"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T04:38:15.925Z"),
+    updatedAt: ISODate("2023-08-08T04:38:15.925Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c72d17267de099b9333e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T04:40:13.146Z"),
+    updatedAt: ISODate("2023-08-08T04:40:13.146Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c72f17267de099b93344"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T04:40:15.919Z"),
+    updatedAt: ISODate("2023-08-08T04:40:15.919Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c74217267de099b9334a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T04:40:34.138Z"),
+    updatedAt: ISODate("2023-08-08T04:40:34.138Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c74417267de099b93350"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T04:40:36.455Z"),
+    updatedAt: ISODate("2023-08-08T04:40:36.455Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c79a17267de099b93356"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T04:42:02.074Z"),
+    updatedAt: ISODate("2023-08-08T04:42:02.074Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c7ac17267de099b9335c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T04:42:20.916Z"),
+    updatedAt: ISODate("2023-08-08T04:42:20.916Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c8e817267de099b93362"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T04:47:36.33Z"),
+    updatedAt: ISODate("2023-08-08T04:47:36.33Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c96e17267de099b93368"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-08T04:49:50.625Z"),
+    updatedAt: ISODate("2023-08-08T04:49:50.625Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c97817267de099b9336e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/用户管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/users/list",
+    createdAt: ISODate("2023-08-08T04:50:00.809Z"),
+    updatedAt: ISODate("2023-08-08T04:50:00.809Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c99817267de099b93374"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/list",
+    createdAt: ISODate("2023-08-08T04:50:32.703Z"),
+    updatedAt: ISODate("2023-08-08T04:50:32.703Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c99b17267de099b9337a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/list",
+    createdAt: ISODate("2023-08-08T04:50:35.807Z"),
+    updatedAt: ISODate("2023-08-08T04:50:35.807Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c9a317267de099b93380"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/list",
+    createdAt: ISODate("2023-08-08T04:50:43.149Z"),
+    updatedAt: ISODate("2023-08-08T04:50:43.149Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c9a517267de099b93386"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/list",
+    createdAt: ISODate("2023-08-08T04:50:45.233Z"),
+    updatedAt: ISODate("2023-08-08T04:50:45.233Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c9a717267de099b9338c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/list",
+    createdAt: ISODate("2023-08-08T04:50:47.4Z"),
+    updatedAt: ISODate("2023-08-08T04:50:47.4Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1c9a917267de099b93392"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/list",
+    createdAt: ISODate("2023-08-08T04:50:49.996Z"),
+    updatedAt: ISODate("2023-08-08T04:50:49.996Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cc1b8c776f2f08494d9b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:01:15.093Z"),
+    updatedAt: ISODate("2023-08-08T05:01:15.093Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cc4bcaec49fcb08b3e4d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:02:03.705Z"),
+    updatedAt: ISODate("2023-08-08T05:02:03.705Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1ccc4caec49fcb08b3e53"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:04:04.175Z"),
+    updatedAt: ISODate("2023-08-08T05:04:04.175Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1ccfdcaec49fcb08b3e5f"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:05:01.998Z"),
+    updatedAt: ISODate("2023-08-08T05:05:01.998Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1ccfecaec49fcb08b3e64"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:05:02.124Z"),
+    updatedAt: ISODate("2023-08-08T05:05:02.124Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd03caec49fcb08b3e6a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:05:07.135Z"),
+    updatedAt: ISODate("2023-08-08T05:05:07.135Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd03caec49fcb08b3e70"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:05:07.252Z"),
+    updatedAt: ISODate("2023-08-08T05:05:07.252Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd06caec49fcb08b3e76"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:05:10.61Z"),
+    updatedAt: ISODate("2023-08-08T05:05:10.61Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd06caec49fcb08b3e7b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:05:10.724Z"),
+    updatedAt: ISODate("2023-08-08T05:05:10.724Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd09caec49fcb08b3e81"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:05:13.364Z"),
+    updatedAt: ISODate("2023-08-08T05:05:13.364Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd15caec49fcb08b3e87"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:05:25.82Z"),
+    updatedAt: ISODate("2023-08-08T05:05:25.82Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd15caec49fcb08b3e8c"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:05:25.953Z"),
+    updatedAt: ISODate("2023-08-08T05:05:25.953Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd1fcaec49fcb08b3e92"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:05:35.799Z"),
+    updatedAt: ISODate("2023-08-08T05:05:35.799Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd1fcaec49fcb08b3e97"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:05:35.908Z"),
+    updatedAt: ISODate("2023-08-08T05:05:35.908Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd7c2ed69e514682b0fd"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:07:08.599Z"),
+    updatedAt: ISODate("2023-08-08T05:07:08.599Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd7f2ed69e514682b103"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:07:11.234Z"),
+    updatedAt: ISODate("2023-08-08T05:07:11.234Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd7f2ed69e514682b109"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:07:11.345Z"),
+    updatedAt: ISODate("2023-08-08T05:07:11.345Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd812ed69e514682b10f"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:07:13.476Z"),
+    updatedAt: ISODate("2023-08-08T05:07:13.476Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd812ed69e514682b115"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:07:13.603Z"),
+    updatedAt: ISODate("2023-08-08T05:07:13.603Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd832ed69e514682b11b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:07:15.222Z"),
+    updatedAt: ISODate("2023-08-08T05:07:15.222Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd832ed69e514682b121"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:07:15.343Z"),
+    updatedAt: ISODate("2023-08-08T05:07:15.343Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd842ed69e514682b127"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:07:16.889Z"),
+    updatedAt: ISODate("2023-08-08T05:07:16.889Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd852ed69e514682b12d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:07:17.013Z"),
+    updatedAt: ISODate("2023-08-08T05:07:17.013Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd872ed69e514682b133"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:07:19.205Z"),
+    updatedAt: ISODate("2023-08-08T05:07:19.205Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd872ed69e514682b139"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:07:19.331Z"),
+    updatedAt: ISODate("2023-08-08T05:07:19.331Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd8a2ed69e514682b13f"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:07:22.182Z"),
+    updatedAt: ISODate("2023-08-08T05:07:22.182Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd8a2ed69e514682b145"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:07:22.322Z"),
+    updatedAt: ISODate("2023-08-08T05:07:22.322Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd8c2ed69e514682b14b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:07:24.221Z"),
+    updatedAt: ISODate("2023-08-08T05:07:24.221Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd8c2ed69e514682b151"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:07:24.342Z"),
+    updatedAt: ISODate("2023-08-08T05:07:24.342Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd8d2ed69e514682b157"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:07:25.803Z"),
+    updatedAt: ISODate("2023-08-08T05:07:25.803Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd8d2ed69e514682b15d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:07:25.921Z"),
+    updatedAt: ISODate("2023-08-08T05:07:25.921Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd902ed69e514682b163"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:07:28.389Z"),
+    updatedAt: ISODate("2023-08-08T05:07:28.389Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd902ed69e514682b169"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:07:28.512Z"),
+    updatedAt: ISODate("2023-08-08T05:07:28.512Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd932ed69e514682b16f"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:07:31.035Z"),
+    updatedAt: ISODate("2023-08-08T05:07:31.035Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd932ed69e514682b175"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:07:31.146Z"),
+    updatedAt: ISODate("2023-08-08T05:07:31.146Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd952ed69e514682b17b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:07:33.394Z"),
+    updatedAt: ISODate("2023-08-08T05:07:33.394Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd952ed69e514682b181"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:07:33.526Z"),
+    updatedAt: ISODate("2023-08-08T05:07:33.526Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd972ed69e514682b187"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:07:35.091Z"),
+    updatedAt: ISODate("2023-08-08T05:07:35.091Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd972ed69e514682b18d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:07:35.219Z"),
+    updatedAt: ISODate("2023-08-08T05:07:35.219Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd992ed69e514682b193"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:07:37.363Z"),
+    updatedAt: ISODate("2023-08-08T05:07:37.363Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cd992ed69e514682b199"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:07:37.483Z"),
+    updatedAt: ISODate("2023-08-08T05:07:37.483Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cda12ed69e514682b19f"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:07:45.306Z"),
+    updatedAt: ISODate("2023-08-08T05:07:45.306Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cda12ed69e514682b1a5"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:07:45.424Z"),
+    updatedAt: ISODate("2023-08-08T05:07:45.424Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cda52ed69e514682b1ab"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:07:49.205Z"),
+    updatedAt: ISODate("2023-08-08T05:07:49.205Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cda52ed69e514682b1b1"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:07:49.332Z"),
+    updatedAt: ISODate("2023-08-08T05:07:49.332Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cda72ed69e514682b1b7"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:07:51.162Z"),
+    updatedAt: ISODate("2023-08-08T05:07:51.162Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cda72ed69e514682b1bd"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:07:51.29Z"),
+    updatedAt: ISODate("2023-08-08T05:07:51.29Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cda92ed69e514682b1c3"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:07:53.162Z"),
+    updatedAt: ISODate("2023-08-08T05:07:53.162Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cda92ed69e514682b1c9"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:07:53.289Z"),
+    updatedAt: ISODate("2023-08-08T05:07:53.289Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cdaa2ed69e514682b1cf"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:07:54.83Z"),
+    updatedAt: ISODate("2023-08-08T05:07:54.83Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cdaa2ed69e514682b1d5"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:07:54.953Z"),
+    updatedAt: ISODate("2023-08-08T05:07:54.953Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cdad2ed69e514682b1db"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:07:57.531Z"),
+    updatedAt: ISODate("2023-08-08T05:07:57.531Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cdad2ed69e514682b1e1"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:07:57.642Z"),
+    updatedAt: ISODate("2023-08-08T05:07:57.642Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cdb02ed69e514682b1e7"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:08:00.201Z"),
+    updatedAt: ISODate("2023-08-08T05:08:00.201Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cdb02ed69e514682b1ed"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:08:00.319Z"),
+    updatedAt: ISODate("2023-08-08T05:08:00.319Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cdb22ed69e514682b1f3"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:08:02.776Z"),
+    updatedAt: ISODate("2023-08-08T05:08:02.776Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cdb22ed69e514682b1f9"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:08:02.888Z"),
+    updatedAt: ISODate("2023-08-08T05:08:02.888Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cdb42ed69e514682b1ff"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:08:04.875Z"),
+    updatedAt: ISODate("2023-08-08T05:08:04.875Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cdb52ed69e514682b205"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:08:05.003Z"),
+    updatedAt: ISODate("2023-08-08T05:08:05.003Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cdb72ed69e514682b20b"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:08:07.029Z"),
+    updatedAt: ISODate("2023-08-08T05:08:07.029Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cdb72ed69e514682b211"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:08:07.142Z"),
+    updatedAt: ISODate("2023-08-08T05:08:07.142Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cdb92ed69e514682b217"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/删除",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/delete",
+    createdAt: ISODate("2023-08-08T05:08:09.682Z"),
+    updatedAt: ISODate("2023-08-08T05:08:09.682Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cdb92ed69e514682b21d"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:08:09.809Z"),
+    updatedAt: ISODate("2023-08-08T05:08:09.809Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cdbd2ed69e514682b223"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:08:13.123Z"),
+    updatedAt: ISODate("2023-08-08T05:08:13.123Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cdc12ed69e514682b229"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:08:17.663Z"),
+    updatedAt: ISODate("2023-08-08T05:08:17.663Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1cde32ed69e514682b22f"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:08:51.293Z"),
+    updatedAt: ISODate("2023-08-08T05:08:51.293Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d010ec7d064adc726c47"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:18:08.809Z"),
+    updatedAt: ISODate("2023-08-08T05:18:08.809Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d07653d1c684a73c83f4"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:19:50.374Z"),
+    updatedAt: ISODate("2023-08-08T05:19:50.374Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d0e053d1c684a73c83fd"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/list",
+    createdAt: ISODate("2023-08-08T05:21:36.541Z"),
+    updatedAt: ISODate("2023-08-08T05:21:36.541Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d0e553d1c684a73c8403"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:21:41.515Z"),
+    updatedAt: ISODate("2023-08-08T05:21:41.515Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d17353d1c684a73c840a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/list",
+    createdAt: ISODate("2023-08-08T05:24:03.841Z"),
+    updatedAt: ISODate("2023-08-08T05:24:03.841Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d19153d1c684a73c8410"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/新增",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/create",
+    createdAt: ISODate("2023-08-08T05:24:33.895Z"),
+    updatedAt: ISODate("2023-08-08T05:24:33.895Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d19253d1c684a73c841a"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/权限管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/list",
+    createdAt: ISODate("2023-08-08T05:24:34.083Z"),
+    updatedAt: ISODate("2023-08-08T05:24:34.083Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d1a053d1c684a73c8420"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/list",
+    createdAt: ISODate("2023-08-08T05:24:48.247Z"),
+    updatedAt: ISODate("2023-08-08T05:24:48.247Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d1d853d1c684a73c8428"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/更新",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/update",
+    createdAt: ISODate("2023-08-08T05:25:44.067Z"),
+    updatedAt: ISODate("2023-08-08T05:25:44.067Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d1d853d1c684a73c842e"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "系统管理/角色管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/roles/list",
+    createdAt: ISODate("2023-08-08T05:25:44.197Z"),
+    updatedAt: ISODate("2023-08-08T05:25:44.197Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d1eb53d1c684a73c8432"),
+    operator: "1048660927@qq.com",
+    operatorId: "-",
+    module: "登录",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/auth/login",
+    createdAt: ISODate("2023-08-08T05:26:03.848Z"),
+    updatedAt: ISODate("2023-08-08T05:26:03.848Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d1f353d1c684a73c8439"),
+    operator: "成小沙",
+    operatorId: "64d10f83c2028cae81a0a831",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-08T05:26:11.294Z"),
+    updatedAt: ISODate("2023-08-08T05:26:11.294Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d1f553d1c684a73c843f"),
+    operator: "成小沙",
+    operatorId: "64d10f83c2028cae81a0a831",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-08T05:26:13.334Z"),
+    updatedAt: ISODate("2023-08-08T05:26:13.334Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d1f853d1c684a73c8445"),
+    operator: "成小沙",
+    operatorId: "64d10f83c2028cae81a0a831",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:26:16.997Z"),
+    updatedAt: ISODate("2023-08-08T05:26:16.997Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d1fd53d1c684a73c844c"),
+    operator: "成小沙",
+    operatorId: "64d10f83c2028cae81a0a831",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:26:21.629Z"),
+    updatedAt: ISODate("2023-08-08T05:26:21.629Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d20c53d1c684a73c8453"),
+    operator: "成小沙",
+    operatorId: "64d10f83c2028cae81a0a831",
+    module: "系统管理/权限管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/list",
+    createdAt: ISODate("2023-08-08T05:26:36.922Z"),
+    updatedAt: ISODate("2023-08-08T05:26:36.922Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d22d53d1c684a73c845d"),
+    operator: "成小沙",
+    operatorId: "64d10f83c2028cae81a0a831",
+    module: "系统管理/权限管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/permissions/list",
+    createdAt: ISODate("2023-08-08T05:27:09.463Z"),
+    updatedAt: ISODate("2023-08-08T05:27:09.463Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d22e53d1c684a73c8463"),
+    operator: "成小沙",
+    operatorId: "64d10f83c2028cae81a0a831",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-08T05:27:10.798Z"),
+    updatedAt: ISODate("2023-08-08T05:27:10.798Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d23453d1c684a73c8469"),
+    operator: "成小沙",
+    operatorId: "64d10f83c2028cae81a0a831",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-08T05:27:16.065Z"),
+    updatedAt: ISODate("2023-08-08T05:27:16.065Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d23553d1c684a73c846f"),
+    operator: "成小沙",
+    operatorId: "64d10f83c2028cae81a0a831",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:27:17.244Z"),
+    updatedAt: ISODate("2023-08-08T05:27:17.244Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d25b53d1c684a73c8478"),
+    operator: "成小沙",
+    operatorId: "64d10f83c2028cae81a0a831",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:27:55.776Z"),
+    updatedAt: ISODate("2023-08-08T05:27:55.776Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d25f53d1c684a73c8481"),
+    operator: "成小沙",
+    operatorId: "64d10f83c2028cae81a0a831",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:27:59.397Z"),
+    updatedAt: ISODate("2023-08-08T05:27:59.397Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d26153d1c684a73c848a"),
+    operator: "成小沙",
+    operatorId: "64d10f83c2028cae81a0a831",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:28:01.316Z"),
+    updatedAt: ISODate("2023-08-08T05:28:01.316Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d32853d1c684a73c84bb"),
+    operator: "admin",
+    operatorId: "-",
+    module: "登录",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/sys/auth/login",
+    createdAt: ISODate("2023-08-08T05:31:20.759Z"),
+    updatedAt: ISODate("2023-08-08T05:31:20.759Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d32d53d1c684a73c84c2"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-08T05:31:25.764Z"),
+    updatedAt: ISODate("2023-08-08T05:31:25.764Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d32f53d1c684a73c84c8"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-08T05:31:27.975Z"),
+    updatedAt: ISODate("2023-08-08T05:31:27.975Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d33253d1c684a73c84ce"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-08T05:31:30.195Z"),
+    updatedAt: ISODate("2023-08-08T05:31:30.195Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d1d33b53d1c684a73c84d4"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T05:31:39.662Z"),
+    updatedAt: ISODate("2023-08-08T05:31:39.662Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d20418aaac1a23454126a3"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-08T09:00:08.945Z"),
+    updatedAt: ISODate("2023-08-08T09:00:08.945Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d2041baaac1a23454126a9"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "留言/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/messages/list",
+    createdAt: ISODate("2023-08-08T09:00:11.666Z"),
+    updatedAt: ISODate("2023-08-08T09:00:11.666Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d2041faaac1a23454126b0"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-08T09:00:15.188Z"),
+    updatedAt: ISODate("2023-08-08T09:00:15.188Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d20420aaac1a23454126b6"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "作品集/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/list",
+    createdAt: ISODate("2023-08-08T09:00:16.798Z"),
+    updatedAt: ISODate("2023-08-08T09:00:16.798Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d20424aaac1a23454126bc"),
+    operator: "ZY·Admin",
+    operatorId: "64aabf3d28f413f08d51cc00",
+    module: "博文管理/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/list",
+    createdAt: ISODate("2023-08-08T09:00:20.668Z"),
+    updatedAt: ISODate("2023-08-08T09:00:20.668Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d2045baaac1a23454126c3"),
+    operator: "未知",
+    operatorId: "-",
+    module: "前台/博文列表/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/client/list",
+    createdAt: ISODate("2023-08-08T09:01:15.84Z"),
+    updatedAt: ISODate("2023-08-08T09:01:15.84Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d2045caaac1a23454126c7"),
+    operator: "未知",
+    operatorId: "-",
+    module: "前台/作品集",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/client/list",
+    createdAt: ISODate("2023-08-08T09:01:16.159Z"),
+    updatedAt: ISODate("2023-08-08T09:01:16.159Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d20474aaac1a23454126ce"),
+    operator: "未知",
+    operatorId: "-",
+    module: "前台/博文列表/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/client/list",
+    createdAt: ISODate("2023-08-08T09:01:40.168Z"),
+    updatedAt: ISODate("2023-08-08T09:01:40.168Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d20474aaac1a23454126d2"),
+    operator: "未知",
+    operatorId: "-",
+    module: "前台/作品集",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/client/list",
+    createdAt: ISODate("2023-08-08T09:01:40.185Z"),
+    updatedAt: ISODate("2023-08-08T09:01:40.185Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d204b0aaac1a23454126d9"),
+    operator: "未知",
+    operatorId: "-",
+    module: "前台/博文列表/查询",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/blog_articles/client/list",
+    createdAt: ISODate("2023-08-08T09:02:40.145Z"),
+    updatedAt: ISODate("2023-08-08T09:02:40.145Z")
+} ]);
+db.getCollection("users_opt_logs").insert([ {
+    _id: ObjectId("64d204b0aaac1a23454126dd"),
+    operator: "未知",
+    operatorId: "-",
+    module: "前台/作品集",
+    platform: "Chrome.v115",
+    operatorIP: "0.0.0.0",
+    address: "保留地址",
+    content: "/v1/blog/portfolios/client/list",
+    createdAt: ISODate("2023-08-08T09:02:40.159Z"),
+    updatedAt: ISODate("2023-08-08T09:02:40.159Z")
+} ]);

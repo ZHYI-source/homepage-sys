@@ -1,0 +1,17 @@
+import service from '../server'
+export const <%= tableName %>List = (data) => {
+    return service.post('/v1/<%= auth %>/<%= tableName %>/list', data)
+}
+export const <%= tableName %>Create = (data) => {
+    return service.post('/v1/<%= auth %>/<%= tableName %>/create', data)
+}
+export const <%= tableName %>Update = (data) => {
+    return service.post('/v1/<%= auth %>/<%= tableName %>/update', data)
+}
+export const <%= tableName %>Delete = (data) => {
+    return service.post('/v1/<%= auth %>/<%= tableName %>/delete', data)
+}
+
+
+
+
