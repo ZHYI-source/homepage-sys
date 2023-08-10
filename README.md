@@ -54,16 +54,19 @@ QQ群：529675917
 
 
 ## 截图(管理后台+前台)
-<img  src="doc/IMG/img_1.png" width = "100%" height = "150">
-<img  src="doc/IMG/img_2.png" width = "100%" height = "150">
-<img  src="doc/IMG/img_3.png" width = "100%" height = "150">
-<img  src="doc/IMG/img_4.png" width = "100%" height = "150">
-<img  src="doc/IMG/img_5.png" width = "100%" height = "150">
-<img  src="doc/IMG/img_6.png" width = "100%" height = "150">
-<img  src="doc/IMG/img_7.png" width = "100%" height = "150">
-<img  src="doc/IMG/img_8.png" width = "100%" height = "150">
-<img  src="doc/IMG/img_9.png" width = "100%" height = "150">
-<img  src="doc/IMG/img_10.png" width = "100%" height = "150">
+<p align="center">
+  <img  src="doc/IMG/img_1.png" width = "45%" >
+<img  src="doc/IMG/img_2.png" width = "45%" >
+</p>
+
+<img  src="doc/IMG/img_3.png" width = "45%">
+<img  src="doc/IMG/img_4.png" width = "45%">
+<img  src="doc/IMG/img_5.png" width = "45%">
+<img  src="doc/IMG/img_6.png" width = "45%">
+<img  src="doc/IMG/img_7.png" width = "45%">
+<img  src="doc/IMG/img_8.png" width = "45%">
+<img  src="doc/IMG/img_9.png" width = "45%">
+<img  src="doc/IMG/img_10.png" width = "45%">
 <img  src="doc/IMG/img_11.png" width = "100%" height = "150">
 <img  src="doc/IMG/img_12.png" width = "100%" height = "150">
 <img  src="doc/IMG/img_13.png" width = "100%" height = "150">
