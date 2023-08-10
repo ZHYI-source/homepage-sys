@@ -1,0 +1,142 @@
+// Reset SCSS
+
+// 重置所有的margin和padding
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+// 重置列表样式
+ul, ol {
+  list-style: none;
+}
+
+// 重置图片样式
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// 重置表格样式
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// 重置按钮样式
+button, input, select, textarea {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: middle;
+  background: none;
+  line-height: 1;
+  outline: none;
+  appearance: none;
+}
+
+// 可选：设置box-sizing为border-box
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+html {
+  font-size: 93.8%; /*15px页面标准字体大小*/
+}
+
+body {
+  background-color: $color-bg; // 使用主题背景色
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", 微软雅黑, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.75;
+  min-height: 100vh;
+}
+
+
+h1, h2, h3, h4, h5 {
+  font-family: "Open Sans";
+  color: $color-text-main; // 使用主题文字颜色
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 1.802rem;
+}
+
+h2 {
+  font-size: 1.602rem;
+}
+
+h3 {
+  font-size: 1.424rem;
+}
+
+h4 {
+  font-size: 1.266rem;
+}
+
+h5 {
+  font-size: 1.125rem;
+}
+
+small, .text_small {
+  font-size: 0.889rem;
+}
+
+
+p {
+  color: $color-text-normal; // 使用主题文字颜色
+  margin: 0;
+}
+
+hr {
+  height: 1px;
+  border: none;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), $color-primary, rgba(0, 0, 0, 0));
+  margin: .8rem 0;
+}
+
+
+// 链接样式
+a {
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-family: inherit;
+
+}
+
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: darken($color-primary,10%);
+}
+::-webkit-scrollbar-track {
+  background-color: #ffffff;
+}
+
+

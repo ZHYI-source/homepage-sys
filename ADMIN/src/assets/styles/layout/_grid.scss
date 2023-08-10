@@ -1,0 +1,52 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+* {
+  box-sizing: border-box;
+}
+.container {
+  height: 100%;
+  min-width: 650px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  .container-layout {
+    height: 100%;
+
+
+    .container-sider {
+      box-sizing: border-box;
+
+      .ant-menu-inline > .ant-menu-item {
+        height: 60px;
+        line-height: 60px;
+        margin: 0;
+      }
+
+      .ant-menu-submenu > .ant-menu {
+        //background-color: $color-bg;
+      }
+    }
+
+    .container-main {
+      box-sizing: border-box;
+      //background-color: $color-bg;
+      .content-main {
+        box-sizing: border-box;
+        overflow-x: hidden;
+
+      }
+
+      .container-header {
+        padding: 0;
+
+        .trigger {
+          padding-left: 1rem;
+        }
+      }
+    }
+
+  }
+}

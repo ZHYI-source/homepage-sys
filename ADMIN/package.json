@@ -1,0 +1,42 @@
+{
+  "name": "zy-admin",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:dev": "vite build --mode development",
+    "build:pro": "vite build --mode production",
+    "test:unit": "vitest"
+  },
+  "dependencies": {
+    "@ant-design/icons-vue": "^6.1.0",
+    "@kangc/v-md-editor": "^2.3.15",
+    "@tinymce/tinymce-vue": "^5.1.0",
+    "ant-design-vue": "^3.2.17",
+    "axios": "^1.3.5",
+    "echarts": "^4.8.0",
+    "hotkeys-js": "^3.10.2",
+    "lodash": "^4.17.21",
+    "lowdb": "^6.0.1",
+    "marked": "^7.0.1",
+    "pinia": "^2.0.32",
+    "vditor": "^3.9.3",
+    "vue": "^3.2.47",
+    "vue-count-to": "^1.0.13",
+    "vue-router": "^4.1.6"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.0",
+    "@vue/test-utils": "^2.3.0",
+    "jsdom": "^21.1.0",
+    "less": "^4.1.3",
+    "less-loader": "^11.1.0",
+    "sass": "^1.62.0",
+    "sass-loader": "^13.2.2",
+    "vite": "^4.1.4",
+    "vitest": "^0.29.1"
+  }
+}
