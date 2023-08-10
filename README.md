@@ -55,9 +55,12 @@ QQ群：529675917
 
 ## 截图(管理后台+前台)
 <p align="center">
-  <img  src="doc/IMG/img_1.png" width = "45%" >
-<img  src="doc/IMG/img_2.png" width = "45%" >
-</p>
+    <img  src="doc/IMG/img_1.png" width = "45%" >
+    <img  src="doc/IMG/img_2.png" width = "45%" >
+     <img  src="doc/IMG/img_3.png" width = "45%" >
+        <img  src="doc/IMG/img_4.png" width = "45%" >
+
+ 
 
 <img  src="doc/IMG/img_3.png" width = "45%">
 <img  src="doc/IMG/img_4.png" width = "45%">
@@ -67,27 +70,28 @@ QQ群：529675917
 <img  src="doc/IMG/img_8.png" width = "45%">
 <img  src="doc/IMG/img_9.png" width = "45%">
 <img  src="doc/IMG/img_10.png" width = "45%">
-<img  src="doc/IMG/img_11.png" width = "100%" height = "150">
-<img  src="doc/IMG/img_12.png" width = "100%" height = "150">
-<img  src="doc/IMG/img_13.png" width = "100%" height = "150">
- <img  src="doc/IMG/img_14.png" width = "100%" height = "150">
- <img  src="doc/IMG/img_15.png" width = "100%" height = "150">
- <img  src="doc/IMG/img_16.png" width = "100%" height = "150">
- <img  src="doc/IMG/img_17.png" width = "100%" height = "150">
- <img  src="doc/IMG/img_18.png" width = "100%" height = "150">
- <img  src="doc/IMG/img_19.png" width = "100%" height = "150">
-<img  src="doc/IMG/img_20.png" width = "100%" height = "150">
-<img  src="doc/IMG/img_21.png" width = "100%" height = "150">
-<img  src="doc/IMG/img_22.png" width = "100%" height = "150">
-<img  src="doc/IMG/img_23.png" width = "100%" height = "150">
- <img  src="doc/IMG/img_24.png" width = "100%" height = "150">
- <img  src="doc/IMG/img_25.png" width = "100%" height = "150">
- <img  src="doc/IMG/img_26.png" width = "100%" height = "150">
- <img  src="doc/IMG/img_27.png" width = "100%" height = "150">
- <img  src="doc/IMG/img_28.png" width = "100%" height = "150">
- <img  src="doc/IMG/img_29.png" width = "100%" height = "150">
- <img  src="doc/IMG/img_30.png" width = "100%" height = "150">
- <img  src="doc/IMG/img_31.png" width = "100%" height = "150">
+<img  src="doc/IMG/img_11.png" width = "45%">
+<img  src="doc/IMG/img_12.png" width = "45%">
+<img  src="doc/IMG/img_13.png" width = "45%">
+ <img  src="doc/IMG/img_14.png" width = "45%">
+ <img  src="doc/IMG/img_15.png" width = "45%">
+ <img  src="doc/IMG/img_16.png" width = "45%">
+ <img  src="doc/IMG/img_17.png" width = "45%">
+ <img  src="doc/IMG/img_18.png" width = "45%">
+ <img  src="doc/IMG/img_19.png" width = "45%">
+<img  src="doc/IMG/img_20.png" width = "45%">
+<img  src="doc/IMG/img_21.png" width = "45%">
+<img  src="doc/IMG/img_22.png" width = "45%">
+<img  src="doc/IMG/img_23.png" width = "45%">
+ <img  src="doc/IMG/img_24.png" width = "45%">
+ <img  src="doc/IMG/img_25.png" width = "45%">
+ <img  src="doc/IMG/img_26.png" width = "45%">
+ <img  src="doc/IMG/img_27.png" width = "45%">
+ <img  src="doc/IMG/img_28.png" width = "45%">
+ <img  src="doc/IMG/img_29.png" width = "45%">
+ <img  src="doc/IMG/img_30.png" width = "45%">
+ <img  src="doc/IMG/img_31.png" width = "45%">
+ </p>
 
 ## 快速开始
 默认你的电脑已经安装好`Nodejs` `Vue` `MongoDB` 以及代码编辑器等环境
