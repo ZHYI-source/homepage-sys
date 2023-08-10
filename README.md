@@ -222,9 +222,10 @@ ZHOUYI-Homepage是一个开源项目，根据MIT许可证发布。有关更多�
 - 微信：<img src="doc/img_6.png" width = "150" >
 
 ##  赞赏作者
-
+<p align="left">
  <img src="doc/img_7.png" width = "150" height = "150" alt="图片名称" align=center />
  <img src="doc/img_8.png" width = "150" height = "150" alt="图片名称" align=center />
+ </p>
 
 ## 其他相关开源项目
 >[😜博客全栈系统 vue2 + node.js](https://gitee.com/Z568_568/all-blog-sys.git)
