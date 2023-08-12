@@ -10,7 +10,8 @@
   <p align="center">
     基于Vue3、Express、MongoDB、JavaScript实现的个人主页前后端分离完整系统
     <br />
-    <a href="https://github.com/ZHYI-source/ZHOUYI-Homepage.git" target="_blank"><strong>探索本项目的源码 »</strong></a>
+    <a href="https://github.com/ZHYI-source/ZHOUYI-Homepage.git" target="_blank"><strong>（github）探索本项目的源码 »</strong></a>
+<a href="https://gitee.com/Z568_568/ZHOUYI-Homepage.git" target="_blank"><strong>(gitee)探索本项目的源码 »</strong></a>
     <br />
     <a href="http://www.zhouyi.run/" target="_blank"><strong>在线示例点这里 »</strong></a>
     <br />
